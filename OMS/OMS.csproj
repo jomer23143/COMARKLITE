@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5FA88D52-EC47-4080-A890-7777931BCB5A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OMS</RootNamespace>
+    <AssemblyName>OMS</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\VglOmsLite\VglOmsLite4\VglOmsLite\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=12.6.0.4, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\DevComponents.DotNetBar.SuperGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=12.6.0.4, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Colors\RendererColorTable.cs" />
+    <Compile Include="Colors\RendererToolStrip.cs" />
+    <Compile Include="ConnectionSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConnectionSettings.designer.cs">
+      <DependentUpon>ConnectionSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Incoming\ManageIncomingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Incoming\ManageIncomingWindow.Designer.cs">
+      <DependentUpon>ManageIncomingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Incoming\NewIncomingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Incoming\NewIncomingWindow.Designer.cs">
+      <DependentUpon>NewIncomingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Incoming\Returns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Incoming\Returns.Designer.cs">
+      <DependentUpon>Returns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Incoming\StockTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Incoming\StockTransfer.Designer.cs">
+      <DependentUpon>StockTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeyBoardSupport.cs" />
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MAster\Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MAster\Customer.Designer.cs">
+      <DependentUpon>Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MAster\ListCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MAster\ListCustomer.Designer.cs">
+      <DependentUpon>ListCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MAster\ProductsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MAster\ProductsList.Designer.cs">
+      <DependentUpon>ProductsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Outgoing\DeliveryProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outgoing\DeliveryProcessing.Designer.cs">
+      <DependentUpon>DeliveryProcessing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Outgoing\ManageOutgoingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outgoing\ManageOutgoingWindow.Designer.cs">
+      <DependentUpon>ManageOutgoingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Outgoing\NewOutgoingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outgoing\NewOutgoingWindow.Designer.cs">
+      <DependentUpon>NewOutgoingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Outgoing\SalerProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outgoing\SalerProcessing.Designer.cs">
+      <DependentUpon>SalerProcessing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registration.Designer.cs">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrationSupport.cs" />
+    <Compile Include="SecuritySupport.cs" />
+    <Compile Include="Utilities\DataSupport.cs" />
+    <Compile Include="Utilities\FAQ.cs" />
+    <Compile Include="Utilities\ORMSupport.cs" />
+    <Compile Include="Utilities\RegistrySupport.cs" />
+    <Compile Include="Utilities\SelectGridWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\SelectGridWindow.Designer.cs">
+      <DependentUpon>SelectGridWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\SynchroSupport.cs" />
+    <Compile Include="Utilities\TaskSupport.cs" />
+    <Compile Include="Utilities\Utils.cs" />
+    <EmbeddedResource Include="ConnectionSettings.resx">
+      <DependentUpon>ConnectionSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Incoming\ManageIncomingWindow.resx">
+      <DependentUpon>ManageIncomingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Incoming\NewIncomingWindow.resx">
+      <DependentUpon>NewIncomingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Incoming\Returns.resx">
+      <DependentUpon>Returns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Incoming\StockTransfer.resx">
+      <DependentUpon>StockTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MAster\Customer.resx">
+      <DependentUpon>Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MAster\ListCustomer.resx">
+      <DependentUpon>ListCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MAster\ProductsList.resx">
+      <DependentUpon>ProductsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Outgoing\DeliveryProcessing.resx">
+      <DependentUpon>DeliveryProcessing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Outgoing\ManageOutgoingWindow.resx">
+      <DependentUpon>ManageOutgoingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Outgoing\NewOutgoingWindow.resx">
+      <DependentUpon>NewOutgoingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Outgoing\SalerProcessing.resx">
+      <DependentUpon>SalerProcessing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Registration.resx">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\SelectGridWindow.resx">
+      <DependentUpon>SelectGridWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Dataset\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sales.Html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\incoming.Html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drReport.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
