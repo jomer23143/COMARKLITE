@@ -21,6 +21,15 @@ namespace OMS.MAster
         private void ListCustomer_Load(object sender, EventArgs e)
         {
             display();
+            design();
+        }
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            dataGridView1.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
         }
         public void display()
         {

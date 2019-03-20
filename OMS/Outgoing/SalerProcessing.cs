@@ -20,6 +20,7 @@ namespace OMS.Outgoing
         public SalerProcessing()
         {
             InitializeComponent();
+            design();
         }
 
         private void SalerProcessing_Load(object sender, EventArgs e)
@@ -52,7 +53,14 @@ namespace OMS.Outgoing
             uom();
             txtSalesInvoice.KeyPress += new KeyPressEventHandler(KeyBoardSupport.ForNumericOnly_KeyPress);
 
-          
+        }
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            dataGridView1.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
         }
         private void uom()
         {
@@ -208,71 +216,93 @@ namespace OMS.Outgoing
             Form1 dialog = new Form1();
             dialog.parent = this;
             dialog.mode = 1;
-            if (dialog.ShowDialog() == DialogResult.OK)
+            String uom = "";
+            bool status = false;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if(Form1.status == true)
+                if (row.IsNewRow) continue;
+                uom = row.Cells[colUnit.Name].Value.ToString();
+                if (uom == "")
+                {
+                    MessageBox.Show("uom is empty");
+                    status = true;
+                }
+              
+            }
+           if(!status)
+            {
+                dialog.ShowDialog();
+                if (Form1.status == true)
                 { saved(); clear(); }
             }
-          
+
         }
         private void saved()
         {
-            String siId = DataSupport.GetNextMenuCodeInt("INVOICE");
-            StringBuilder sql = new StringBuilder();
-            Dictionary<String, Object> header = new Dictionary<string, object>();
-            header.Add("out_shipment_id", siId);
-            header.Add("warehouse", "CEB1");
-            header.Add("datetime", DateTime.Now);
-            header.Add("outgoing_type", "SALES INVOICE");
-            header.Add("docNo", txtSalesInvoice.Text);
-            header.Add("document_reference", txtSoNo.Text);
-            header.Add("document_reference_date", txtDateS.Text);
-            header.Add("authorized_tms", cbxWarehouse.Text);
-            header.Add("client", "COMARK");
-            header.Add("terms", txtTerms.Text);
-            header.Add("poNo", txtPoNo.Text);
-            header.Add("sr", txtSR.Text);
-            header.Add("terrCode", txtTerrCode.Text);
-            header.Add("customer_id", custCode);
-            header.Add("customer_name", txtSoldTo.Text);
-            header.Add("contactNo", txtCustNo.Text);
-            header.Add("customer_invoice_address", txtCustAddress.Text);
-            header.Add("disc1", "");
-            header.Add("disc2", "");
-            header.Add("disc3", "");
-            header.Add("disc4", "");
-            header.Add("disc5", "");
-            header.Add("shippingInstruction", txtInstruction.Text);
-            header.Add("amountD", amountD);
-            header.Add("typeStocks", txtTypeStock.Text);
-            header.Add("status", "FOR STOCK CHECKING");
-
-            sql.Append(DataSupport.GetInsert("OutgoingShipmentRequests", header));
-            //String TransId = FAQ.GetNextReturnID(0);
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            try
             {
-                if (dataGridView1.Rows.IndexOf(row) == dataGridView1.Rows.Count - 1)
-                    break;
+                String siId = DataSupport.GetNextMenuCodeInt("INVOICE");
+                StringBuilder sql = new StringBuilder();
+                Dictionary<String, Object> header = new Dictionary<string, object>();
+                header.Add("out_shipment_id", siId);
+                header.Add("warehouse", "CEB1");
+                header.Add("datetime", DateTime.Now);
+                header.Add("outgoing_type", "SALES INVOICE");
+                header.Add("docNo", txtSalesInvoice.Text);
+                header.Add("document_reference", txtSoNo.Text);
+                header.Add("document_reference_date", txtDateS.Text);
+                header.Add("authorized_tms", cbxWarehouse.Text);
+                header.Add("client", "COMARK");
+                header.Add("terms", txtTerms.Text);
+                header.Add("poNo", txtPoNo.Text);
+                header.Add("sr", txtSR.Text);
+                header.Add("terrCode", txtTerrCode.Text);
+                header.Add("customer_id", custCode);
+                header.Add("customer_name", txtSoldTo.Text);
+                header.Add("customer_invoice_address", txtCustAddress.Text);
+                header.Add("disc1", "");
+                header.Add("disc2", "");
+                header.Add("disc3", "");
+                header.Add("disc4", "");
+                header.Add("disc5", "");
+                header.Add("shippingInstruction", txtInstruction.Text);
+                header.Add("amountD", amountD);
+                header.Add("typeStocks", txtTypeStock.Text);
+                header.Add("status", "FOR STOCK CHECKING");
 
-                Dictionary<String, Object> detail = new Dictionary<String, Object>();
-                detail.Add("out_shipment", siId);
-                detail.Add("product", row.Cells[colCode.Name].Value.ToString());
-                detail.Add("uom", row.Cells[colUnit.Name].Value.ToString());
-                if (string.IsNullOrEmpty(row.Cells[colQuantity.Name].Value as string))
-                { detail.Add("expected_qty", "0"); }
+                sql.Append(DataSupport.GetInsert("OutgoingShipmentRequests", header));
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (dataGridView1.Rows.IndexOf(row) == dataGridView1.Rows.Count - 1)
+                        break;
+
+                    Dictionary<String, Object> detail = new Dictionary<String, Object>();
+                    detail.Add("out_shipment", siId);
+                    detail.Add("product", row.Cells[colCode.Name].Value.ToString());
+                    detail.Add("uom", row.Cells[colUnit.Name].Value.ToString());
+                    detail.Add("expected_qty", Convert.ToInt32(row.Cells[colQuantity.Name].Value));
+                    //if (Convert.ToInt32(row.Cells["colQuantity"].Value) == 0)
+                    //{ detail.Add("expected_qty", "0"); }
+                    //else
+                    //{ detail.Add("expected_qty", row.Cells[colQuantity.Name].Value.ToString()); }
+                    if (string.IsNullOrEmpty(row.Cells[colPrice.Name].Value.ToString()))
+                    { detail.Add("price", "0"); }
+                    else
+                    { detail.Add("price", row.Cells[colPrice.Name].Value.ToString()); }
+                    
+                    sql.Append(DataSupport.GetInsert("OutgoingShipmentRequestDetails", detail));
+                }
+                if (FAQ.InvoiceExist(txtSalesInvoice.Text))
+                { MessageBox.Show("Invoice No is Exist"); }
                 else
-                { detail.Add("expected_qty", row.Cells[colQuantity.Name].Value.ToString()); } 
-                detail.Add("price", row.Cells[colPrice.Name].Value.ToString());
-                sql.Append(DataSupport.GetInsert("OutgoingShipmentRequestDetails", detail));
+                {
+                    DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
+                    MessageBox.Show("Success");
+                    DialogResult = DialogResult.OK;
+                }
             }
-            if (FAQ.InvoiceExist(txtSalesInvoice.Text))
-            { MessageBox.Show("Invoice No is Exist"); }
-            else
-            {
-                DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
-                MessageBox.Show("Success");
-                DialogResult = DialogResult.OK;
-            }
+            catch(Exception ex)
+            { MessageBox.Show(ex.Message); }
         }
         private void clear()
         {
@@ -388,6 +418,158 @@ namespace OMS.Outgoing
         private void cbxpriceType_SelectedValueChanged(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+        }
+
+        private void txtTin_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void txtInstruction_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTypeStock_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCustAddress_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCustNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSoldTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTerrCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSR_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTerms_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDateS_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxpriceType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxWarehouse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPoNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSoNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSalesInvoice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

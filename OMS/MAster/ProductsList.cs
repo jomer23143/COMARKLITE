@@ -18,12 +18,22 @@ namespace OMS.MAster
         public ProductsList()
         {
             InitializeComponent();
+            
         }
 
         private void ProductsList_Load(object sender, EventArgs e)
         {
             display();
             uomPriceType();
+            design();
+        }
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            dataGridView1.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
         }
         private void display()
         {
@@ -217,6 +227,11 @@ namespace OMS.MAster
                 e.Cancel = false;
                 errorProvider1.SetError(txtProductCode, null);
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

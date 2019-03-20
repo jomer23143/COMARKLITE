@@ -17,9 +17,16 @@ namespace OMS.Outgoing
         public DeliveryProcessing()
         {
             InitializeComponent();
-          
+            design();
         }
-
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            dataGridView1.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
+        }
         private void DeliveryProcessing_Load(object sender, EventArgs e)
         {
             {
@@ -126,7 +133,6 @@ namespace OMS.Outgoing
             header.Add("status", "FOR STOCK CHECKING");
 
             sql.Append(DataSupport.GetInsert("OutgoingShipmentRequests", header));
-            //String TransId = FAQ.GetNextReturnID(0);
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (dataGridView1.Rows.IndexOf(row) == dataGridView1.Rows.Count - 1)
@@ -140,7 +146,6 @@ namespace OMS.Outgoing
                 { detail.Add("expected_qty", "0"); }
                 else
                 { detail.Add("expected_qty", row.Cells[colQuantity.Name].Value.ToString()); }
-                //detail.Add("remarks", row.Cells[colRemarks.Name].Value.ToString());
                 sql.Append(DataSupport.GetInsert("OutgoingShipmentRequestDetails", detail));
             }
             if (FAQ.InvoiceExist(txtDrno.Text))

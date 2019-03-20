@@ -17,8 +17,16 @@ namespace OMS.Incoming
         public NewIncomingWindow()
         {
             InitializeComponent();
+            design();
         }
-
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            headerGrid.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
+        }
         private void NewIncomingWindow_Load(object sender, EventArgs e)
         {
             {
@@ -87,7 +95,7 @@ namespace OMS.Incoming
             header.Add("document_reference", txtReference.Text);
             header.Add("document_reference_date", txtDocDate.Text);
             header.Add("incoming_type", txtIncomingType.Text);
-            header.Add("client", txtClient.Text);
+            header.Add("client", "Comark");
             header.Add("received", txtReceived.Text);
             header.Add("shippedVia", txtShipped.Text);
             header.Add("status", "FOR RECEIVING");

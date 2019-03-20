@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -17,6 +18,15 @@ namespace OMS.Incoming
         public ManageIncomingWindow()
         {
             InitializeComponent();
+            design();
+        }
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            headerGrid.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -34,9 +44,17 @@ namespace OMS.Incoming
         private void ManageIncomingWindow_Load(object sender, EventArgs e)
         {
             display();
-            //btnRefresh.Visible = false;
             btnNew.Visible = false;
-           
+            DoubleBuffered(headerGrid, true);
+            headerGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue;
+            headerGrid.EnableHeadersVisualStyles = false;
+        }
+
+        public void DoubleBuffered(object obj, bool setting)
+        {
+            Type objType = obj.GetType();
+            PropertyInfo pi = objType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(obj, setting, null);
         }
         private void display()
         {
