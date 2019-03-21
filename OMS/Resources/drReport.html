@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <style type="text/css">
+             body {
+                font-family:Arial;
+                line-height:15px;
+                font-size:12px;
+				
+             }
+             .table, .table tr td, .table tr th {
+                border-collapse:collapse;
+                border: 1px solid black;
+				text-align:left;
+				padding:10px;
+				text-align:center;
+             }
+			 .table{
+			 	width: 100%;
+			 }
+			h6{
+				padding: 0px;
+				margin: 0px;
+			}
+			#header{
+				margin-left:20px;
+			}
+			h4{
+				width:50%;
+				float:right;
+				text-align:center;
+			}
+			h5{
+				text-align:center;
+				margin-top: 0px;
+			}
+			span{
+				word-spacing:5px;
+				 float:left;
+			}
+			.details{
+				border: 1px solid black;
+				padding:5px;
+			}
+			#code{
+				 float:right;
+				 margin-right:40%;
+			}
+			#reason{
+				padding-top:5px;
+			}
+         </style>
+    </head>
+	<body>
+		<div id = "Container">
+			<div id="header">
+				<h3>COMARK INTERNATIONAL CORPORATION</h3>
+				<h6>1ST AVENUE, STA MARIA INDUSTRIAL SUBD.</h6>
+				<h6>BAGUMBAYAN TAGUIG CITY</h6>											<h4>DELIVERY RECEIPT</h4>
+				<h6>TEL NOS: 837-1996 TO 97, 838-2493(connecting all department)</h6>	<h4>NO: [DRNo]</h4>
+				<h6>FAX NO.: 838-2496;838-8885</h6>
+				<h6>VAT REG TIN: 001-056-588-70000</h6>
+				<h5>[TypeofStock]</h5>
+				<div class="details">
+					<span>Whse Destination :[Destination]</span>	<span id="code">Whse Source : [source]</span><br/>
+					<span>Whse Code :[custCode]</span>				<span id="code">Whse Code : [sourceCode]</span><br/>
+					<span>Address :[custAddress]</span><br/>
+					<span>Ref. No. :[refNo]</span><br/>
+					<span>Ref. Date :[refDate]</span><br/>
+				<div>
+			</div>
+		</div>
+		<br/>
+		<div id="Box">
+			[Dr_Tables]
+		</div>
+		<br/>
+		<span id="reason"> Reason for Issue :[reason]</span>
+	</body>
+</html>
