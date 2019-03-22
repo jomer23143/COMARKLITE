@@ -637,8 +637,13 @@
             // 
             this.uom.HeaderText = "Uom";
             this.uom.Items.AddRange(new object[] {
-            "PCS",
-            "CASES"});
+            "PC",
+            "CS",
+            "PK",
+            "CARD",
+            "BOT",
+            "SET",
+            "CAN"});
             this.uom.Name = "uom";
             this.uom.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.uom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;

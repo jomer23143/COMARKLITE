@@ -123,7 +123,7 @@
             this.cbxReceived.Location = new System.Drawing.Point(73, 4);
             this.cbxReceived.Margin = new System.Windows.Forms.Padding(2);
             this.cbxReceived.Name = "cbxReceived";
-            this.cbxReceived.Size = new System.Drawing.Size(158, 25);
+            this.cbxReceived.Size = new System.Drawing.Size(158, 23);
             this.cbxReceived.TabIndex = 49;
             this.cbxReceived.SelectedValueChanged += new System.EventHandler(this.cbxReceived_SelectedValueChanged);
             // 
@@ -134,7 +134,7 @@
             this.label26.Location = new System.Drawing.Point(3, 7);
             this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(86, 19);
+            this.label26.Size = new System.Drawing.Size(66, 15);
             this.label26.TabIndex = 0;
             this.label26.Text = "Receiving :";
             // 
@@ -156,7 +156,7 @@
             this.txtDateRef.Margin = new System.Windows.Forms.Padding(2);
             this.txtDateRef.Name = "txtDateRef";
             this.txtDateRef.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDateRef.Size = new System.Drawing.Size(112, 25);
+            this.txtDateRef.Size = new System.Drawing.Size(112, 21);
             this.txtDateRef.TabIndex = 37;
             // 
             // label8
@@ -166,7 +166,7 @@
             this.label8.Location = new System.Drawing.Point(4, 9);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 19);
+            this.label8.Size = new System.Drawing.Size(59, 15);
             this.label8.TabIndex = 0;
             this.label8.Text = "Ref Date :";
             // 
@@ -188,7 +188,7 @@
             this.txtWhseS.Location = new System.Drawing.Point(104, 8);
             this.txtWhseS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtWhseS.Name = "txtWhseS";
-            this.txtWhseS.Size = new System.Drawing.Size(0, 22);
+            this.txtWhseS.Size = new System.Drawing.Size(0, 16);
             this.txtWhseS.TabIndex = 1;
             // 
             // label9
@@ -198,7 +198,7 @@
             this.label9.Location = new System.Drawing.Point(6, 8);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(97, 19);
+            this.label9.Size = new System.Drawing.Size(76, 15);
             this.label9.TabIndex = 0;
             this.label9.Text = "Whse Code :";
             // 
@@ -221,7 +221,7 @@
             this.txtRefNR.Location = new System.Drawing.Point(59, 9);
             this.txtRefNR.Margin = new System.Windows.Forms.Padding(2);
             this.txtRefNR.Name = "txtRefNR";
-            this.txtRefNR.Size = new System.Drawing.Size(175, 19);
+            this.txtRefNR.Size = new System.Drawing.Size(175, 15);
             this.txtRefNR.TabIndex = 5;
             // 
             // label4
@@ -231,7 +231,7 @@
             this.label4.Location = new System.Drawing.Point(4, 8);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 19);
+            this.label4.Size = new System.Drawing.Size(47, 15);
             this.label4.TabIndex = 0;
             this.label4.Text = "Ref Nr :";
             // 
@@ -254,7 +254,7 @@
             this.cbxSource.Location = new System.Drawing.Point(66, 4);
             this.cbxSource.Margin = new System.Windows.Forms.Padding(2);
             this.cbxSource.Name = "cbxSource";
-            this.cbxSource.Size = new System.Drawing.Size(166, 25);
+            this.cbxSource.Size = new System.Drawing.Size(166, 23);
             this.cbxSource.TabIndex = 49;
             this.cbxSource.SelectedValueChanged += new System.EventHandler(this.cbxSource_SelectedValueChanged);
             // 
@@ -265,7 +265,7 @@
             this.label3.Location = new System.Drawing.Point(6, 8);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 19);
+            this.label3.Size = new System.Drawing.Size(50, 15);
             this.label3.TabIndex = 0;
             this.label3.Text = "Source :";
             // 
@@ -287,7 +287,7 @@
             this.txtAddressS.Location = new System.Drawing.Point(87, 8);
             this.txtAddressS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtAddressS.Name = "txtAddressS";
-            this.txtAddressS.Size = new System.Drawing.Size(0, 22);
+            this.txtAddressS.Size = new System.Drawing.Size(0, 16);
             this.txtAddressS.TabIndex = 1;
             // 
             // label2
@@ -297,7 +297,7 @@
             this.label2.Location = new System.Drawing.Point(6, 8);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 19);
+            this.label2.Size = new System.Drawing.Size(59, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Address :";
             // 
@@ -319,7 +319,7 @@
             this.txtWhseR.Location = new System.Drawing.Point(81, 8);
             this.txtWhseR.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtWhseR.Name = "txtWhseR";
-            this.txtWhseR.Size = new System.Drawing.Size(0, 22);
+            this.txtWhseR.Size = new System.Drawing.Size(0, 16);
             this.txtWhseR.TabIndex = 1;
             // 
             // label10
@@ -329,7 +329,7 @@
             this.label10.Location = new System.Drawing.Point(2, 8);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 19);
+            this.label10.Size = new System.Drawing.Size(76, 15);
             this.label10.TabIndex = 0;
             this.label10.Text = "Whse Code :";
             // 
@@ -351,7 +351,7 @@
             this.txtAddressR.Location = new System.Drawing.Point(87, 8);
             this.txtAddressR.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtAddressR.Name = "txtAddressR";
-            this.txtAddressR.Size = new System.Drawing.Size(0, 22);
+            this.txtAddressR.Size = new System.Drawing.Size(0, 16);
             this.txtAddressR.TabIndex = 1;
             // 
             // label11
@@ -361,7 +361,7 @@
             this.label11.Location = new System.Drawing.Point(7, 8);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 19);
+            this.label11.Size = new System.Drawing.Size(59, 15);
             this.label11.TabIndex = 0;
             this.label11.Text = "Address :";
             this.label11.Click += new System.EventHandler(this.label11_Click);
@@ -411,7 +411,7 @@
             this.txtReason.Location = new System.Drawing.Point(125, 9);
             this.txtReason.Margin = new System.Windows.Forms.Padding(2);
             this.txtReason.Name = "txtReason";
-            this.txtReason.Size = new System.Drawing.Size(283, 19);
+            this.txtReason.Size = new System.Drawing.Size(283, 15);
             this.txtReason.TabIndex = 5;
             // 
             // label6
@@ -421,7 +421,7 @@
             this.label6.Location = new System.Drawing.Point(3, 8);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(153, 19);
+            this.label6.Size = new System.Drawing.Size(119, 15);
             this.label6.TabIndex = 0;
             this.label6.Text = "Reason for Transfer :";
             // 
@@ -444,7 +444,7 @@
             this.txtIssued.Location = new System.Drawing.Point(56, 8);
             this.txtIssued.Margin = new System.Windows.Forms.Padding(2);
             this.txtIssued.Name = "txtIssued";
-            this.txtIssued.Size = new System.Drawing.Size(124, 19);
+            this.txtIssued.Size = new System.Drawing.Size(124, 15);
             this.txtIssued.TabIndex = 5;
             // 
             // label15
@@ -454,7 +454,7 @@
             this.label15.Location = new System.Drawing.Point(3, 7);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(61, 19);
+            this.label15.Size = new System.Drawing.Size(49, 15);
             this.label15.TabIndex = 0;
             this.label15.Text = "Issued :";
             // 
@@ -477,7 +477,7 @@
             this.txtPickUp.Location = new System.Drawing.Point(76, 9);
             this.txtPickUp.Margin = new System.Windows.Forms.Padding(2);
             this.txtPickUp.Name = "txtPickUp";
-            this.txtPickUp.Size = new System.Drawing.Size(124, 19);
+            this.txtPickUp.Size = new System.Drawing.Size(124, 15);
             this.txtPickUp.TabIndex = 5;
             // 
             // label16
@@ -487,7 +487,7 @@
             this.label16.Location = new System.Drawing.Point(4, 8);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(89, 19);
+            this.label16.Size = new System.Drawing.Size(67, 15);
             this.label16.TabIndex = 0;
             this.label16.Text = "Picked Up :";
             // 
@@ -510,7 +510,7 @@
             this.txtReceived.Location = new System.Drawing.Point(72, 8);
             this.txtReceived.Margin = new System.Windows.Forms.Padding(2);
             this.txtReceived.Name = "txtReceived";
-            this.txtReceived.Size = new System.Drawing.Size(190, 19);
+            this.txtReceived.Size = new System.Drawing.Size(190, 15);
             this.txtReceived.TabIndex = 5;
             // 
             // label17
@@ -520,7 +520,7 @@
             this.label17.Location = new System.Drawing.Point(5, 7);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(81, 19);
+            this.label17.Size = new System.Drawing.Size(62, 15);
             this.label17.TabIndex = 0;
             this.label17.Text = "Received :";
             // 
@@ -542,7 +542,7 @@
             this.txtDateI.Margin = new System.Windows.Forms.Padding(2);
             this.txtDateI.Name = "txtDateI";
             this.txtDateI.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDateI.Size = new System.Drawing.Size(137, 25);
+            this.txtDateI.Size = new System.Drawing.Size(137, 21);
             this.txtDateI.TabIndex = 37;
             // 
             // label18
@@ -552,7 +552,7 @@
             this.label18.Location = new System.Drawing.Point(3, 7);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(50, 19);
+            this.label18.Size = new System.Drawing.Size(38, 15);
             this.label18.TabIndex = 0;
             this.label18.Text = "Date :";
             // 
@@ -574,7 +574,7 @@
             this.txtDateP.Margin = new System.Windows.Forms.Padding(2);
             this.txtDateP.Name = "txtDateP";
             this.txtDateP.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDateP.Size = new System.Drawing.Size(157, 25);
+            this.txtDateP.Size = new System.Drawing.Size(157, 21);
             this.txtDateP.TabIndex = 37;
             // 
             // label19
@@ -584,7 +584,7 @@
             this.label19.Location = new System.Drawing.Point(3, 7);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(50, 19);
+            this.label19.Size = new System.Drawing.Size(38, 15);
             this.label19.TabIndex = 0;
             this.label19.Text = "Date :";
             // 
@@ -606,7 +606,7 @@
             this.txtDateRe.Margin = new System.Windows.Forms.Padding(2);
             this.txtDateRe.Name = "txtDateRe";
             this.txtDateRe.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDateRe.Size = new System.Drawing.Size(216, 25);
+            this.txtDateRe.Size = new System.Drawing.Size(216, 21);
             this.txtDateRe.TabIndex = 37;
             // 
             // label20
@@ -616,7 +616,7 @@
             this.label20.Location = new System.Drawing.Point(6, 7);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(50, 19);
+            this.label20.Size = new System.Drawing.Size(38, 15);
             this.label20.TabIndex = 0;
             this.label20.Text = "Date :";
             // 
@@ -657,7 +657,7 @@
             this.txtTypeStocks.Location = new System.Drawing.Point(241, 4);
             this.txtTypeStocks.Margin = new System.Windows.Forms.Padding(2);
             this.txtTypeStocks.Name = "txtTypeStocks";
-            this.txtTypeStocks.Size = new System.Drawing.Size(163, 25);
+            this.txtTypeStocks.Size = new System.Drawing.Size(163, 23);
             this.txtTypeStocks.TabIndex = 48;
             // 
             // label21
@@ -667,7 +667,7 @@
             this.label21.Location = new System.Drawing.Point(3, 7);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(296, 19);
+            this.label21.Size = new System.Drawing.Size(230, 15);
             this.label21.TabIndex = 0;
             this.label21.Text = "We are Transferring the following stocks :";
             // 
@@ -697,8 +697,13 @@
             // 
             this.colUnit.HeaderText = "Unit";
             this.colUnit.Items.AddRange(new object[] {
-            "PCS",
-            "CASES"});
+            "PC",
+            "CS",
+            "PK",
+            "CARD",
+            "BOT",
+            "SET",
+            "CAN"});
             this.colUnit.Name = "colUnit";
             this.colUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -721,7 +726,7 @@
             // 
             // StockTransfer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(878, 470);
