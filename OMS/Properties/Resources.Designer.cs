@@ -81,11 +81,11 @@ namespace OMS.Properties {
         ///			 .table{
         ///			 	width: 100%;
         ///			 }
-        ///			
-        ///         &lt;/style&gt;
-        ///    &lt;/head&gt;
-        ///	&lt;body&gt;
-        ///		&lt;div id = &quot;Co [rest of string was truncated]&quot;;.
+        ///			h6{
+        ///				padding: 0px;
+        ///				margin: 0px;
+        ///			}
+        ///			#header{ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string drReport {
             get {
@@ -119,7 +119,7 @@ namespace OMS.Properties {
         ///			 	 text-align: center;
         ///			 }
         ///			 h5{
-        ///			 [rest of string was truncated]&quot;;.
+        ///			 	 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string incoming {
             get {
@@ -136,7 +136,6 @@ namespace OMS.Properties {
         ///                font-family:Arial;
         ///                line-height:15px;
         ///                font-size:12px;
-        ///				
         ///             }
         ///             .table, .table tr td, .table tr th {
         ///                border-collapse:collapse;
@@ -148,14 +147,23 @@ namespace OMS.Properties {
         ///			 .table{
         ///			 	width: 100%;
         ///			 }
-        ///			 span{
+        ///			 #Invoice{
+        ///				width:40%%;
         ///				float:right;
-        ///			 	word-spacing: 5px;
-        ///				p [rest of string was truncated]&quot;;.
+        ///				padding:5px; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Sales {
             get {
                 return ResourceManager.GetString("Sales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string salesReport {
+            get {
+                return ResourceManager.GetString("salesReport", resourceCulture);
             }
         }
     }

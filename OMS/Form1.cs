@@ -24,19 +24,23 @@ namespace OMS
         private void Form1_Load(object sender, EventArgs e)
         {
             btnPrintPreview.Select();
-            if(mode == 1)
+            if (mode == 1)
             {
                 Sales();
             }
-            else if(mode == 2)
+            else if (mode == 2)
             {
                 Incoming();
             }
-            else if(mode == 3)
+            else if (mode == 3)
             {
                 DRSales();
             }
-           
+            else if (mode == 4)
+            {
+                SalesReport();
+            }
+
 
 
         }
@@ -77,6 +81,74 @@ namespace OMS
             sb.Append("</table>");
 
             webBrowser1.DocumentText = Properties.Resources.Sales
+               .Replace("[Invoice]", parent.txtSalesInvoice.Text)
+               .Replace("[run_datetime]", DateTime.Now.ToString())
+               .Replace("[Sold_To]", parent.txtSoldTo.Text)
+               .Replace("[cust_no]", parent.txtCustNo.Text)
+               .Replace("[Address]", parent.txtCustAddress.Text)
+               .Replace("[Tin]", parent.txtTin.Text)
+               .Replace("[Shipping]", parent.txtInstruction.Text)
+               .Replace("[SoNo]", parent.txtSoNo.Text)
+               .Replace("[Terms]", parent.txtTerms.Text)
+               .Replace("[PoNo]", parent.txtPoNo.Text)
+               .Replace("[SR]", parent.txtSR.Text)
+               .Replace("[WHSE]", parent.cbxWarehouse.Text)
+               .Replace("[TERR]", parent.txtTerrCode.Text)
+               .Replace("[Sales_table]", sb.ToString())
+               .Replace("[discount1]", parent.discount[0].ToString())
+               .Replace("[discount2]", parent.discount[1].ToString())
+               .Replace("[discount3]", parent.discount[2].ToString())
+               .Replace("[discount4]", parent.discount[3].ToString())
+               .Replace("[discount5]", parent.discount[4].ToString())
+               .Replace("[dicsValue1]", parent.totaldisc[0].ToString())
+               .Replace("[dicsValue2]", parent.totaldisc[1].ToString())
+               .Replace("[dicsValue3]", parent.totaldisc[2].ToString())
+               .Replace("[dicsValue4]", parent.totaldisc[3].ToString())
+               .Replace("[dicsValue5]", parent.totaldisc[4].ToString())
+               .Replace("[totalAmount]", parent.txtTotalA.Text)
+               .Replace("[Discount]", parent.txtDiscount.Text)
+               .Replace("[VAT]", parent.txtVat.Text)
+               .Replace("[Amount]", parent.txtAmountD.Text)
+
+               ;
+        }
+        private void SalesReport()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table class='table'>");
+
+            //sb.Append("<thead>");
+            //sb.Append("<tr>");
+
+            //{
+            //    foreach (DataGridViewColumn col in parent.dataGridView1.Columns)
+            //    {
+            //        sb.Append("<th>");
+            //        sb.Append(col.HeaderText);
+            //        sb.Append("</th>");
+            //    }
+            //}
+
+            //sb.Append("</tr>");
+            //sb.Append("</thead>");
+            {
+                foreach (DataGridViewRow row in parent.dataGridView1.Rows)
+                {
+                    sb.Append("<tr>");
+                    foreach (DataGridViewColumn col in parent.dataGridView1.Columns)
+                    {
+                        sb.Append("<td>");
+                        sb.Append(row.Cells[parent.dataGridView1.Columns.IndexOf(col)].Value);
+                        sb.Append("</td>");
+                    }
+
+                    sb.Append("</tr>");
+                }
+            }
+
+            sb.Append("</table>");
+
+            webBrowser1.DocumentText = Properties.Resources.salesReport
                .Replace("[Invoice]", parent.txtSalesInvoice.Text)
                .Replace("[run_datetime]", DateTime.Now.ToString())
                .Replace("[Sold_To]", parent.txtSoldTo.Text)

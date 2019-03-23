@@ -173,7 +173,7 @@ namespace OMS.Outgoing
         {
             Form1 dialog = new Form1();
             dialog.parent = this;
-            dialog.mode = 1;
+            dialog.mode = 4;
             String uom = "";
             bool status = false;
             foreach (DataGridViewRow row in dataGridView1.Rows)
