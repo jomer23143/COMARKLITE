@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+
+        body {
+            font-family: "times new roman";
+            line-height: 15px;
+            font-size: 12px;
+        }
+
+        .table, .table tr td, .table tr th {
+            /*border-collapse: collapse;
+            border: 1px solid black;*/
+            text-align: left;
+            padding: 0;
+        }
+
+        .table {
+            width: 100%;
+        }
+
+        #Invoice {
+            width: 100%;
+            float: right;
+            padding: 5px;
+            margin-top: 30px;
+        }
+        #invoice-details{
+            width: 40%;
+            float: right;
+        }
+        #invoice-head{
+            display:inline;
+            float:right;
+            width: 35%;
+        }
+        #Customer{
+            width:100%;
+        }
+        #customer-details{
+            width:100%;
+            text-align:right;
+            margin-top: 80px;   
+        }
+        #Sold{
+            display: inline;
+            margin-right: 80px;
+        }
+        #addres{
+            text-align: right;
+            margin-right: 210px;
+        }
+        #number{
+            width:100%;
+            margin-top: 20px;
+
+        }
+        #so{
+            margin-right: 70px;
+            padding-left: 100px;
+            display:inline;
+        }
+        #number-po{
+            margin-top: 10px;
+        }
+
+        #po{
+            display: inline;
+            margin-right: 70px;
+            padding-left: 100px;
+        }
+        #number-whse{
+            margin-top: 10px;
+        }
+        #whse{
+            display: inline;
+            margin-right: 70px;
+            padding-left: 100px;
+        }
+        #order{
+            margin-top: 70px;
+            padding-left: 50px;
+        }
+        #Discount{
+            width: 100%;
+            text-align: right;
+        }
+        #disc{
+            margin-right: 40px;
+        }
+        #amount{
+            text-align: right;
+            margin-top: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="Invoice">
+            <div id="invoice-details">
+                
+                <p id ="invoice-head">[run_datetime]
+                <p id="invoice-head">[Invoice]</p>
+                </p>
+            </div>
+        </div>
+        <br />
+        <div id="Customer">
+            <div id="customer-details">
+                <p id="Sold">[Sold_To]</p>
+                <p id="Sold">[cust_no]</p>
+                <p id="addres">[Address]</p>
+                
+            </div> 
+        </div>
+        <div id="number">
+            <div id="number-details">
+                <p id="so">[SoNo]</p><p id="so">[Terms]</p><p id="so">[Tin]</p>
+            </div>
+            <div id="number-po">
+                <p id="po">[PoNo]</p><p id="po">[SR]</p>
+            </div>
+            <div id="number-whse">
+                <p id="whse">[WHSE]</p><p id="whse">[TERR]</p><p id="whse">[Shipping]</p>
+            </div>
+        </div>
+        <div id="order">
+            [Sales_table]
+        </div>
+        <div id="Discount">
+            <p id="disc">Less  [discount1]%:   [dicsValue1]</p>
+            <p id="disc">Less  [discount2]%:   [dicsValue2]</p>
+            <p id="disc">Less  [discount3]%:   [dicsValue3]</p>
+            <p id="disc">Less  [discount4]%:   [dicsValue4]</p>
+            <p id="disc">Less  [discount5]%:   [dicsValue5]</p>
+        </div>
+         <div id="amount">
+            <p id="disc">[totalAmount]</p>
+            <p id="disc">[Discount]</p>
+            <p id="disc">[VAT]</p>
+            <p id="disc">Total Amount Due: [Amount]</p>
+        </div>
+            <!--<p id="border"></p>
+            Deliver/Shipping Instruction-->
+            <!--<span id="Sold">
+                [Shipping]
+            </span>
+        <!--<div class="Title">
+            <h4>COMARK INTERNATIONAL CORPORATION</h4>
+            <h6>1ST AVENUE, STA MARIA INDUSTRIAL SUBD.</h6>
+            <h6>BAGUMBAYAN TAGUIG CITY</h6>
+            <h6>TEL NOS: 837-1996 TO 97, 838-2493(connecting all department)</h6>
+            <h6>FAX NO.: 838-2496;838-8885</h6>
+            <h6>VAT REG TIN: 001-056-588-70000</h6>
+        </div>
+        
+        <br />
+        <br />
+        [Sales_table]
+
+        <br />
+        
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="BOx">
+            <p>[totalAmount]</p>
+            <p>[Discount]</p>
+            <p>[VAT]</p>
+            <p class="total">Total Amount Due: [Amount]</p>
+        </div>-->
+    </div>
+</body>
+</html>

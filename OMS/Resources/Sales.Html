@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+         <style type="text/css">
+             body {
+                font-family:Arial;
+                line-height:15px;
+                font-size:12px;
+             }
+             .table, .table tr td, .table tr th {
+                border-collapse:collapse;
+                border: 1px solid black;
+				text-align:left;
+				padding:10px;
+				text-align:center;
+             }
+			 .table{
+			 	width: 100%;
+			 }
+			 #Invoice{
+				width:40%%;
+				float:right;
+				padding:5px;
+				margin-top:30px;
+			 }
+			 span{
+				float:right;
+			 	word-spacing: 5px;
+				padding-right:10px;
+				
+			 }
+			 .Title{
+				float:left;
+			 	 width:50%;
+				 margin-top:-30px;
+				 padding:5px;
+			 }
+			 h3{
+					text-align : left;
+				}
+			h4{
+				padding:0;
+				margin:0;
+			}
+			.BOx{
+				border:1px solid black;
+				width:33%;
+				float:right;
+				padding:5px;
+			}
+			 p{
+				text-align:left;
+				margin:0;
+				padding:0;
+			}
+			.total{
+				font-weight:bold;
+				}
+			#Sold{
+				word-spacing: 5px;
+				float:left;
+			}
+			.details{
+				border:1px solid black;
+				width:40%;
+				float:right;
+				padding:10px;
+				margin-top:35px;
+			}
+			#border{
+				border-bottom:1px solid black;
+				margin-bottom:0;
+			}
+			.box1{
+				border:1px solid black;
+				width:50%;
+				padding:10px;
+				margin:0;
+				}
+			h6{
+				padding: 0px;
+				margin: 0px;
+			}
+			a{
+				float:left;
+				word-spacing: 5px;
+			}
+			.right{
+				float:right;
+				word-spacing: 5px;
+			}
+			.Discount{
+				border:1px solid black;
+				width:33%;
+				float:right;
+				padding:5px;
+				word-spacing: 5px;
+			}
+         </style>
+    </head>
+	<body>
+		<div id="container">
+			<div  id="Invoice">
+				<span>
+				Sales Invoice : [Invoice]
+				Date : [run_datetime]
+				</span>
+			</div>
+			<br/>
+			<br/>
+			<div class="details">
+				<span id="Sold"> Sold To :	[Sold_To] </span><br/>
+				<span id="Sold"> Customer #: [cust_no]</span><br/>
+				<span id = "Sold"> Address :	[Address]</span><br/>
+				<span id = "Sold"> TIN :	[Tin]</span>
+				<br/>
+				<p id="border"></p>
+				Deliver/Shipping Instruction
+				<span id="Sold">
+				[Shipping]
+				</span>
+			</div>
+			<div class="Title">
+				<h4>COMARK INTERNATIONAL CORPORATION</h4>
+				<h6>1ST AVENUE, STA MARIA INDUSTRIAL SUBD.</h6>
+				<h6>BAGUMBAYAN TAGUIG CITY</h6>											
+				<h6>TEL NOS: 837-1996 TO 97, 838-2493(connecting all department)</h6>
+				<h6>FAX NO.: 838-2496;838-8885</h6>
+				<h6>VAT REG TIN: 001-056-588-70000</h6>
+			</div>
+			<div class="box1">
+				<a> So No.: [SoNo]</a><a class="right">Terms: [Terms]</a><br/>
+				<a> Po No.: [PoNo]</a><a class="right">SR: [SR]</a><br/>
+				<a>WHSE CODE: [WHSE]</a><a class="right">TERR CODE: [TERR]</a><br/>
+			</div>
+			<br/>
+			<br/>
+			[Sales_table]
+
+			<br/>
+			<div class = "Discount">
+				<p>Less  [discount1]%:   [dicsValue1]</p>
+				<p>Less  [discount2]%:   [dicsValue2]</p>
+				<p>Less  [discount3]%:   [dicsValue3]</p>
+				<p>Less  [discount4]%:   [dicsValue4]</p>
+				<p>Less  [discount5]%:   [dicsValue5]</p>
+			</div>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<div class= "BOx">
+				<p>[totalAmount]</p>
+				<p>[Discount]</p>
+				<p>[VAT]</p> 
+				<p class = "total">Total Amount Due: [Amount]</p>
+			</div>
+		</div>
+	</body>
+</html>
