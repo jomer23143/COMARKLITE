@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle86 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle88 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle87 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.headerGrid = new System.Windows.Forms.DataGridView();
@@ -63,6 +64,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.headerGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -104,15 +106,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.headerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.headerGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.headerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle86.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle86.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle86.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle86.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle86.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle86.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle86.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle86.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.headerGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle86;
             this.headerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.headerGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.coloutshipid,
@@ -140,27 +142,27 @@
             this.colAmountd,
             this.colSr,
             this.colType});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.headerGrid.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle88.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle88.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle88.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle88.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle88.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle88.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle88.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.headerGrid.DefaultCellStyle = dataGridViewCellStyle88;
             this.headerGrid.EnableHeadersVisualStyles = false;
             this.headerGrid.Location = new System.Drawing.Point(13, 63);
             this.headerGrid.Margin = new System.Windows.Forms.Padding(2);
             this.headerGrid.Name = "headerGrid";
             this.headerGrid.ReadOnly = true;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.headerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(5);
-            this.headerGrid.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle89.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle89.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle89.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle89.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle89.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.headerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle89;
+            dataGridViewCellStyle90.Padding = new System.Windows.Forms.Padding(5);
+            this.headerGrid.RowsDefaultCellStyle = dataGridViewCellStyle90;
             this.headerGrid.RowTemplate.Height = 35;
             this.headerGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.headerGrid.Size = new System.Drawing.Size(989, 468);
@@ -176,7 +178,7 @@
             this.coloutshipid.HeaderText = "Shipment ID";
             this.coloutshipid.Name = "coloutshipid";
             this.coloutshipid.ReadOnly = true;
-            this.coloutshipid.Width = 104;
+            this.coloutshipid.Width = 99;
             // 
             // colDocNo
             // 
@@ -184,7 +186,7 @@
             this.colDocNo.HeaderText = "Doc No";
             this.colDocNo.Name = "colDocNo";
             this.colDocNo.ReadOnly = true;
-            this.colDocNo.Width = 80;
+            this.colDocNo.Width = 77;
             // 
             // colwarehouse
             // 
@@ -192,7 +194,7 @@
             this.colwarehouse.HeaderText = "Warehouse";
             this.colwarehouse.Name = "colwarehouse";
             this.colwarehouse.ReadOnly = true;
-            this.colwarehouse.Width = 107;
+            this.colwarehouse.Width = 96;
             // 
             // colDateTime
             // 
@@ -200,7 +202,7 @@
             this.colDateTime.HeaderText = "Date and Time";
             this.colDateTime.Name = "colDateTime";
             this.colDateTime.ReadOnly = true;
-            this.colDateTime.Width = 116;
+            this.colDateTime.Width = 107;
             // 
             // colDocumentReference
             // 
@@ -208,7 +210,7 @@
             this.colDocumentReference.HeaderText = "Document Reference";
             this.colDocumentReference.Name = "colDocumentReference";
             this.colDocumentReference.ReadOnly = true;
-            this.colDocumentReference.Width = 148;
+            this.colDocumentReference.Width = 133;
             // 
             // colClient
             // 
@@ -216,7 +218,7 @@
             this.colClient.HeaderText = "Client";
             this.colClient.Name = "colClient";
             this.colClient.ReadOnly = true;
-            this.colClient.Width = 75;
+            this.colClient.Width = 73;
             // 
             // colAuthorizedtms
             // 
@@ -224,7 +226,7 @@
             this.colAuthorizedtms.HeaderText = "Authorized Tms";
             this.colAuthorizedtms.Name = "colAuthorizedtms";
             this.colAuthorizedtms.ReadOnly = true;
-            this.colAuthorizedtms.Width = 119;
+            this.colAuthorizedtms.Width = 115;
             // 
             // colRemarks
             // 
@@ -232,7 +234,7 @@
             this.colRemarks.HeaderText = "Remarks";
             this.colRemarks.Name = "colRemarks";
             this.colRemarks.ReadOnly = true;
-            this.colRemarks.Width = 94;
+            this.colRemarks.Width = 86;
             // 
             // coltripID
             // 
@@ -240,7 +242,7 @@
             this.coltripID.HeaderText = "Tms Trip ID";
             this.coltripID.Name = "coltripID";
             this.coltripID.ReadOnly = true;
-            this.coltripID.Width = 89;
+            this.coltripID.Width = 88;
             // 
             // colTripDate
             // 
@@ -248,7 +250,7 @@
             this.colTripDate.HeaderText = "Tms Trip Date";
             this.colTripDate.Name = "colTripDate";
             this.colTripDate.ReadOnly = true;
-            this.colTripDate.Width = 112;
+            this.colTripDate.Width = 108;
             // 
             // colWmsReleasedID
             // 
@@ -256,7 +258,7 @@
             this.colWmsReleasedID.HeaderText = "Wms Released ID";
             this.colWmsReleasedID.Name = "colWmsReleasedID";
             this.colWmsReleasedID.ReadOnly = true;
-            this.colWmsReleasedID.Width = 121;
+            this.colWmsReleasedID.Width = 108;
             // 
             // colWmsReleasedDate
             // 
@@ -264,7 +266,7 @@
             this.colWmsReleasedDate.HeaderText = "Wms Released Date";
             this.colWmsReleasedDate.Name = "colWmsReleasedDate";
             this.colWmsReleasedDate.ReadOnly = true;
-            this.colWmsReleasedDate.Width = 144;
+            this.colWmsReleasedDate.Width = 129;
             // 
             // colCustID
             // 
@@ -272,7 +274,7 @@
             this.colCustID.HeaderText = "Customer ID";
             this.colCustID.Name = "colCustID";
             this.colCustID.ReadOnly = true;
-            this.colCustID.Width = 104;
+            this.colCustID.Width = 99;
             // 
             // colCustname
             // 
@@ -280,7 +282,7 @@
             this.colCustname.HeaderText = "Customer Name";
             this.colCustname.Name = "colCustname";
             this.colCustname.ReadOnly = true;
-            this.colCustname.Width = 124;
+            this.colCustname.Width = 113;
             // 
             // colCustInvoiceAddress
             // 
@@ -288,7 +290,7 @@
             this.colCustInvoiceAddress.HeaderText = "Customer Invoice Address";
             this.colCustInvoiceAddress.Name = "colCustInvoiceAddress";
             this.colCustInvoiceAddress.ReadOnly = true;
-            this.colCustInvoiceAddress.Width = 130;
+            this.colCustInvoiceAddress.Width = 122;
             // 
             // colCustDeliveryAddress
             // 
@@ -296,7 +298,7 @@
             this.colCustDeliveryAddress.HeaderText = "Customer Delivery Address";
             this.colCustDeliveryAddress.Name = "colCustDeliveryAddress";
             this.colCustDeliveryAddress.ReadOnly = true;
-            this.colCustDeliveryAddress.Width = 135;
+            this.colCustDeliveryAddress.Width = 128;
             // 
             // colStatus
             // 
@@ -304,7 +306,7 @@
             this.colStatus.HeaderText = "Status";
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
-            this.colStatus.Width = 78;
+            this.colStatus.Width = 74;
             // 
             // colDocumentReferenceDate
             // 
@@ -312,7 +314,7 @@
             this.colDocumentReferenceDate.HeaderText = "Document Reference Date";
             this.colDocumentReferenceDate.Name = "colDocumentReferenceDate";
             this.colDocumentReferenceDate.ReadOnly = true;
-            this.colDocumentReferenceDate.Width = 151;
+            this.colDocumentReferenceDate.Width = 135;
             // 
             // colOutgoingType
             // 
@@ -320,7 +322,7 @@
             this.colOutgoingType.HeaderText = "Outgoing Type";
             this.colOutgoingType.Name = "colOutgoingType";
             this.colOutgoingType.ReadOnly = true;
-            this.colOutgoingType.Width = 114;
+            this.colOutgoingType.Width = 108;
             // 
             // colPoNo
             // 
@@ -328,7 +330,7 @@
             this.colPoNo.HeaderText = "PO No";
             this.colPoNo.Name = "colPoNo";
             this.colPoNo.ReadOnly = true;
-            this.colPoNo.Width = 61;
+            this.colPoNo.Width = 60;
             // 
             // colTerms
             // 
@@ -336,7 +338,7 @@
             this.colTerms.HeaderText = "Terms";
             this.colTerms.Name = "colTerms";
             this.colTerms.ReadOnly = true;
-            this.colTerms.Width = 79;
+            this.colTerms.Width = 74;
             // 
             // colSIntruction
             // 
@@ -344,15 +346,17 @@
             this.colSIntruction.HeaderText = "Shipment Instruction";
             this.colSIntruction.Name = "colSIntruction";
             this.colSIntruction.ReadOnly = true;
-            this.colSIntruction.Width = 144;
+            this.colSIntruction.Width = 135;
             // 
             // colAmountd
             // 
             this.colAmountd.DataPropertyName = "amountD";
+            dataGridViewCellStyle87.NullValue = "0.00";
+            this.colAmountd.DefaultCellStyle = dataGridViewCellStyle87;
             this.colAmountd.HeaderText = "Amount Due";
             this.colAmountd.Name = "colAmountd";
             this.colAmountd.ReadOnly = true;
-            this.colAmountd.Width = 104;
+            this.colAmountd.Width = 99;
             // 
             // colSr
             // 
@@ -360,7 +364,7 @@
             this.colSr.HeaderText = "Sales Representative";
             this.colSr.Name = "colSr";
             this.colSr.ReadOnly = true;
-            this.colSr.Width = 147;
+            this.colSr.Width = 132;
             // 
             // colType
             // 
@@ -368,7 +372,7 @@
             this.colType.HeaderText = "Type of Stocks";
             this.colType.Name = "colType";
             this.colType.ReadOnly = true;
-            this.colType.Width = 113;
+            this.colType.Width = 109;
             // 
             // panel1
             // 
@@ -458,5 +462,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmountd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSr;
         private System.Windows.Forms.DataGridViewTextBoxColumn colType;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

@@ -131,13 +131,6 @@ namespace OMS.Incoming
 
         private void headerGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-
-            //var dt = DataSupport.RunDataSet("SELECT product_id,description FROM Products where product_id  Like '%" + product + "%'").Tables[0];
-            //foreach (DataRow row in dt.Rows)
-            //{
-            //    product.Equals(row[0].ToString());
-
-            //}
             try
             {
 

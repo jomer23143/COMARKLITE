@@ -171,6 +171,12 @@
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
     <Compile Include="RegistrationSupport.cs" />
+    <Compile Include="Reports\summary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\summary.Designer.cs">
+      <DependentUpon>summary.cs</DependentUpon>
+    </Compile>
     <Compile Include="SecuritySupport.cs" />
     <Compile Include="Utilities\DataSupport.cs" />
     <Compile Include="Utilities\FAQ.cs" />
@@ -249,6 +255,9 @@
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\summary.resx">
+      <DependentUpon>summary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utilities\SelectGridWindow.resx">
       <DependentUpon>SelectGridWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,7 +286,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Reports\" />
+    <None Include="Resources\Dr.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Sales.Html" />
@@ -290,9 +299,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\salesReport.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Dr.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

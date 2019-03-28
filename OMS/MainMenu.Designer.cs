@@ -44,6 +44,9 @@
             this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockTransferToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.summaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,13 +87,15 @@
             this.recievingToolStripMenuItem,
             this.orderingToolStripMenuItem,
             this.transactionListToolStripMenuItem,
-            this.masterToolStripMenuItem});
+            this.masterToolStripMenuItem,
+            this.reportsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(12);
-            this.menuStrip1.Size = new System.Drawing.Size(555, 47);
+            this.menuStrip1.Size = new System.Drawing.Size(658, 47);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // recievingToolStripMenuItem
             // 
@@ -106,21 +111,21 @@
             // incomingToolStripMenuItem
             // 
             this.incomingToolStripMenuItem.Name = "incomingToolStripMenuItem";
-            this.incomingToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
+            this.incomingToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.incomingToolStripMenuItem.Text = "Incoming";
             this.incomingToolStripMenuItem.Click += new System.EventHandler(this.incomingToolStripMenuItem_Click);
             // 
             // stockTransferToolStripMenuItem
             // 
             this.stockTransferToolStripMenuItem.Name = "stockTransferToolStripMenuItem";
-            this.stockTransferToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
+            this.stockTransferToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.stockTransferToolStripMenuItem.Text = "Stock Transfer";
             this.stockTransferToolStripMenuItem.Click += new System.EventHandler(this.stockTransferToolStripMenuItem_Click);
             // 
             // returnsToolStripMenuItem
             // 
             this.returnsToolStripMenuItem.Name = "returnsToolStripMenuItem";
-            this.returnsToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
+            this.returnsToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.returnsToolStripMenuItem.Text = "Returns";
             this.returnsToolStripMenuItem.Click += new System.EventHandler(this.returnsToolStripMenuItem_Click);
             // 
@@ -128,7 +133,8 @@
             // 
             this.orderingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.salesOrderToolStripMenuItem,
-            this.deliveryOrderToolStripMenuItem});
+            this.deliveryOrderToolStripMenuItem,
+            this.stockTransferToolStripMenuItem1});
             this.orderingToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.orderingToolStripMenuItem.Name = "orderingToolStripMenuItem";
             this.orderingToolStripMenuItem.Size = new System.Drawing.Size(137, 23);
@@ -198,12 +204,35 @@
             this.customerToolStripMenuItem.Text = "Customer";
             this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
             // 
+            // stockTransferToolStripMenuItem1
+            // 
+            this.stockTransferToolStripMenuItem1.Name = "stockTransferToolStripMenuItem1";
+            this.stockTransferToolStripMenuItem1.Size = new System.Drawing.Size(212, 24);
+            this.stockTransferToolStripMenuItem1.Text = "Stock Transfer";
+            this.stockTransferToolStripMenuItem1.Click += new System.EventHandler(this.stockTransferToolStripMenuItem1_Click);
+            // 
+            // reportsToolStripMenuItem
+            // 
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.summaryToolStripMenuItem});
+            this.reportsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(75, 23);
+            this.reportsToolStripMenuItem.Text = "Reports";
+            // 
+            // summaryToolStripMenuItem
+            // 
+            this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.summaryToolStripMenuItem.Text = "Summary";
+            this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(555, 190);
+            this.ClientSize = new System.Drawing.Size(658, 190);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDeclareIncoming);
             this.Controls.Add(this.menuStrip1);
@@ -246,5 +275,8 @@
         private System.Windows.Forms.ToolStripMenuItem masterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stockTransferToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
     }
 }

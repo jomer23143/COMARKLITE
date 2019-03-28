@@ -13,7 +13,7 @@ namespace OMS.Outgoing
 {
     public partial class ManageOutgoingWindow : Form
     {
-
+        public static String form;
         private readonly BindingSource _bs = new BindingSource();
         public ManageOutgoingWindow()
         {
@@ -46,9 +46,15 @@ namespace OMS.Outgoing
         private void ManageOutgoingWindow_Load(object sender, EventArgs e)
         {
             //headerGrid.DataSource = DataSupport.RunDataSet("SELECT * FROM OutgoingShipmentRequests").Tables[0];
-            display();
-            btnNew.Visible = false;
-            DoubleBuffered(headerGrid, true);
+            if (form == "MOP")
+            {
+                display();
+                btnNew.Visible = false;
+                DoubleBuffered(headerGrid, true);
+            }
+            else
+            {
+            }
 
         }
         public new void DoubleBuffered(object obj, bool setting)
@@ -99,6 +105,16 @@ namespace OMS.Outgoing
         private void headerGrid_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             
+        }
+
+        private void summary1_Load(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

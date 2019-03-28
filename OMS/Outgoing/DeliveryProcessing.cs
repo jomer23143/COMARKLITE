@@ -14,6 +14,7 @@ namespace OMS.Outgoing
     {
         Dictionary<String, DataRow> GetProduct = new Dictionary<String, DataRow>();
         Dictionary<String, DataRow> getWarehouse = new Dictionary<String, DataRow>();
+        public static String form;
         public DeliveryProcessing()
         {
             InitializeComponent();
@@ -103,14 +104,23 @@ namespace OMS.Outgoing
         }
         private void saved()
         {
-            String DrId = DataSupport.GetNextMenuCodeInt("DR");
             StringBuilder sql = new StringBuilder();
             Dictionary<String, Object> header = new Dictionary<string, object>();
+            String DrId;
+            if (form == "STR")
+            {
+                DrId = DataSupport.GetNextMenuCodeInt("STR-DR");
+                header.Add("outgoing_type", "Stock Transfer");
+            }
+            else
+            {
+                DrId = DataSupport.GetNextMenuCodeInt("DR");
+                header.Add("outgoing_type", "Delivery");
+            }
             header.Add("out_shipment_id", DrId);
             header.Add("warehouse", cbxWarehouse.Text);
             header.Add("typeStocks", txtTypeStock.Text);
             header.Add("datetime", DateTime.Now);
-            header.Add("outgoing_type", "Delivery");
             header.Add("docNo", txtDrno.Text);
             header.Add("document_reference", txtRefno.Text);
             header.Add("document_reference_date", txtDateS.Text);

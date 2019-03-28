@@ -64,6 +64,7 @@ namespace OMS
         private void deliveryOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DeliveryProcessing dialog = new DeliveryProcessing();
+            DeliveryProcessing.form = "";
             Openform(dialog);
         }
 
@@ -95,6 +96,7 @@ namespace OMS
         private void returnsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var dialog = new Outgoing.ManageOutgoingWindow();
+            ManageOutgoingWindow.form = "MOP";
             Openform(dialog);
         }
 
@@ -136,6 +138,26 @@ namespace OMS
         {
             var dialog = new Login();
             dialog.Show();
+        }
+
+        private void stockTransferToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var dialog = new Outgoing.DeliveryProcessing();
+            dialog.Text = "Stock Transfer";
+            dialog.label4.Text = "Str No:";
+            DeliveryProcessing.form = "STR";
+            dialog.Show();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void summaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dialog = new Reports.summary();
+            Openform(dialog);
         }
     }
 }
