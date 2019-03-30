@@ -286,9 +286,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Dr.html" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Sales.Html" />
   </ItemGroup>
   <ItemGroup>
@@ -298,7 +295,13 @@
     <None Include="Resources\drReport.html" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Dr.html" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\salesReport.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\summary.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

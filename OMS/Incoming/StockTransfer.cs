@@ -78,7 +78,7 @@ namespace OMS.Incoming
         private void saved()
         {
             MessageBox.Show(WhsID.ToString());
-            String transID = DataSupport.GetNextMenuCodeInt("STR-OUT");
+            String transID = DataSupport.GetNextMenuCodeInt("STR");
             StringBuilder sql = new StringBuilder();
             Dictionary<String, Object> header = new Dictionary<string, object>();
             header.Add("shipment_id", transID);

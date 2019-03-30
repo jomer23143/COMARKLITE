@@ -14,6 +14,7 @@ namespace OMS
         public Outgoing.SalerProcessing parent = null;
         public Incoming.NewIncomingWindow INC = null;
         public Outgoing.DeliveryProcessing DR = null;
+        public Reports.summary summary = null;
         public static bool status = false;
         public int mode;
         public Form1()
@@ -39,6 +40,10 @@ namespace OMS
             else if (mode == 4)
             {
                 SalesReport();
+            }
+            else if(mode == 5)
+            {
+                summarys();
             }
 
 
@@ -111,6 +116,48 @@ namespace OMS
                .Replace("[Amount]", parent.txtAmountD.Text)
 
                ;
+        }
+        private void summarys()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table class='table'>");
+
+            sb.Append("<thead>");
+            sb.Append("<tr>");
+
+            {
+                foreach (DataGridViewColumn col in summary.dataGridView1.Columns)
+                {
+                    sb.Append("<th>");
+                    sb.Append(col.HeaderText);
+                    sb.Append("</th>");
+                }
+            }
+
+            sb.Append("</tr>");
+            sb.Append("</thead>");
+            {
+                foreach (DataGridViewRow row in summary.dataGridView1.Rows)
+                {
+                    sb.Append("<tr>");
+                    foreach (DataGridViewColumn col in summary.dataGridView1.Columns)
+                    {
+                        sb.Append("<td>");
+                        sb.Append(row.Cells[summary.dataGridView1.Columns.IndexOf(col)].Value);
+                        sb.Append("</td>");
+                    }
+
+                    sb.Append("</tr>");
+                }
+            }
+
+            sb.Append("</table>");
+
+            webBrowser1.DocumentText = Properties.Resources.summary
+                  .Replace("[Type]", summary.comboBox1.Text)
+                  .Replace("[Summary]", sb.ToString())
+                  ;
+
         }
         private void SalesReport()
         {

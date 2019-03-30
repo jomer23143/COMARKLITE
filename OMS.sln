@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMS", "OMS\OMS.csproj", "{5FA88D52-EC47-4080-A890-7777931BCB5A}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupComark", "SetupComark\SetupComark.vdproj", "{EB1DD514-0F5C-46A2-8F22-FA46FE1836B5}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupComark", "SetupComark\SetupComark.vdproj", "{662EDEFD-2ABF-46E7-A16B-A336702180B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{5FA88D52-EC47-4080-A890-7777931BCB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FA88D52-EC47-4080-A890-7777931BCB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FA88D52-EC47-4080-A890-7777931BCB5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB1DD514-0F5C-46A2-8F22-FA46FE1836B5}.Debug|Any CPU.ActiveCfg = Debug
-		{EB1DD514-0F5C-46A2-8F22-FA46FE1836B5}.Release|Any CPU.ActiveCfg = Release
+		{662EDEFD-2ABF-46E7-A16B-A336702180B3}.Debug|Any CPU.ActiveCfg = Debug
+		{662EDEFD-2ABF-46E7-A16B-A336702180B3}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

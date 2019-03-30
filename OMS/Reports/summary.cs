@@ -52,24 +52,32 @@ namespace OMS.Reports
             if (comboBox1.Text == "Sales Invoice")
             {
                 string sales = "Sales invoice";
-                var dt = DataSupport.RunDataSet("Select docNo,document_reference_date,customer_name,amountD,zone from OutgoingShipmentRequests " +
+                var dt = DataSupport.RunDataSet("Select docNo,document_reference_date,customer_name,amountD,zone,shippingInstruction from OutgoingShipmentRequests " +
                     "join TransportCustomers on customer_id = custCode where outgoing_type = '" + sales +"'").Tables[0];
                 dataGridView1.DataSource = dt;
             }
             else if(comboBox1.Text == "Delivery")
             {
                 string dr = "Delivery";
-                var dt = DataSupport.RunDataSet("Select docNo,document_reference_date,customer_name,amountD,zone from OutgoingShipmentRequests " +
+                var dt = DataSupport.RunDataSet("Select docNo,document_reference_date,customer_name,amountD,zone,shippingInstruction from OutgoingShipmentRequests " +
                     "join TransportCustomers on customer_id = custCode where outgoing_type = '" + dr + "'").Tables[0];
                 dataGridView1.DataSource = dt;
             }
             else
             {
                 string str = "Stock Transfer";
-                var dt = DataSupport.RunDataSet("Select docNo,document_reference_date,customer_name,amountD,zone from OutgoingShipmentRequests " +
+                var dt = DataSupport.RunDataSet("Select docNo,document_reference_date,customer_name,amountD,zone,shippingInstruction from OutgoingShipmentRequests " +
                     "join TransportCustomers on customer_id = custCode where outgoing_type = '" + str + "'").Tables[0];
                 dataGridView1.DataSource = dt;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 dialog = new Form1();
+            dialog.summary = this;
+            dialog.mode = 5;
+            dialog.ShowDialog();
         }
     }
 }

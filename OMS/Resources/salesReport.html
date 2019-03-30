@@ -19,75 +19,87 @@
         .table {
             width: 100%;
         }
-
-        #Invoice {
-            width: 100%;
+        #date{
+            width: 20%;
             float: right;
-            padding: 5px;
-            margin-top: 30px;
+            text-align: right;
         }
-        #invoice-details{
-            width: 40%;
+        #invoices{
+            width: 20%;
             float: right;
-        }
-        #invoice-head{
-            display:inline;
-            float:right;
-            width: 35%;
+            text-align: right;
         }
         #Customer{
             width:100%;
         }
-        #customer-details{
-            width:100%;
-            text-align:right;
-            margin-top: 80px;   
-        }
         #Sold{
-            display: inline;
-            margin-right: 80px;
-        }
-        #addres{
             text-align: right;
-            margin-right: 210px;
+            width: 20%;
+            float: right; 
+        }
+        #cust_no{
+            text-align: right;
+            width: 20%;
+            float: right;
+        }
+        .address{
+            float: right;
+            text-align: left;
+            width: 23%;
+        }
+        #address{
+            margin-top: 0;
         }
         #number{
             width:100%;
             margin-top: 20px;
 
         }
+        #Shipping{
+            float: right;
+            width: 23%;
+            height: 55px;
+        }
         #so{
-            margin-right: 70px;
-            padding-left: 100px;
-            display:inline;
+            width: 30%;
+            float: left;
+            padding-left: 40px;
+        }
+        #Terms{
+            width: 30%;
+            float: left;
         }
         #number-po{
             margin-top: 10px;
         }
-
         #po{
-            display: inline;
-            margin-right: 70px;
-            padding-left: 100px;
+            width: 30%;
+            float: left;
+            padding-left: 40px;
         }
-        #number-whse{
-            margin-top: 10px;
+        #SR{
+            width: 30%;
+            float: left;
         }
         #whse{
-            display: inline;
-            margin-right: 70px;
-            padding-left: 100px;
+            width: 30%;
+            float: left;
+            padding-left: 40px;
         }
-        #order{
-            margin-top: 70px;
-            padding-left: 50px;
+        #TERR{
+            width: 30%;
+            float: left;
+        }
+        .order{
+            width: 100%;
+            float: left;
+            margin-top: 35px;
         }
         #Discount{
-            width: 100%;
-            text-align: right;
+            float:right;
         }
         #disc{
-            margin-right: 40px;
+                width: 100%;
         }
         #amount{
             text-align: right;
@@ -98,82 +110,51 @@
 </head>
 <body>
     <div id="container">
-        <div id="Invoice">
-            <div id="invoice-details">
-                
-                <p id ="invoice-head">[run_datetime]
-                <p id="invoice-head">[Invoice]</p>
-                </p>
-            </div>
+        <div class="Invoice">
+            <p id ="date">[run_datetime]</p>
+            <p id="invoices">[Invoice]</p>
         </div>
         <br />
-        <div id="Customer">
-            <div id="customer-details">
+        <br/>
+        <br/>
+        <div class="Customer">
+                <p id="cust_no">[cust_no]</p>
                 <p id="Sold">[Sold_To]</p>
-                <p id="Sold">[cust_no]</p>
-                <p id="addres">[Address]</p>
-                
-            </div> 
         </div>
-        <div id="number">
-            <div id="number-details">
-                <p id="so">[SoNo]</p><p id="so">[Terms]</p><p id="so">[Tin]</p>
-            </div>
-            <div id="number-po">
-                <p id="po">[PoNo]</p><p id="po">[SR]</p>
-            </div>
-            <div id="number-whse">
-                <p id="whse">[WHSE]</p><p id="whse">[TERR]</p><p id="whse">[Shipping]</p>
-            </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="address">
+             <p id="address">[Address]</p>
+             <p id="Tin">[Tin]</p>
         </div>
-        <div id="order">
-            [Sales_table]
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="number-details">
+            <p id="Shipping">[Shipping]</p>
+            <p id="so">[SoNo]</p>
+            <p id="Terms">[Terms]</p>
+            <p id="po">[PoNo]</p>
+            <p id="SR">[SR]</p>
+            <p id="whse">[WHSE]</p>
+            <p id="TERR">[TERR]</p>
         </div>
-        <div id="Discount">
+         <div class="order">
+            <p id="orders">[Sales_table]</p>
+        </div>
+          <div id="Discount">
             <p id="disc">Less  [discount1]%:   [dicsValue1]</p>
             <p id="disc">Less  [discount2]%:   [dicsValue2]</p>
             <p id="disc">Less  [discount3]%:   [dicsValue3]</p>
             <p id="disc">Less  [discount4]%:   [dicsValue4]</p>
             <p id="disc">Less  [discount5]%:   [dicsValue5]</p>
-        </div>
-         <div id="amount">
             <p id="disc">[totalAmount]</p>
             <p id="disc">[Discount]</p>
             <p id="disc">[VAT]</p>
             <p id="disc">Total Amount Due: [Amount]</p>
         </div>
-            <!--<p id="border"></p>
-            Deliver/Shipping Instruction-->
-            <!--<span id="Sold">
-                [Shipping]
-            </span>
-        <!--<div class="Title">
-            <h4>COMARK INTERNATIONAL CORPORATION</h4>
-            <h6>1ST AVENUE, STA MARIA INDUSTRIAL SUBD.</h6>
-            <h6>BAGUMBAYAN TAGUIG CITY</h6>
-            <h6>TEL NOS: 837-1996 TO 97, 838-2493(connecting all department)</h6>
-            <h6>FAX NO.: 838-2496;838-8885</h6>
-            <h6>VAT REG TIN: 001-056-588-70000</h6>
-        </div>
-        
-        <br />
-        <br />
-        [Sales_table]
-
-        <br />
-        
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <div class="BOx">
-            <p>[totalAmount]</p>
-            <p>[Discount]</p>
-            <p>[VAT]</p>
-            <p class="total">Total Amount Due: [Amount]</p>
-        </div>-->
     </div>
 </body>
 </html>

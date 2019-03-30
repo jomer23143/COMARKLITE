@@ -66,10 +66,9 @@ namespace OMS.Properties {
         ///    &lt;head&gt;
         ///         &lt;style type=&quot;text/css&quot;&gt;
         ///             body {
-        ///                font-family:Arial;
-        ///                line-height:15px;
-        ///                font-size:12px;
-        ///				
+        ///                 font-family: &quot;times new roman&quot;;
+        ///                 line-height: 15px;
+        ///                 font-size: 12px;
         ///             }
         ///             .table, .table tr td, .table tr th {
         ///				text-align:left;
@@ -87,8 +86,7 @@ namespace OMS.Properties {
         ///    			margin-top: 100px;
         ///			}
         ///			#TypeofStock{
-        ///				text-align: center;
-        ///			 [rest of string was truncated]&quot;;.
+        ///				text-align [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Dr {
             get {
@@ -216,15 +214,47 @@ namespace OMS.Properties {
         ///        .table {
         ///            width: 100%;
         ///        }
-        ///
-        ///        #Invoice {
-        ///            width: 100%;
+        ///        #date{
+        ///            width: 20%;
         ///            float: right;
-        ///           [rest of string was truncated]&quot;;.
+        ///            text [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string salesReport {
             get {
                 return ResourceManager.GetString("salesReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///    &lt;head&gt;
+        ///         &lt;style type=&quot;text/css&quot;&gt;
+        ///             body {
+        ///                 font-family: &quot;times new roman&quot;;
+        ///                 line-height: 15px;
+        ///                 font-size: 12px;
+        ///             }
+        ///             .table, .table tr td, .table tr th {
+        ///				text-align:left;
+        ///				padding:0;
+        ///             }
+        ///			 .table{
+        ///			 	width: 100%;
+        ///			 }
+        ///			 p{
+        ///			 	text-align: center;
+        ///				font-weight: bold;
+        ///				font-size: large;
+        ///			 }
+        ///			 .Box{
+        ///			 	margin: auto;
+        ///			 }
+        ///         &lt;/s [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string summary {
+            get {
+                return ResourceManager.GetString("summary", resourceCulture);
             }
         }
     }
