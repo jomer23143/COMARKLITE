@@ -160,8 +160,28 @@ namespace OMS.Incoming
 
         private void btnDeclare_Click(object sender, EventArgs e)
         {
-            saved();
-            clear();
+            Form1 dialog = new Form1();
+            dialog.Retrns = this;
+            dialog.mode = 6;
+            String uom = "";
+            bool status = false;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.IsNewRow) continue;
+                uom = row.Cells[colUnit.Name].Value.ToString();
+                if (uom == "")
+                {
+                    MessageBox.Show("uom is empty");
+                    status = true;
+                }
+
+            }
+            if (!status)
+            {
+                dialog.ShowDialog();
+                if (Form1.status == true)
+                { saved(); clear(); }
+            }
         }
         private void saved()
         {

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style type="text/css">
-
+    <style type="text/css" media="screen"></style>
+    <style type="text/css" media="print">
         body {
-            font-family: "times new roman";
+            font-family: "carrier";
             line-height: 15px;
             font-size: 12px;
+            width: 100%;
+            page-break-before: avoid;
+            -webkit-transform: rotate(-90deg) scale(.68,.68);
+            -moz-transform: rotate(-90deg) scale(.58,.58);
         }
 
         .table, .table tr td, .table tr th {
@@ -16,104 +20,129 @@
             padding: 0;
         }
 
+        @page {
+            size: landscape;
+        }
+
         .table {
             width: 100%;
         }
-        #date{
-            width: 20%;
+
+        .container {
+            width: 95%;
+            margin: auto;
+        }
+
+        #date {
+            width: 25%;
             float: right;
             text-align: right;
         }
-        #invoices{
-            width: 20%;
+
+        #invoices {
+            width: 25%;
             float: right;
             text-align: right;
         }
-        #Customer{
-            width:100%;
+
+        #Customer {
+            width: 100%;
         }
-        #Sold{
+
+        #Sold {
             text-align: right;
-            width: 20%;
-            float: right; 
-        }
-        #cust_no{
-            text-align: right;
-            width: 20%;
+            width: 25%;
             float: right;
         }
-        .address{
+
+        #cust_no {
+            text-align: right;
+            width: 25%;
+            float: right;
+        }
+
+        .address {
             float: right;
             text-align: left;
-            width: 23%;
+            width: 28%;
         }
-        #address{
+
+        #address {
             margin-top: 0;
         }
-        #number{
-            width:100%;
-            margin-top: 20px;
 
+        #number {
+            width: 100%;
+            margin-top: 20px;
         }
-        #Shipping{
+
+        #Shipping {
             float: right;
-            width: 23%;
+            width: 28%;
             height: 55px;
         }
-        #so{
+
+        #so {
             width: 30%;
             float: left;
             padding-left: 40px;
         }
-        #Terms{
+
+        #Terms {
             width: 30%;
             float: left;
         }
-        #number-po{
+
+        #number-po {
             margin-top: 10px;
         }
-        #po{
+
+        #po {
             width: 30%;
             float: left;
             padding-left: 40px;
         }
-        #SR{
+
+        #SR {
             width: 30%;
             float: left;
         }
-        #whse{
+
+        #whse {
             width: 30%;
             float: left;
             padding-left: 40px;
         }
-        #TERR{
+
+        #TERR {
             width: 30%;
             float: left;
         }
-        .order{
+
+        .order {
             width: 100%;
             float: left;
             margin-top: 35px;
         }
-        #Discount{
-            float:right;
+
+        #Discount {
+            float: right;
         }
-        #disc{
-                width: 100%;
+
+        #disc {
+            width: 100%;
         }
-        #amount{
+
+        #amount {
             text-align: right;
             margin-top: 30px;
         }
-        
     </style>
 </head>
 <body>
-    <div id="container">
-        <div class="Invoice">
-            <p id ="date">[run_datetime]</p>
-            <p id="invoices">[Invoice]</p>
-        </div>
+    <div class="container">
+        <p id ="date">[run_datetime]</p>
+        <p id="invoices">[Invoice]</p>
         <br />
         <br/>
         <br/>
@@ -153,7 +182,7 @@
             <p id="disc">[totalAmount]</p>
             <p id="disc">[Discount]</p>
             <p id="disc">[VAT]</p>
-            <p id="disc">Total Amount Due: [Amount]</p>
+            <p id="disc">[Amount]</p>
         </div>
     </div>
 </body>

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel26 = new System.Windows.Forms.Panel();
             this.cbxReceived = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -55,6 +55,10 @@
             this.txtAddressR = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colCode = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colQuantity = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
             this.panel9 = new System.Windows.Forms.Panel();
             this.txtReason = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -80,10 +84,9 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.txtTypeStocks = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.colCode = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colQuantity = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtStrNo = new System.Windows.Forms.TextBox();
             this.panel26.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -101,6 +104,7 @@
             this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel21.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel26
@@ -109,7 +113,7 @@
             this.panel26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel26.Controls.Add(this.cbxReceived);
             this.panel26.Controls.Add(this.label26);
-            this.panel26.Location = new System.Drawing.Point(460, 7);
+            this.panel26.Location = new System.Drawing.Point(460, 53);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(242, 31);
             this.panel26.TabIndex = 4;
@@ -144,7 +148,7 @@
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.txtDateRef);
             this.panel8.Controls.Add(this.label8);
-            this.panel8.Location = new System.Drawing.Point(263, 85);
+            this.panel8.Location = new System.Drawing.Point(263, 131);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(190, 31);
             this.panel8.TabIndex = 3;
@@ -176,7 +180,7 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.txtWhseS);
             this.panel6.Controls.Add(this.label9);
-            this.panel6.Location = new System.Drawing.Point(263, 7);
+            this.panel6.Location = new System.Drawing.Point(263, 53);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(190, 31);
             this.panel6.TabIndex = 57;
@@ -208,7 +212,7 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.txtRefNR);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(13, 84);
+            this.panel4.Location = new System.Drawing.Point(13, 130);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(242, 31);
             this.panel4.TabIndex = 2;
@@ -241,7 +245,7 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.cbxSource);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(13, 7);
+            this.panel3.Location = new System.Drawing.Point(13, 53);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(242, 31);
             this.panel3.TabIndex = 1;
@@ -275,7 +279,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.txtAddressS);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(13, 46);
+            this.panel2.Location = new System.Drawing.Point(13, 92);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(439, 31);
             this.panel2.TabIndex = 53;
@@ -307,7 +311,7 @@
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel10.Controls.Add(this.txtWhseR);
             this.panel10.Controls.Add(this.label10);
-            this.panel10.Location = new System.Drawing.Point(709, 7);
+            this.panel10.Location = new System.Drawing.Point(709, 53);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(157, 31);
             this.panel10.TabIndex = 61;
@@ -339,7 +343,7 @@
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel11.Controls.Add(this.txtAddressR);
             this.panel11.Controls.Add(this.label11);
-            this.panel11.Location = new System.Drawing.Point(460, 46);
+            this.panel11.Location = new System.Drawing.Point(460, 92);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(406, 31);
             this.panel11.TabIndex = 54;
@@ -370,15 +374,15 @@
             // 
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCode,
@@ -386,290 +390,11 @@
             this.colUnit,
             this.colQuantity});
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 126);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 172);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(854, 218);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.White;
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.txtReason);
-            this.panel9.Controls.Add(this.label6);
-            this.panel9.Location = new System.Drawing.Point(12, 354);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(409, 31);
-            this.panel9.TabIndex = 7;
-            // 
-            // txtReason
-            // 
-            this.txtReason.BackColor = System.Drawing.Color.White;
-            this.txtReason.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtReason.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReason.Location = new System.Drawing.Point(125, 9);
-            this.txtReason.Margin = new System.Windows.Forms.Padding(2);
-            this.txtReason.Name = "txtReason";
-            this.txtReason.Size = new System.Drawing.Size(283, 15);
-            this.txtReason.TabIndex = 5;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 8);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(119, 15);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Reason for Transfer :";
-            // 
-            // panel15
-            // 
-            this.panel15.BackColor = System.Drawing.Color.White;
-            this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel15.Controls.Add(this.txtIssued);
-            this.panel15.Controls.Add(this.label15);
-            this.panel15.Location = new System.Drawing.Point(12, 393);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(190, 31);
-            this.panel15.TabIndex = 8;
-            // 
-            // txtIssued
-            // 
-            this.txtIssued.BackColor = System.Drawing.Color.White;
-            this.txtIssued.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtIssued.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIssued.Location = new System.Drawing.Point(56, 8);
-            this.txtIssued.Margin = new System.Windows.Forms.Padding(2);
-            this.txtIssued.Name = "txtIssued";
-            this.txtIssued.Size = new System.Drawing.Size(124, 15);
-            this.txtIssued.TabIndex = 5;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(3, 7);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(49, 15);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Issued :";
-            // 
-            // panel16
-            // 
-            this.panel16.BackColor = System.Drawing.Color.White;
-            this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel16.Controls.Add(this.txtPickUp);
-            this.panel16.Controls.Add(this.label16);
-            this.panel16.Location = new System.Drawing.Point(209, 393);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(212, 31);
-            this.panel16.TabIndex = 10;
-            // 
-            // txtPickUp
-            // 
-            this.txtPickUp.BackColor = System.Drawing.Color.White;
-            this.txtPickUp.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPickUp.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPickUp.Location = new System.Drawing.Point(76, 9);
-            this.txtPickUp.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPickUp.Name = "txtPickUp";
-            this.txtPickUp.Size = new System.Drawing.Size(124, 15);
-            this.txtPickUp.TabIndex = 5;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(4, 8);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 15);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Picked Up :";
-            // 
-            // panel17
-            // 
-            this.panel17.BackColor = System.Drawing.Color.White;
-            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel17.Controls.Add(this.txtReceived);
-            this.panel17.Controls.Add(this.label17);
-            this.panel17.Location = new System.Drawing.Point(428, 393);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(273, 31);
-            this.panel17.TabIndex = 12;
-            // 
-            // txtReceived
-            // 
-            this.txtReceived.BackColor = System.Drawing.Color.White;
-            this.txtReceived.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtReceived.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReceived.Location = new System.Drawing.Point(72, 8);
-            this.txtReceived.Margin = new System.Windows.Forms.Padding(2);
-            this.txtReceived.Name = "txtReceived";
-            this.txtReceived.Size = new System.Drawing.Size(190, 15);
-            this.txtReceived.TabIndex = 5;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(5, 7);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(62, 15);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Received :";
-            // 
-            // panel18
-            // 
-            this.panel18.BackColor = System.Drawing.Color.White;
-            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel18.Controls.Add(this.txtDateI);
-            this.panel18.Controls.Add(this.label18);
-            this.panel18.Location = new System.Drawing.Point(13, 431);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(190, 31);
-            this.panel18.TabIndex = 9;
-            // 
-            // txtDateI
-            // 
-            this.txtDateI.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDateI.Location = new System.Drawing.Point(45, 5);
-            this.txtDateI.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDateI.Name = "txtDateI";
-            this.txtDateI.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDateI.Size = new System.Drawing.Size(137, 21);
-            this.txtDateI.TabIndex = 37;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(3, 7);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(38, 15);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Date :";
-            // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.Color.White;
-            this.panel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel19.Controls.Add(this.txtDateP);
-            this.panel19.Controls.Add(this.label19);
-            this.panel19.Location = new System.Drawing.Point(209, 432);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(212, 31);
-            this.panel19.TabIndex = 11;
-            // 
-            // txtDateP
-            // 
-            this.txtDateP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDateP.Location = new System.Drawing.Point(45, 4);
-            this.txtDateP.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDateP.Name = "txtDateP";
-            this.txtDateP.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDateP.Size = new System.Drawing.Size(157, 21);
-            this.txtDateP.TabIndex = 37;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(3, 7);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(38, 15);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Date :";
-            // 
-            // panel20
-            // 
-            this.panel20.BackColor = System.Drawing.Color.White;
-            this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel20.Controls.Add(this.txtDateRe);
-            this.panel20.Controls.Add(this.label20);
-            this.panel20.Location = new System.Drawing.Point(429, 432);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(271, 31);
-            this.panel20.TabIndex = 13;
-            // 
-            // txtDateRe
-            // 
-            this.txtDateRe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDateRe.Location = new System.Drawing.Point(50, 5);
-            this.txtDateRe.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDateRe.Name = "txtDateRe";
-            this.txtDateRe.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDateRe.Size = new System.Drawing.Size(216, 21);
-            this.txtDateRe.TabIndex = 37;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(6, 7);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(38, 15);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "Date :";
-            // 
-            // btnDeclare
-            // 
-            this.btnDeclare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDeclare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
-            this.btnDeclare.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeclare.ForeColor = System.Drawing.Color.White;
-            this.btnDeclare.Location = new System.Drawing.Point(753, 354);
-            this.btnDeclare.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDeclare.Name = "btnDeclare";
-            this.btnDeclare.Size = new System.Drawing.Size(114, 52);
-            this.btnDeclare.TabIndex = 14;
-            this.btnDeclare.Text = "Declare";
-            this.btnDeclare.UseVisualStyleBackColor = false;
-            this.btnDeclare.Click += new System.EventHandler(this.btnDeclare_Click);
-            // 
-            // panel21
-            // 
-            this.panel21.BackColor = System.Drawing.Color.White;
-            this.panel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel21.Controls.Add(this.txtTypeStocks);
-            this.panel21.Controls.Add(this.label21);
-            this.panel21.Location = new System.Drawing.Point(461, 86);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(405, 31);
-            this.panel21.TabIndex = 5;
-            // 
-            // txtTypeStocks
-            // 
-            this.txtTypeStocks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtTypeStocks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txtTypeStocks.FormattingEnabled = true;
-            this.txtTypeStocks.Items.AddRange(new object[] {
-            "Good Stocks",
-            "Damage Stocks"});
-            this.txtTypeStocks.Location = new System.Drawing.Point(241, 4);
-            this.txtTypeStocks.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTypeStocks.Name = "txtTypeStocks";
-            this.txtTypeStocks.Size = new System.Drawing.Size(163, 23);
-            this.txtTypeStocks.TabIndex = 48;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(3, 7);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(230, 15);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "We are Transferring the following stocks :";
             // 
             // colCode
             // 
@@ -717,19 +442,332 @@
             this.colQuantity.BackgroundStyle.Class = "DataGridViewNumericBorder";
             this.colQuantity.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.colQuantity.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colQuantity.DefaultCellStyle = dataGridViewCellStyle4;
             this.colQuantity.HeaderText = "Quantity";
             this.colQuantity.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
             this.colQuantity.Name = "colQuantity";
             this.colQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.txtReason);
+            this.panel9.Controls.Add(this.label6);
+            this.panel9.Location = new System.Drawing.Point(12, 400);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(409, 31);
+            this.panel9.TabIndex = 7;
+            // 
+            // txtReason
+            // 
+            this.txtReason.BackColor = System.Drawing.Color.White;
+            this.txtReason.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtReason.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReason.Location = new System.Drawing.Point(125, 9);
+            this.txtReason.Margin = new System.Windows.Forms.Padding(2);
+            this.txtReason.Name = "txtReason";
+            this.txtReason.Size = new System.Drawing.Size(274, 15);
+            this.txtReason.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 8);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 15);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Reason for Transfer :";
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.White;
+            this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel15.Controls.Add(this.txtIssued);
+            this.panel15.Controls.Add(this.label15);
+            this.panel15.Location = new System.Drawing.Point(12, 439);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(190, 31);
+            this.panel15.TabIndex = 8;
+            // 
+            // txtIssued
+            // 
+            this.txtIssued.BackColor = System.Drawing.Color.White;
+            this.txtIssued.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIssued.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIssued.Location = new System.Drawing.Point(56, 8);
+            this.txtIssued.Margin = new System.Windows.Forms.Padding(2);
+            this.txtIssued.Name = "txtIssued";
+            this.txtIssued.Size = new System.Drawing.Size(124, 15);
+            this.txtIssued.TabIndex = 5;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(3, 7);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(49, 15);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "Issued :";
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.White;
+            this.panel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel16.Controls.Add(this.txtPickUp);
+            this.panel16.Controls.Add(this.label16);
+            this.panel16.Location = new System.Drawing.Point(209, 439);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(212, 31);
+            this.panel16.TabIndex = 10;
+            // 
+            // txtPickUp
+            // 
+            this.txtPickUp.BackColor = System.Drawing.Color.White;
+            this.txtPickUp.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPickUp.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPickUp.Location = new System.Drawing.Point(76, 9);
+            this.txtPickUp.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPickUp.Name = "txtPickUp";
+            this.txtPickUp.Size = new System.Drawing.Size(124, 15);
+            this.txtPickUp.TabIndex = 5;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(4, 8);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 15);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Picked Up :";
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.Color.White;
+            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel17.Controls.Add(this.txtReceived);
+            this.panel17.Controls.Add(this.label17);
+            this.panel17.Location = new System.Drawing.Point(428, 439);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(273, 31);
+            this.panel17.TabIndex = 12;
+            // 
+            // txtReceived
+            // 
+            this.txtReceived.BackColor = System.Drawing.Color.White;
+            this.txtReceived.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtReceived.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReceived.Location = new System.Drawing.Point(72, 8);
+            this.txtReceived.Margin = new System.Windows.Forms.Padding(2);
+            this.txtReceived.Name = "txtReceived";
+            this.txtReceived.Size = new System.Drawing.Size(190, 15);
+            this.txtReceived.TabIndex = 5;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(5, 7);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(62, 15);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Received :";
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.White;
+            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel18.Controls.Add(this.txtDateI);
+            this.panel18.Controls.Add(this.label18);
+            this.panel18.Location = new System.Drawing.Point(13, 477);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(190, 31);
+            this.panel18.TabIndex = 9;
+            // 
+            // txtDateI
+            // 
+            this.txtDateI.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDateI.Location = new System.Drawing.Point(45, 5);
+            this.txtDateI.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDateI.Name = "txtDateI";
+            this.txtDateI.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtDateI.Size = new System.Drawing.Size(137, 21);
+            this.txtDateI.TabIndex = 37;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(3, 7);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(38, 15);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Date :";
+            // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.White;
+            this.panel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel19.Controls.Add(this.txtDateP);
+            this.panel19.Controls.Add(this.label19);
+            this.panel19.Location = new System.Drawing.Point(209, 478);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(212, 31);
+            this.panel19.TabIndex = 11;
+            // 
+            // txtDateP
+            // 
+            this.txtDateP.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDateP.Location = new System.Drawing.Point(45, 4);
+            this.txtDateP.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDateP.Name = "txtDateP";
+            this.txtDateP.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtDateP.Size = new System.Drawing.Size(157, 21);
+            this.txtDateP.TabIndex = 37;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(3, 7);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(38, 15);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Date :";
+            // 
+            // panel20
+            // 
+            this.panel20.BackColor = System.Drawing.Color.White;
+            this.panel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel20.Controls.Add(this.txtDateRe);
+            this.panel20.Controls.Add(this.label20);
+            this.panel20.Location = new System.Drawing.Point(429, 478);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(271, 31);
+            this.panel20.TabIndex = 13;
+            // 
+            // txtDateRe
+            // 
+            this.txtDateRe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDateRe.Location = new System.Drawing.Point(50, 5);
+            this.txtDateRe.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDateRe.Name = "txtDateRe";
+            this.txtDateRe.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtDateRe.Size = new System.Drawing.Size(216, 21);
+            this.txtDateRe.TabIndex = 37;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(6, 7);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(38, 15);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Date :";
+            // 
+            // btnDeclare
+            // 
+            this.btnDeclare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDeclare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
+            this.btnDeclare.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeclare.ForeColor = System.Drawing.Color.White;
+            this.btnDeclare.Location = new System.Drawing.Point(753, 405);
+            this.btnDeclare.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeclare.Name = "btnDeclare";
+            this.btnDeclare.Size = new System.Drawing.Size(114, 52);
+            this.btnDeclare.TabIndex = 14;
+            this.btnDeclare.Text = "Declare";
+            this.btnDeclare.UseVisualStyleBackColor = false;
+            this.btnDeclare.Click += new System.EventHandler(this.btnDeclare_Click);
+            // 
+            // panel21
+            // 
+            this.panel21.BackColor = System.Drawing.Color.White;
+            this.panel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel21.Controls.Add(this.txtTypeStocks);
+            this.panel21.Controls.Add(this.label21);
+            this.panel21.Location = new System.Drawing.Point(461, 132);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(405, 31);
+            this.panel21.TabIndex = 5;
+            // 
+            // txtTypeStocks
+            // 
+            this.txtTypeStocks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtTypeStocks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtTypeStocks.FormattingEnabled = true;
+            this.txtTypeStocks.Items.AddRange(new object[] {
+            "Good Stocks",
+            "Damage Stocks"});
+            this.txtTypeStocks.Location = new System.Drawing.Point(241, 4);
+            this.txtTypeStocks.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTypeStocks.Name = "txtTypeStocks";
+            this.txtTypeStocks.Size = new System.Drawing.Size(163, 23);
+            this.txtTypeStocks.TabIndex = 48;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(3, 7);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(230, 15);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "We are Transferring the following stocks :";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtStrNo);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(13, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(242, 31);
+            this.panel1.TabIndex = 62;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Str No. :";
+            // 
+            // txtStrNo
+            // 
+            this.txtStrNo.BackColor = System.Drawing.Color.White;
+            this.txtStrNo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtStrNo.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStrNo.Location = new System.Drawing.Point(59, 8);
+            this.txtStrNo.Margin = new System.Windows.Forms.Padding(2);
+            this.txtStrNo.Name = "txtStrNo";
+            this.txtStrNo.Size = new System.Drawing.Size(175, 15);
+            this.txtStrNo.TabIndex = 6;
             // 
             // StockTransfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(878, 470);
+            this.ClientSize = new System.Drawing.Size(878, 521);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel21);
             this.Controls.Add(this.btnDeclare);
             this.Controls.Add(this.panel20);
@@ -786,6 +824,8 @@
             this.panel20.PerformLayout();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -795,12 +835,10 @@
         private System.Windows.Forms.Panel panel26;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.DateTimePicker txtDateRef;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtRefNR;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
@@ -810,9 +848,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.TextBox txtReason;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.TextBox txtIssued;
@@ -835,9 +871,6 @@
         private System.Windows.Forms.Button btnDeclare;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.ComboBox txtTypeStocks;
-        private System.Windows.Forms.ComboBox cbxReceived;
-        private System.Windows.Forms.ComboBox cbxSource;
         public System.Windows.Forms.Label txtWhseS;
         public System.Windows.Forms.Label txtAddressS;
         public System.Windows.Forms.Label txtWhseR;
@@ -846,5 +879,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
         private System.Windows.Forms.DataGridViewComboBoxColumn colUnit;
         private DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn colQuantity;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.TextBox txtReason;
+        public System.Windows.Forms.ComboBox txtTypeStocks;
+        public System.Windows.Forms.ComboBox cbxReceived;
+        public System.Windows.Forms.ComboBox cbxSource;
+        public System.Windows.Forms.TextBox txtRefNR;
+        private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.TextBox txtStrNo;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.DateTimePicker txtDateRef;
     }
 }

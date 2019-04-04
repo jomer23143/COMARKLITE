@@ -14,7 +14,9 @@ namespace OMS
         public Outgoing.SalerProcessing parent = null;
         public Incoming.NewIncomingWindow INC = null;
         public Outgoing.DeliveryProcessing DR = null;
+        public Incoming.Returns Retrns = null;
         public Reports.summary summary = null;
+        public Incoming.StockTransfer STR = null;
         public static bool status = false;
         public int mode;
         public Form1()
@@ -45,9 +47,51 @@ namespace OMS
             {
                 summarys();
             }
+            else if(mode ==6)
+            {
+                returns();
+            }
+            else if(mode ==7)
+            {
+                StockTransfer();
+            }
 
 
+        }
+        private void StockTransfer()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table class='table'>");
+            {
+                foreach (DataGridViewRow row in STR.dataGridView1.Rows)
+                {
+                    sb.Append("<tr>");
+                    foreach (DataGridViewColumn col in STR.dataGridView1.Columns)
+                    {
+                        sb.Append("<td>");
+                        sb.Append(row.Cells[STR.dataGridView1.Columns.IndexOf(col)].Value);
+                        sb.Append("</td>");
+                    }
 
+                    sb.Append("</tr>");
+                }
+                sb.Append("</table>");
+
+                webBrowser1.DocumentText = Properties.Resources.Stocktranfer
+                      .Replace("[StrNo]",STR.txtStrNo.Text)
+                      .Replace("[SCode]", STR.txtWhseS.Text)
+                      .Replace("[Sname]", STR.cbxSource.Text)
+                      .Replace("[sAddress]", STR.txtAddressS.Text)
+                      .Replace("[RefNr]", STR.txtRefNR.Text)
+                      .Replace("[Date]",STR.txtDateRef.Text)
+                      .Replace("[Receiving]", STR.cbxReceived.Text)
+                      .Replace("[Rcode]", STR.txtWhseR.Text)
+                      .Replace("[Raddress]", STR.txtAddressR.Text)
+                      .Replace("[Type]", STR.txtTypeStocks.Text)
+                      .Replace("[StockTransfer]", sb.ToString())
+                      .Replace("[Remarks]", STR.txtReason.Text)
+                      ;
+            }
         }
         private void Sales()
         {
@@ -116,6 +160,57 @@ namespace OMS
                .Replace("[Amount]", parent.txtAmountD.Text)
 
                ;
+        }
+        private void returns()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<table class='table'>");
+
+            sb.Append("<thead>");
+            sb.Append("<tr>");
+
+            {
+                foreach (DataGridViewColumn col in Retrns.dataGridView1.Columns)
+                {
+                    sb.Append("<th>");
+                    sb.Append(col.HeaderText);
+                    sb.Append("</th>");
+                }
+            }
+
+            sb.Append("</tr>");
+            sb.Append("</thead>");
+            {
+                foreach (DataGridViewRow row in Retrns.dataGridView1.Rows)
+                {
+                    sb.Append("<tr>");
+                    foreach (DataGridViewColumn col in Retrns.dataGridView1.Columns)
+                    {
+                        sb.Append("<td>");
+                        sb.Append(row.Cells[Retrns.dataGridView1.Columns.IndexOf(col)].Value);
+                        sb.Append("</td>");
+                    }
+
+                    sb.Append("</tr>");
+                }
+            }
+
+            sb.Append("</table>");
+
+            webBrowser1.DocumentText = Properties.Resources.Returns
+                  .Replace("[Code]", Retrns.txtCustCode.Text)
+                  .Replace("[Customer]", Retrns.lblCustname.Text)
+                  .Replace("[Address]", Retrns.lblAddress.Text)
+                  .Replace("[Invoice]", Retrns.txtInvoiceRef.Text)
+                  .Replace("[Date]", Retrns.txtInvoiceDate.Text)
+                  .Replace("[Receiving]", Retrns.cbxwarehouse.Text)
+                  .Replace("[WCode]", Retrns.lblWcode.Text)
+                  .Replace("[Type]", Retrns.cbxTypeS.Text)
+                  .Replace("[Vat]", Retrns.cbxpriceType.Text)
+                  .Replace("[Returns]", sb.ToString())
+                  .Replace("[Remarks]",Retrns.txtRemarks.Text)
+                  ;
+
         }
         private void summarys()
         {
@@ -335,9 +430,13 @@ namespace OMS
 
         private void btnPrintPreview_Click(object sender, EventArgs e)
         {
-            
+
             //webBrowser1.ShowPrintPreviewDialog();
-            webBrowser1.ShowPrintDialog();
+            //var ps = new System.Drawing.Printing.PrinterSettings();
+            //ps.Copies = 1;
+            //ps.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("A4",12,8);
+            //ps.DefaultPageSettings.Landscape = true;
+            webBrowser1.Print();
             DialogResult = DialogResult.OK;
             status = true;
         }

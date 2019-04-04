@@ -191,7 +191,9 @@ namespace OMS.Outgoing
             {
                 dialog.ShowDialog();
                 if (Form1.status == true)
-                { saved(); clear(); }
+                {
+                    //saved();
+                    clear(); }
             }
 
         }

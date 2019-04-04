@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+         <style type="text/css">
+             body {
+                 font-family: "times new roman";
+                 line-height: 15px;
+                 font-size: 12px;
+             }
+             .table, .table tr td, .table tr th {
+				text-align:left;
+				padding:0;
+             }
+			 .table{
+			 	width: 100%;
+			 }
+			 .Container{
+				width: 90%;
+				margin: auto;
+			 }
+			 #no{
+				text-align: right;
+				margin-top: 50px;
+				margin-right: 50px;
+			 }
+			 #Type{
+			 	text-align: center;
+			 }
+			 .source-details {
+				width: 30%;
+				float: left;
+			}
+			#source{
+			}
+			#scode{
+				float: left;
+				width: 20%;
+			}
+			.warehouse{
+				width: 30%;
+				float: left;
+			}
+			#rcode {
+				float: left;
+				width: 20%;
+			}
+			.tables-Stock{
+				width: 100%;
+			    float: left;
+			    padding-top: 50px;
+			}
+			#reason{
+				float: left;
+			}
+         </style>
+    </head>
+	<body>
+		<div class="Container">
+			<p id="no">[StrNo]</p>
+			<br/>
+			<br/>
+			<br/>
+			<p id="Type">[Type]</p>
+			<div class="source-details">
+				<p id="source">[Sname]</p>
+				<p id="source">[sAddress]</p>
+				<p id="source">[RefNr]</p>
+				<p id="source">[Date]</p>
+			</div>
+			<p id="scode">[SCode]</p>
+			<div class="warehouse"> 
+				<p id="rname">[Receiving]</p>
+				<br/>
+				<p id="rname">[Raddress]</p>
+			</div>
+			<p id="rcode">[Rcode]</p>
+			<div class="tables-Stock">
+				<p id="transfer">[StockTransfer]</p>
+			</div>
+			<p id="reason">[Remarks]</p>
+		</div>
+		
+	</body>
+</html>
+

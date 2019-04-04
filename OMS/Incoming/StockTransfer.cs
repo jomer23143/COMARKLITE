@@ -72,8 +72,28 @@ namespace OMS.Incoming
 
         private void btnDeclare_Click(object sender, EventArgs e)
         {
-            saved();
-            Clear();
+            Form1 dialog = new Form1();
+            dialog.STR = this;
+            dialog.mode = 7;
+            String uom = "";
+            bool status = false;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.IsNewRow) continue;
+                uom = row.Cells[colUnit.Name].Value.ToString();
+                if (uom == "")
+                {
+                    MessageBox.Show("uom is empty");
+                    status = true;
+                }
+
+            }
+            if (!status)
+            {
+                dialog.ShowDialog();
+                if (Form1.status == true)
+                { saved(); Clear(); }
+            }
         }
         private void saved()
         {
@@ -83,7 +103,8 @@ namespace OMS.Incoming
             Dictionary<String, Object> header = new Dictionary<string, object>();
             header.Add("shipment_id", transID);
             header.Add("warehouse", WhsID);
-            header.Add("document_reference", txtRefNR.Text);
+            header.Add("document_reference", txtStrNo.Text);
+            header.Add("nr", txtRefNR.Text);
             header.Add("document_reference_date", txtDateRef.Text);
             //header.Add("client", "Null");
             //header.Add("authorized_shipper", "Null");
@@ -134,6 +155,8 @@ namespace OMS.Incoming
             txtRefNR.Clear();
             txtAddressR.Text = null;
             txtAddressS.Text = null;
+            txtReason.Clear();
+            txtIssued.Clear();
             dataGridView1.Rows.Clear();
 
         }
