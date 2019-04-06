@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Framework;
 using System.Drawing.Printing;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace OMS.Outgoing
 {
@@ -174,28 +175,117 @@ namespace OMS.Outgoing
             Form1 dialog = new Form1();
             dialog.parent = this;
             dialog.mode = 4;
-            String uom = "";
+            //String uom = "";
             bool status = false;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.IsNewRow) continue;
-                uom = row.Cells[colUnit.Name].Value.ToString();
-                if (uom == "")
+                //uom = row.Cells[colUnit.Name].Value.ToString();
+                if (String.IsNullOrWhiteSpace(row.Cells[colUnit.Name].Value as String))
                 {
-                    MessageBox.Show("uom is empty");
+                    
                     status = true;
                 }
               
             }
            if(!status)
             {
-                dialog.ShowDialog();
-                if (Form1.status == true)
+                System.Data.DataTable result = new System.Data.DataTable();
+                result.Columns.Add(new DataColumn("SI", typeof(String)));
+                result.Columns.Add(new DataColumn("Po", typeof(String)));
+                result.Columns.Add(new DataColumn("SO", typeof(String)));
+                result.Columns.Add(new DataColumn("Wcode", typeof(String)));
+                result.Columns.Add(new DataColumn("PType", typeof(String)));
+                result.Columns.Add(new DataColumn("date", typeof(DateTime)));
+                result.Columns.Add(new DataColumn("terms", typeof(String)));
+                result.Columns.Add(new DataColumn("sr", typeof(String)));
+                result.Columns.Add(new DataColumn("terr", typeof(String)));
+                result.Columns.Add(new DataColumn("TStock", typeof(String)));
+                result.Columns.Add(new DataColumn("sold", typeof(String)));
+                result.Columns.Add(new DataColumn("contact", typeof(String)));
+                result.Columns.Add(new DataColumn("address", typeof(String)));
+                result.Columns.Add(new DataColumn("tin", typeof(String)));
+                result.Columns.Add(new DataColumn("instruction", typeof(String)));
+                result.Columns.Add(new DataColumn("product", typeof(String)));
+                result.Columns.Add(new DataColumn("description", typeof(String)));
+                result.Columns.Add(new DataColumn("uom", typeof(String)));
+                result.Columns.Add(new DataColumn("qty", typeof(int)));
+                result.Columns.Add(new DataColumn("price", typeof(Decimal)));
+                result.Columns.Add(new DataColumn("amount", typeof(Decimal)));
+                result.Columns.Add(new DataColumn("disc1", typeof(String)));
+                result.Columns.Add(new DataColumn("disc2", typeof(String)));
+                result.Columns.Add(new DataColumn("disc3", typeof(String)));
+                result.Columns.Add(new DataColumn("disc4", typeof(String)));
+                result.Columns.Add(new DataColumn("disc5", typeof(String)));
+                result.Columns.Add(new DataColumn("tolD1", typeof(String)));
+                result.Columns.Add(new DataColumn("tolD2", typeof(String)));
+                result.Columns.Add(new DataColumn("tolD3", typeof(String)));
+                result.Columns.Add(new DataColumn("tolD4", typeof(String)));
+                result.Columns.Add(new DataColumn("tolD5", typeof(String)));
+                result.Columns.Add(new DataColumn("totalA", typeof(String)));
+                result.Columns.Add(new DataColumn("vat", typeof(String)));
+                result.Columns.Add(new DataColumn("totalDiscount", typeof(String)));
+                result.Columns.Add(new DataColumn("totalD", typeof(String)));
+                DataRow resultRow = result.NewRow();
+                resultRow = result.NewRow();
+                resultRow["SI"] = txtSalesInvoice.Text;
+                resultRow["sold"] =txtSoldTo.Text;
+                resultRow["contact"] = txtCustNo.Text;
+                resultRow["tin"] = txtTin.Text;
+                resultRow["address"] = txtCustAddress.Text;
+                resultRow["instruction"] = txtInstruction.Text;
+                resultRow["SO"] = txtSoNo.Text;
+                resultRow["Po"] = txtPoNo.Text;
+                resultRow["Wcode"] = cbxWarehouse.Text;
+                resultRow["terms"] = txtTerms.Text;
+                resultRow["sr"] = txtSR.Text;
+                result.Rows.Add(resultRow);
+                foreach (DataGridViewRow dRow in dataGridView1.Rows)
+                {
+                    if (dataGridView1.Rows.IndexOf(dRow) == dataGridView1.Rows.Count - 1)
+                        break;
+                    resultRow = result.NewRow();
+                    resultRow["product"] = dRow.Cells[colCode.Name].Value;
+                    resultRow["description"] = dRow.Cells[colDescription.Name].Value;
+                    resultRow["uom"] = dRow.Cells[colUnit.Name].Value;
+                    resultRow["qty"] = dRow.Cells[colQuantity.Name].Value;
+                    resultRow["price"] = dRow.Cells[colPrice.Name].Value;
+                    resultRow["amount"] = dRow.Cells[colAmount.Name].Value;
+                    result.Rows.Add(resultRow);
+                }
+                resultRow = result.NewRow();
+                resultRow["disc1"] = discount[0].ToString();
+                resultRow["disc2"] = discount[1].ToString();
+                resultRow["disc3"] = discount[2].ToString();
+                resultRow["disc4"] = discount[3].ToString();
+                resultRow["disc5"] = discount[4].ToString();
+                resultRow["tolD1"] = totaldisc[0].ToString();
+                resultRow["tolD2"] = totaldisc[1].ToString();
+                resultRow["tolD3"] = totaldisc[2].ToString();
+                resultRow["tolD4"] = totaldisc[3].ToString();
+                resultRow["tolD5"] = totaldisc[4].ToString();
+                resultRow["totalA"] = txtTotalA.Text;
+                resultRow["totalDiscount"] = txtDiscount.Text;
+                resultRow["vat"] = txtVat.Text;
+                resultRow["totalD"] = txtAmountD.Text;
+                result.Rows.Add(resultRow);
+                var viewer = new CrystalReport.Report();
+                ReportDocument ReportDocs = new ReportDocument();
+                ReportDocs = new CrystalReport.salesReport();
+                ReportDocs.Database.Tables[0].SetDataSource(result);
+                viewer.Viewer.ReportSource = ReportDocs;
+                viewer.ShowDialog();
+                if (viewer._status == "save")
                 {
                     //saved();
-                    clear(); }
-            }
+                    clear();
+                }
 
+            }
+            else
+            {
+                MessageBox.Show("uom is empty");
+            }
         }
         private void saved()
         {

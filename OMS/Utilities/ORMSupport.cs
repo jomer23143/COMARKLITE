@@ -155,7 +155,7 @@ namespace Framework
                 if (primary_values.Keys.Contains(cleaned))
                     continue;
                 String value = updateList[columns[i]].Replace("'", "''");
-                String delimiter = "'";
+                string delimiter = "'";
                 if (value == "")
                 {
                     value = "NULL";

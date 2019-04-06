@@ -48,10 +48,25 @@ namespace OMS.Incoming
             Form1 dialog = new Form1();
             dialog.INC = this;
             dialog.mode = 2;
-            if (dialog.ShowDialog() == DialogResult.OK)
+            bool status = false;
+            foreach (DataGridViewRow row in headerGrid.Rows)
             {
+                if (row.IsNewRow) continue;
+                if (String.IsNullOrWhiteSpace(row.Cells[uom.Name].Value as String))
+                {
+                    status = true;
+                }
+
+            }
+            if (!status)
+            {
+                dialog.ShowDialog();
                 if(Form1.status == true)
                 { saved(); clear(); }
+            }
+            else
+            {
+                MessageBox.Show("Uom is empty");
             }
         }
         private void clear()

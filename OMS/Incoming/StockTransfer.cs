@@ -75,15 +75,12 @@ namespace OMS.Incoming
             Form1 dialog = new Form1();
             dialog.STR = this;
             dialog.mode = 7;
-            String uom = "";
             bool status = false;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.IsNewRow) continue;
-                uom = row.Cells[colUnit.Name].Value.ToString();
-                if (uom == "")
+                if (String.IsNullOrWhiteSpace(row.Cells[colUnit.Name].Value as String))
                 {
-                    MessageBox.Show("uom is empty");
                     status = true;
                 }
 
@@ -93,6 +90,10 @@ namespace OMS.Incoming
                 dialog.ShowDialog();
                 if (Form1.status == true)
                 { saved(); Clear(); }
+            }
+            else
+            {
+                MessageBox.Show("uom is empty");
             }
         }
         private void saved()

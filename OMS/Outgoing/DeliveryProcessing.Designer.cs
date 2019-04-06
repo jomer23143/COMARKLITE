@@ -223,18 +223,18 @@
             // txtCodeD
             // 
             this.txtCodeD.AutoSize = true;
-            this.txtCodeD.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodeD.Location = new System.Drawing.Point(81, 11);
+            this.txtCodeD.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodeD.Location = new System.Drawing.Point(81, 9);
             this.txtCodeD.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtCodeD.Name = "txtCodeD";
-            this.txtCodeD.Size = new System.Drawing.Size(0, 16);
+            this.txtCodeD.Size = new System.Drawing.Size(0, 15);
             this.txtCodeD.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 9);
+            this.label3.Location = new System.Drawing.Point(3, 10);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 15);
@@ -256,11 +256,11 @@
             // txtAddressD
             // 
             this.txtAddressD.AutoSize = true;
-            this.txtAddressD.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddressD.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddressD.Location = new System.Drawing.Point(64, 9);
             this.txtAddressD.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtAddressD.Name = "txtAddressD";
-            this.txtAddressD.Size = new System.Drawing.Size(0, 16);
+            this.txtAddressD.Size = new System.Drawing.Size(0, 15);
             this.txtAddressD.TabIndex = 1;
             // 
             // label5
@@ -290,7 +290,7 @@
             // 
             this.txtRefno.BackColor = System.Drawing.Color.White;
             this.txtRefno.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtRefno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRefno.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRefno.Location = new System.Drawing.Point(63, 9);
             this.txtRefno.Margin = new System.Windows.Forms.Padding(2);
             this.txtRefno.Name = "txtRefno";
@@ -322,11 +322,12 @@
             // 
             // txtRefDate
             // 
+            this.txtRefDate.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRefDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtRefDate.Location = new System.Drawing.Point(75, 7);
             this.txtRefDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRefDate.Name = "txtRefDate";
-            this.txtRefDate.Size = new System.Drawing.Size(164, 20);
+            this.txtRefDate.Size = new System.Drawing.Size(164, 22);
             this.txtRefDate.TabIndex = 1;
             // 
             // label7
@@ -354,11 +355,12 @@
             // 
             // cbxWarehouse
             // 
+            this.cbxWarehouse.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxWarehouse.FormattingEnabled = true;
             this.cbxWarehouse.Location = new System.Drawing.Point(90, 6);
             this.cbxWarehouse.Margin = new System.Windows.Forms.Padding(2);
             this.cbxWarehouse.Name = "cbxWarehouse";
-            this.cbxWarehouse.Size = new System.Drawing.Size(149, 22);
+            this.cbxWarehouse.Size = new System.Drawing.Size(149, 23);
             this.cbxWarehouse.TabIndex = 49;
             this.cbxWarehouse.SelectedValueChanged += new System.EventHandler(this.cbxWarehouse_SelectedValueChanged);
             // 
@@ -388,18 +390,18 @@
             // txtCodeS
             // 
             this.txtCodeS.AutoSize = true;
-            this.txtCodeS.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodeS.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodeS.Location = new System.Drawing.Point(78, 8);
             this.txtCodeS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.txtCodeS.Name = "txtCodeS";
-            this.txtCodeS.Size = new System.Drawing.Size(0, 16);
+            this.txtCodeS.Size = new System.Drawing.Size(0, 15);
             this.txtCodeS.TabIndex = 1;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(5, 8);
+            this.label9.Location = new System.Drawing.Point(2, 8);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 15);
@@ -511,7 +513,6 @@
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(6);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.SteelBlue;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -537,17 +538,16 @@
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(698, 236);
             this.dataGridView1.TabIndex = 10;
@@ -622,7 +622,7 @@
             // 
             this.txtReason.BackColor = System.Drawing.Color.White;
             this.txtReason.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReason.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReason.Location = new System.Drawing.Point(106, 9);
             this.txtReason.Margin = new System.Windows.Forms.Padding(2);
             this.txtReason.Name = "txtReason";
@@ -669,11 +669,12 @@
             // 
             // txtTransportProvider
             // 
+            this.txtTransportProvider.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTransportProvider.FormattingEnabled = true;
             this.txtTransportProvider.Location = new System.Drawing.Point(127, 8);
             this.txtTransportProvider.Margin = new System.Windows.Forms.Padding(2);
             this.txtTransportProvider.Name = "txtTransportProvider";
-            this.txtTransportProvider.Size = new System.Drawing.Size(137, 22);
+            this.txtTransportProvider.Size = new System.Drawing.Size(137, 23);
             this.txtTransportProvider.TabIndex = 41;
             this.txtTransportProvider.SelectedValueChanged += new System.EventHandler(this.txtTransportProvider_SelectedValueChanged);
             // 

@@ -225,27 +225,20 @@ namespace OMS.Properties {
         ///&lt;html&gt;
         ///&lt;head&gt;
         ///    &lt;style type=&quot;text/css&quot;&gt;
-        ///
         ///        body {
-        ///            font-family: &quot;times new roman&quot;;
+        ///            font-family: &quot;carrier&quot;;
         ///            line-height: 15px;
         ///            font-size: 12px;
+        ///            width: 100%;
+        ///            /*PAGE-BREAK-BEFORE: always;
+        ///            height:100%;
+        ///            filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=3);*/
         ///        }
         ///
         ///        .table, .table tr td, .table tr th {
         ///            /*border-collapse: collapse;
         ///            border: 1px solid black;*/
-        ///            text-align: left;
-        ///            padding: 0;
-        ///        }
-        ///
-        ///        .table {
-        ///            width: 100%;
-        ///        }
-        ///        #date{
-        ///            width: 20%;
-        ///            float: right;
-        ///            text [rest of string was truncated]&quot;;.
+        ///            text-alig [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string salesReport {
             get {
@@ -271,15 +264,14 @@ namespace OMS.Properties {
         ///			 .table{
         ///			 	width: 100%;
         ///			 }
+        ///			 .Container{
+        ///				width: 90%;
+        ///				margin: auto;
+        ///			 }
         ///			 #no{
         ///				text-align: right;
         ///				margin-top: 50px;
-        ///				margin-right: 50px;
-        ///			 }
-        ///			 #Type{
-        ///			 	text-align: center;
-        ///			 }
-        ///		 [rest of string was truncated]&quot;;.
+        ///				margin-right: 5 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Stocktranfer {
             get {

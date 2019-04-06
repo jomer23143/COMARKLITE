@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style type="text/css" media="screen"></style>
-    <style type="text/css" media="print">
+    <style type="text/css">
         body {
             font-family: "carrier";
             line-height: 15px;
             font-size: 12px;
             width: 100%;
-            page-break-before: avoid;
-            -webkit-transform: rotate(-90deg) scale(.68,.68);
-            -moz-transform: rotate(-90deg) scale(.58,.58);
+            /*PAGE-BREAK-BEFORE: always;
+            height:100%;
+            filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=3);*/
         }
 
         .table, .table tr td, .table tr th {
@@ -20,9 +19,7 @@
             padding: 0;
         }
 
-        @page {
-            size: landscape;
-        }
+      
 
         .table {
             width: 100%;
@@ -139,7 +136,7 @@
         }
     </style>
 </head>
-<body>
+<body class="landscape">
     <div class="container">
         <p id ="date">[run_datetime]</p>
         <p id="invoices">[Invoice]</p>

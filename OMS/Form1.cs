@@ -436,7 +436,7 @@ namespace OMS
             //ps.Copies = 1;
             //ps.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("A4",12,8);
             //ps.DefaultPageSettings.Landscape = true;
-            webBrowser1.Print();
+            webBrowser1.ShowPrintDialog();
             DialogResult = DialogResult.OK;
             status = true;
         }

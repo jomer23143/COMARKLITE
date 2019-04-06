@@ -163,15 +163,12 @@ namespace OMS.Incoming
             Form1 dialog = new Form1();
             dialog.Retrns = this;
             dialog.mode = 6;
-            String uom = "";
             bool status = false;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.IsNewRow) continue;
-                uom = row.Cells[colUnit.Name].Value.ToString();
-                if (uom == "")
-                {
-                    MessageBox.Show("uom is empty");
+                if (String.IsNullOrWhiteSpace(row.Cells[colUnit.Name].Value as String))
+                {               
                     status = true;
                 }
 
@@ -181,6 +178,10 @@ namespace OMS.Incoming
                 dialog.ShowDialog();
                 if (Form1.status == true)
                 { saved(); clear(); }
+            }
+            else
+            {
+                MessageBox.Show("uom is empty");
             }
         }
         private void saved()

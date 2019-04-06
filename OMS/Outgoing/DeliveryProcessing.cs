@@ -79,12 +79,30 @@ namespace OMS.Outgoing
             Form1 dialog = new Form1();
             dialog.DR = this;
             dialog.mode = 3;
-            if (dialog.ShowDialog() == DialogResult.OK)
+            bool status = false;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if(Form1.status == true)
-                { saved(); clear(); }
+                if (row.IsNewRow) continue;
+                if (String.IsNullOrWhiteSpace(row.Cells[colUnit.Name].Value as String))
+                {
+                    status = true;
+                }
+
+            }
+            if (!status)
+            {
+                dialog.ShowDialog();
+                if (Form1.status == true)
+                {
+                    //saved();
+                    //clear(); 
+                }
                 else
                 { }
+            }
+            else
+            {
+                MessageBox.Show("uom is empty");
             }
 
 
