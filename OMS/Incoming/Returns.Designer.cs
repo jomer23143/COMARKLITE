@@ -223,18 +223,16 @@
             this.panel3.Location = new System.Drawing.Point(14, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(284, 35);
-            this.panel3.TabIndex = 31;
+            this.panel3.TabIndex = 0;
             // 
             // txtCustCode
             // 
-            this.txtCustCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtCustCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtCustCode.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustCode.FormattingEnabled = true;
-            this.txtCustCode.Location = new System.Drawing.Point(107, 5);
+            this.txtCustCode.Location = new System.Drawing.Point(102, 5);
             this.txtCustCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtCustCode.Name = "txtCustCode";
-            this.txtCustCode.Size = new System.Drawing.Size(161, 23);
+            this.txtCustCode.Size = new System.Drawing.Size(178, 23);
             this.txtCustCode.TabIndex = 47;
             this.txtCustCode.SelectedValueChanged += new System.EventHandler(this.txtCustomer_SelectedValueChanged);
             // 
@@ -258,18 +256,16 @@
             this.panel4.Location = new System.Drawing.Point(14, 96);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(284, 35);
-            this.panel4.TabIndex = 32;
+            this.panel4.TabIndex = 1;
             // 
             // cbxSalesman
             // 
-            this.cbxSalesman.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxSalesman.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxSalesman.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSalesman.FormattingEnabled = true;
-            this.cbxSalesman.Location = new System.Drawing.Point(80, 6);
+            this.cbxSalesman.Location = new System.Drawing.Point(70, 5);
             this.cbxSalesman.Margin = new System.Windows.Forms.Padding(2);
             this.cbxSalesman.Name = "cbxSalesman";
-            this.cbxSalesman.Size = new System.Drawing.Size(188, 23);
+            this.cbxSalesman.Size = new System.Drawing.Size(210, 23);
             this.cbxSalesman.TabIndex = 48;
             // 
             // label4
@@ -292,7 +288,7 @@
             this.panel5.Location = new System.Drawing.Point(309, 97);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(246, 35);
-            this.panel5.TabIndex = 33;
+            this.panel5.TabIndex = 3;
             // 
             // txtInvoiceRef
             // 
@@ -400,7 +396,7 @@
             this.panel8.Location = new System.Drawing.Point(309, 140);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(246, 35);
-            this.panel8.TabIndex = 29;
+            this.panel8.TabIndex = 4;
             // 
             // txtInvoiceDate
             // 
@@ -432,12 +428,11 @@
             this.panel9.Location = new System.Drawing.Point(563, 140);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(269, 35);
-            this.panel9.TabIndex = 36;
+            this.panel9.TabIndex = 6;
             // 
             // cbxTypeS
             // 
             this.cbxTypeS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTypeS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxTypeS.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxTypeS.FormattingEnabled = true;
             this.cbxTypeS.Items.AddRange(new object[] {
@@ -446,7 +441,7 @@
             this.cbxTypeS.Location = new System.Drawing.Point(100, 6);
             this.cbxTypeS.Margin = new System.Windows.Forms.Padding(2);
             this.cbxTypeS.Name = "cbxTypeS";
-            this.cbxTypeS.Size = new System.Drawing.Size(158, 23);
+            this.cbxTypeS.Size = new System.Drawing.Size(164, 23);
             this.cbxTypeS.TabIndex = 49;
             // 
             // dataGridView1
@@ -474,7 +469,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(818, 183);
-            this.dataGridView1.TabIndex = 37;
+            this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
@@ -570,7 +565,7 @@
             this.panel10.Location = new System.Drawing.Point(14, 414);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(357, 35);
-            this.panel10.TabIndex = 38;
+            this.panel10.TabIndex = 8;
             // 
             // txtRemarks
             // 
@@ -823,7 +818,7 @@
             this.panel18.Location = new System.Drawing.Point(664, 413);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(170, 45);
-            this.panel18.TabIndex = 44;
+            this.panel18.TabIndex = 11;
             // 
             // txtTransCode
             // 
@@ -918,7 +913,7 @@
             this.panel21.Location = new System.Drawing.Point(484, 413);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(170, 45);
-            this.panel21.TabIndex = 46;
+            this.panel21.TabIndex = 9;
             // 
             // txtReceived
             // 
@@ -951,7 +946,7 @@
             this.panel22.Location = new System.Drawing.Point(665, 465);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(170, 46);
-            this.panel22.TabIndex = 47;
+            this.panel22.TabIndex = 12;
             // 
             // txtRgsNo
             // 
@@ -1046,7 +1041,7 @@
             this.panel25.Location = new System.Drawing.Point(484, 464);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(171, 47);
-            this.panel25.TabIndex = 48;
+            this.panel25.TabIndex = 10;
             // 
             // txtDateR
             // 
@@ -1079,7 +1074,7 @@
             this.btnDeclare.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeclare.Name = "btnDeclare";
             this.btnDeclare.Size = new System.Drawing.Size(119, 49);
-            this.btnDeclare.TabIndex = 49;
+            this.btnDeclare.TabIndex = 13;
             this.btnDeclare.Text = "Declare";
             this.btnDeclare.UseVisualStyleBackColor = false;
             this.btnDeclare.Click += new System.EventHandler(this.btnDeclare_Click);
@@ -1093,18 +1088,16 @@
             this.panel26.Location = new System.Drawing.Point(562, 55);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(269, 35);
-            this.panel26.TabIndex = 50;
+            this.panel26.TabIndex = 5;
             // 
             // cbxwarehouse
             // 
-            this.cbxwarehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxwarehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxwarehouse.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxwarehouse.FormattingEnabled = true;
             this.cbxwarehouse.Location = new System.Drawing.Point(105, 6);
             this.cbxwarehouse.Margin = new System.Windows.Forms.Padding(2);
             this.cbxwarehouse.Name = "cbxwarehouse";
-            this.cbxwarehouse.Size = new System.Drawing.Size(153, 23);
+            this.cbxwarehouse.Size = new System.Drawing.Size(160, 23);
             this.cbxwarehouse.TabIndex = 48;
             this.cbxwarehouse.SelectedIndexChanged += new System.EventHandler(this.cbxwarehouse_SelectedIndexChanged);
             this.cbxwarehouse.SelectedValueChanged += new System.EventHandler(this.cbxwarehouse_SelectedValueChanged);
@@ -1129,12 +1122,11 @@
             this.panel27.Location = new System.Drawing.Point(14, 182);
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(246, 35);
-            this.panel27.TabIndex = 57;
+            this.panel27.TabIndex = 2;
             // 
             // cbxpriceType
             // 
             this.cbxpriceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxpriceType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxpriceType.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxpriceType.FormattingEnabled = true;
             this.cbxpriceType.Items.AddRange(new object[] {

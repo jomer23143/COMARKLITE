@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
 using Framework;
 
 namespace OMS.Incoming
@@ -47,9 +48,9 @@ namespace OMS.Incoming
                 cbxSalesman.DisplayMember = "name";
             }
             {
-                cbxwarehouse.DataSource = DataSupport.RunDataSet("Select * from [TransportProviders]").Tables[0];
-                cbxwarehouse.ValueMember = "transport_id";
-                cbxwarehouse.DisplayMember = "description";
+                cbxwarehouse.DataSource = DataSupport.RunDataSet("Select * from [Warehouses]").Tables[0];
+                cbxwarehouse.ValueMember = "warehouse_id";
+                cbxwarehouse.DisplayMember = "warehouse_id";
                 
             }
 
@@ -175,9 +176,72 @@ namespace OMS.Incoming
             }
             if (!status)
             {
-                dialog.ShowDialog();
-                if (Form1.status == true)
-                { saved(); clear(); }
+                System.Data.DataTable result = new System.Data.DataTable();
+                result.Columns.Add(new DataColumn("rgsno", typeof(String)));
+                result.Columns.Add(new DataColumn("custname", typeof(String)));
+                result.Columns.Add(new DataColumn("custCode", typeof(String)));
+                result.Columns.Add(new DataColumn("address", typeof(String)));
+                result.Columns.Add(new DataColumn("salesman", typeof(String)));
+                result.Columns.Add(new DataColumn("invoiceref", typeof(string)));
+                result.Columns.Add(new DataColumn("invoicedate", typeof(DateTime)));
+                result.Columns.Add(new DataColumn("instruction", typeof(String)));
+                result.Columns.Add(new DataColumn("warehouse", typeof(String)));
+                result.Columns.Add(new DataColumn("code", typeof(String)));
+                result.Columns.Add(new DataColumn("productcode", typeof(String)));
+                result.Columns.Add(new DataColumn("description", typeof(String)));
+                result.Columns.Add(new DataColumn("uom", typeof(String)));
+                result.Columns.Add(new DataColumn("qty", typeof(String)));
+                result.Columns.Add(new DataColumn("price", typeof(String)));
+                result.Columns.Add(new DataColumn("amount", typeof(String)));
+                result.Columns.Add(new DataColumn("reason", typeof(String)));
+                result.Columns.Add(new DataColumn("typestock", typeof(String)));
+                result.Columns.Add(new DataColumn("received", typeof(String)));
+                result.Columns.Add(new DataColumn("receiveddate", typeof(String)));
+                result.Columns.Add(new DataColumn("transcode", typeof(String)));
+                DataRow resultRow = result.NewRow();
+                resultRow = result.NewRow();
+                resultRow["custname"] = lblCustname.Text;
+                resultRow["custCode"] = txtCustCode.Text;
+                resultRow["address"] = lblAddress.Text;
+                resultRow["salesman"] = cbxSalesman.Text;
+                resultRow["invoiceref"] = txtInvoiceRef.Text;
+                resultRow["invoicedate"] = txtInvoiceDate.Text;
+                resultRow["warehouse"] = cbxwarehouse.Text;
+                resultRow["code"] = lblWcode.Text;
+                resultRow["typestock"] = cbxTypeS.Text;
+                result.Rows.Add(resultRow);
+                foreach (DataGridViewRow dRow in dataGridView1.Rows)
+                {
+                    if (dataGridView1.Rows.IndexOf(dRow) == dataGridView1.Rows.Count - 1)
+                        break;
+                    resultRow = result.NewRow();
+                    resultRow["productcode"] = dRow.Cells[colCode.Name].Value;
+                    resultRow["description"] = dRow.Cells[colDescription.Name].Value;
+                    resultRow["uom"] = dRow.Cells[colUnit.Name].Value;
+                    resultRow["qty"] = dRow.Cells[colQuantity.Name].Value;
+                    resultRow["price"] = dRow.Cells[colPrice.Name].Value;
+                    resultRow["amount"] = dRow.Cells[colTotal.Name].Value;
+                    result.Rows.Add(resultRow);
+                }
+                resultRow = result.NewRow();
+                resultRow["rgsno"] = txtRgsNo.Text;
+                resultRow["reason"] = txtRemarks.Text;
+                resultRow["transcode"] = txtTransCode.Text;
+                resultRow["received"] = txtReceived.Text;
+                resultRow["receiveddate"] = txtDateR.Text;
+                result.Rows.Add(resultRow);
+                var viewer = new CrystalReport.Report();
+                ReportDocument ReportDocs = new ReportDocument();
+                ReportDocs = new CrystalReport.returns();
+                ReportDocs.Database.Tables[0].SetDataSource(result);
+                viewer.Viewer.ReportSource = ReportDocs;
+                viewer.ShowDialog();
+                //dialog.ShowDialog();
+                if (viewer._status == "save")
+                {
+                    saved();
+                    clear();
+                }
             }
             else
             {
@@ -264,10 +328,10 @@ namespace OMS.Incoming
         {
             try
             {
-                var dt = DataSupport.RunDataSet("SELECT  transport_id FROM [TransportProviders] where description = '" + cbxwarehouse.Text + "' ").Tables[0];
+                var dt = DataSupport.RunDataSet("SELECT  warehouseCode FROM [Warehouses] where warehouse_id = '" + cbxwarehouse.Text + "' ").Tables[0];
                 foreach (DataRow row in dt.Rows)
                 {
-                    lblWcode.Text = row["transport_id"].ToString();
+                    lblWcode.Text = row["warehouseCode"].ToString();
                 }
             }
             catch

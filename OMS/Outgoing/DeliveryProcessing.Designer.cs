@@ -151,15 +151,16 @@
             // 
             // txtTypeStock
             // 
+            this.txtTypeStock.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtTypeStock.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTypeStock.FormattingEnabled = true;
             this.txtTypeStock.Items.AddRange(new object[] {
             "GOOD STOCKS",
             "DAMAGE STOCKS"});
-            this.txtTypeStock.Location = new System.Drawing.Point(94, 5);
+            this.txtTypeStock.Location = new System.Drawing.Point(85, 5);
             this.txtTypeStock.Margin = new System.Windows.Forms.Padding(2);
             this.txtTypeStock.Name = "txtTypeStock";
-            this.txtTypeStock.Size = new System.Drawing.Size(122, 23);
+            this.txtTypeStock.Size = new System.Drawing.Size(138, 23);
             this.txtTypeStock.TabIndex = 48;
             // 
             // label1
@@ -193,7 +194,7 @@
             this.cbxCustName.Location = new System.Drawing.Point(118, 6);
             this.cbxCustName.Margin = new System.Windows.Forms.Padding(2);
             this.cbxCustName.Name = "cbxCustName";
-            this.cbxCustName.Size = new System.Drawing.Size(314, 22);
+            this.cbxCustName.Size = new System.Drawing.Size(322, 22);
             this.cbxCustName.TabIndex = 50;
             this.cbxCustName.SelectedValueChanged += new System.EventHandler(this.cbxCustName_SelectedValueChanged);
             // 
@@ -284,7 +285,7 @@
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(248, 35);
-            this.panel6.TabIndex = 8;
+            this.panel6.TabIndex = 5;
             // 
             // txtRefno
             // 
@@ -318,7 +319,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(248, 35);
-            this.panel7.TabIndex = 9;
+            this.panel7.TabIndex = 6;
             // 
             // txtRefDate
             // 
@@ -351,16 +352,16 @@
             this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(248, 35);
-            this.panel8.TabIndex = 6;
+            this.panel8.TabIndex = 4;
             // 
             // cbxWarehouse
             // 
             this.cbxWarehouse.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxWarehouse.FormattingEnabled = true;
-            this.cbxWarehouse.Location = new System.Drawing.Point(90, 6);
+            this.cbxWarehouse.Location = new System.Drawing.Point(90, 5);
             this.cbxWarehouse.Margin = new System.Windows.Forms.Padding(2);
             this.cbxWarehouse.Name = "cbxWarehouse";
-            this.cbxWarehouse.Size = new System.Drawing.Size(149, 23);
+            this.cbxWarehouse.Size = new System.Drawing.Size(154, 23);
             this.cbxWarehouse.TabIndex = 49;
             this.cbxWarehouse.SelectedValueChanged += new System.EventHandler(this.cbxWarehouse_SelectedValueChanged);
             // 
@@ -550,7 +551,7 @@
             this.dataGridView1.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(698, 236);
-            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // colCode
@@ -568,6 +569,7 @@
             this.colCode.Name = "colCode";
             this.colCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.colCode.Width = 120;
             // 
             // colDescription
             // 
@@ -616,7 +618,7 @@
             this.panel13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(444, 35);
-            this.panel13.TabIndex = 11;
+            this.panel13.TabIndex = 8;
             // 
             // txtReason
             // 
@@ -650,7 +652,7 @@
             this.btnDeclare.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeclare.Name = "btnDeclare";
             this.btnDeclare.Size = new System.Drawing.Size(115, 45);
-            this.btnDeclare.TabIndex = 12;
+            this.btnDeclare.TabIndex = 9;
             this.btnDeclare.Text = "Declare";
             this.btnDeclare.UseVisualStyleBackColor = false;
             this.btnDeclare.Click += new System.EventHandler(this.btnDeclare_Click);
@@ -665,16 +667,16 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(275, 37);
-            this.panel14.TabIndex = 5;
+            this.panel14.TabIndex = 3;
             // 
             // txtTransportProvider
             // 
             this.txtTransportProvider.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTransportProvider.FormattingEnabled = true;
-            this.txtTransportProvider.Location = new System.Drawing.Point(127, 8);
+            this.txtTransportProvider.Location = new System.Drawing.Point(117, 7);
             this.txtTransportProvider.Margin = new System.Windows.Forms.Padding(2);
             this.txtTransportProvider.Name = "txtTransportProvider";
-            this.txtTransportProvider.Size = new System.Drawing.Size(137, 23);
+            this.txtTransportProvider.Size = new System.Drawing.Size(154, 23);
             this.txtTransportProvider.TabIndex = 41;
             this.txtTransportProvider.SelectedValueChanged += new System.EventHandler(this.txtTransportProvider_SelectedValueChanged);
             // 
@@ -802,10 +804,10 @@
         public System.Windows.Forms.Label txtCodeD;
         public System.Windows.Forms.Label txtAddressD;
         public System.Windows.Forms.Label txtCodeS;
+        public System.Windows.Forms.Label label4;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn colCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
         private System.Windows.Forms.DataGridViewComboBoxColumn colUnit;
         private DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn colQuantity;
-        public System.Windows.Forms.Label label4;
     }
 }

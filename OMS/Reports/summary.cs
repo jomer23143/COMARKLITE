@@ -55,6 +55,7 @@ namespace OMS.Reports
                 var dt = DataSupport.RunDataSet("Select docNo,document_reference_date,customer_name,amountD,zone,shippingInstruction from OutgoingShipmentRequests " +
                     "join TransportCustomers on customer_id = custCode where outgoing_type = '" + sales +"'").Tables[0];
                 dataGridView1.DataSource = dt;
+                
             }
             else if(comboBox1.Text == "Delivery")
             {
@@ -62,6 +63,7 @@ namespace OMS.Reports
                 var dt = DataSupport.RunDataSet("Select docNo,document_reference_date,customer_name,amountD,zone,shippingInstruction from OutgoingShipmentRequests " +
                     "join TransportCustomers on customer_id = custCode where outgoing_type = '" + dr + "'").Tables[0];
                 dataGridView1.DataSource = dt;
+            
             }
             else
             {
@@ -69,6 +71,7 @@ namespace OMS.Reports
                 var dt = DataSupport.RunDataSet("Select docNo,document_reference_date,customer_name,amountD,zone,shippingInstruction from OutgoingShipmentRequests " +
                     "join TransportCustomers on customer_id = custCode where outgoing_type = '" + str + "'").Tables[0];
                 dataGridView1.DataSource = dt;
+                
             }
         }
 

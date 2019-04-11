@@ -41,6 +41,12 @@
             this.txtIncomingType = new System.Windows.Forms.ComboBox();
             this.txtDocDate = new System.Windows.Forms.DateTimePicker();
             this.headerGrid = new System.Windows.Forms.DataGridView();
+            this.colCode = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uom = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.lot_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expiry = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDeclare = new System.Windows.Forms.Button();
             this.txtWarehouse = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -75,12 +81,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtClient = new System.Windows.Forms.ComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.colCode = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uom = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.lot_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expiry = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.headerGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -232,11 +232,95 @@
             this.headerGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.headerGrid.RowTemplate.Height = 28;
             this.headerGrid.Size = new System.Drawing.Size(858, 212);
-            this.headerGrid.TabIndex = 12;
+            this.headerGrid.TabIndex = 11;
             this.headerGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.headerGrid_CellContentClick);
             this.headerGrid.CellStyleChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.headerGrid_CellStyleChanged);
             this.headerGrid.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.headerGrid_CellValueChanged);
             this.headerGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.headerGrid_KeyDown);
+            // 
+            // colCode
+            // 
+            this.colCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.colCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.colCode.DisplayMember = "Text";
+            this.colCode.DropDownHeight = 106;
+            this.colCode.DropDownWidth = 121;
+            this.colCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colCode.HeaderText = "Product Code";
+            this.colCode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.colCode.IntegralHeight = false;
+            this.colCode.ItemHeight = 15;
+            this.colCode.Name = "colCode";
+            this.colCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.colCode.Width = 130;
+            // 
+            // colDescription
+            // 
+            this.colDescription.HeaderText = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.Width = 350;
+            // 
+            // uom
+            // 
+            this.uom.HeaderText = "Uom";
+            this.uom.Items.AddRange(new object[] {
+            "PC",
+            "CS",
+            "PK",
+            "CARD",
+            "BOT",
+            "SET",
+            "CAN"});
+            this.uom.Name = "uom";
+            this.uom.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.uom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.uom.Width = 70;
+            // 
+            // lot_no
+            // 
+            this.lot_no.HeaderText = "Lot No.";
+            this.lot_no.Name = "lot_no";
+            this.lot_no.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.lot_no.Width = 70;
+            // 
+            // expiry
+            // 
+            // 
+            // 
+            // 
+            this.expiry.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.expiry.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
+            this.expiry.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.expiry.BackgroundStyle.TextColor = System.Drawing.Color.Black;
+            this.expiry.HeaderText = "Expiry";
+            this.expiry.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.expiry.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.expiry.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            // 
+            // 
+            // 
+            this.expiry.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.expiry.MonthCalendar.DisplayMonth = new System.DateTime(2018, 11, 1, 0, 0, 0, 0);
+            // 
+            // 
+            // 
+            this.expiry.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.expiry.Name = "expiry";
+            this.expiry.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.expiry.Width = 70;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "Qty";
+            this.qty.Name = "qty";
+            this.qty.Width = 70;
             // 
             // btnDeclare
             // 
@@ -248,7 +332,7 @@
             this.btnDeclare.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeclare.Name = "btnDeclare";
             this.btnDeclare.Size = new System.Drawing.Size(134, 46);
-            this.btnDeclare.TabIndex = 13;
+            this.btnDeclare.TabIndex = 12;
             this.btnDeclare.Text = "Declare";
             this.btnDeclare.UseVisualStyleBackColor = false;
             this.btnDeclare.Click += new System.EventHandler(this.btnDeclare_Click);
@@ -513,7 +597,7 @@
             this.panel13.Location = new System.Drawing.Point(439, 185);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(427, 35);
-            this.panel13.TabIndex = 11;
+            this.panel13.TabIndex = 10;
             // 
             // txtShipped
             // 
@@ -549,6 +633,7 @@
             // 
             // txtTypeStocks
             // 
+            this.txtTypeStocks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtTypeStocks.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTypeStocks.FormattingEnabled = true;
             this.txtTypeStocks.Items.AddRange(new object[] {
@@ -609,90 +694,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(192, 44);
             this.panel7.TabIndex = 10;
-            // 
-            // colCode
-            // 
-            this.colCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.colCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.colCode.DisplayMember = "Text";
-            this.colCode.DropDownHeight = 106;
-            this.colCode.DropDownWidth = 121;
-            this.colCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colCode.HeaderText = "Product Code";
-            this.colCode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.colCode.IntegralHeight = false;
-            this.colCode.ItemHeight = 15;
-            this.colCode.Name = "colCode";
-            this.colCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.colCode.Width = 130;
-            // 
-            // colDescription
-            // 
-            this.colDescription.HeaderText = "Description";
-            this.colDescription.Name = "colDescription";
-            this.colDescription.Width = 350;
-            // 
-            // uom
-            // 
-            this.uom.HeaderText = "Uom";
-            this.uom.Items.AddRange(new object[] {
-            "PC",
-            "CS",
-            "PK",
-            "CARD",
-            "BOT",
-            "SET",
-            "CAN"});
-            this.uom.Name = "uom";
-            this.uom.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.uom.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.uom.Width = 70;
-            // 
-            // lot_no
-            // 
-            this.lot_no.HeaderText = "Lot No.";
-            this.lot_no.Name = "lot_no";
-            this.lot_no.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.lot_no.Width = 70;
-            // 
-            // expiry
-            // 
-            // 
-            // 
-            // 
-            this.expiry.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.expiry.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
-            this.expiry.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.expiry.BackgroundStyle.TextColor = System.Drawing.Color.Black;
-            this.expiry.HeaderText = "Expiry";
-            this.expiry.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.expiry.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.expiry.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            // 
-            // 
-            // 
-            this.expiry.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.expiry.MonthCalendar.DisplayMonth = new System.DateTime(2018, 11, 1, 0, 0, 0, 0);
-            // 
-            // 
-            // 
-            this.expiry.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.expiry.Name = "expiry";
-            this.expiry.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.expiry.Width = 70;
-            // 
-            // qty
-            // 
-            this.qty.HeaderText = "Qty";
-            this.qty.Name = "qty";
-            this.qty.Width = 70;
             // 
             // NewIncomingWindow
             // 

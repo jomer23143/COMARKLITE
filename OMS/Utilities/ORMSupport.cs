@@ -155,11 +155,11 @@ namespace Framework
                 if (primary_values.Keys.Contains(cleaned))
                     continue;
                 String value = updateList[columns[i]].Replace("'", "''");
-                string delimiter = "'";
+                //string delimiter = "'";
                 if (value == "")
                 {
                     value = "NULL";
-                    delimiter = "";
+                    //delimiter = "";
                 }
                 result += String.Format(" {0} = '{1}' " + ((i == columns.Count - 1) ? "" : ","), cleaned, value);
             }

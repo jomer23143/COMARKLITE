@@ -67,6 +67,7 @@
             this.Controls.Add(this.btnPrintPreview);
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "Report";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Report";
             this.ResumeLayout(false);
 

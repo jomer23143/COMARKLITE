@@ -29,12 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.colCode = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.colQuantity = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
+            this.colUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
+            this.colAmount = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
             this.panel14 = new System.Windows.Forms.Panel();
             this.txtAmountD = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -78,12 +84,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtTerrCode = new System.Windows.Forms.TextBox();
             this.txtTin = new System.Windows.Forms.Label();
-            this.colCode = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
-            this.colQuantity = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
-            this.colUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
-            this.colAmount = new DevComponents.DotNetBar.Controls.DataGridViewDoubleInputColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel14.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -95,15 +95,15 @@
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCode,
@@ -116,15 +116,110 @@
             this.dataGridView1.Location = new System.Drawing.Point(17, 187);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(8, 9, 8, 9);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(924, 208);
-            this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+            // 
+            // colCode
+            // 
+            this.colCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.colCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.colCode.DisplayMember = "Text";
+            this.colCode.DropDownHeight = 106;
+            this.colCode.DropDownWidth = 121;
+            this.colCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colCode.HeaderText = "Product Code";
+            this.colCode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.colCode.IntegralHeight = false;
+            this.colCode.ItemHeight = 15;
+            this.colCode.Name = "colCode";
+            this.colCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.colCode.Width = 130;
+            // 
+            // colQuantity
+            // 
+            // 
+            // 
+            // 
+            this.colQuantity.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.colQuantity.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.colQuantity.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.colQuantity.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colQuantity.DefaultCellStyle = dataGridViewCellStyle7;
+            this.colQuantity.HeaderText = "Quantity";
+            this.colQuantity.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
+            this.colQuantity.Name = "colQuantity";
+            this.colQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colUnit
+            // 
+            this.colUnit.HeaderText = "UOM";
+            this.colUnit.Items.AddRange(new object[] {
+            "PC",
+            "CS",
+            "CARD",
+            "PK",
+            "BOT",
+            "SET",
+            "CAN"});
+            this.colUnit.Name = "colUnit";
+            this.colUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colDescription
+            // 
+            this.colDescription.HeaderText = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.ReadOnly = true;
+            this.colDescription.Width = 330;
+            // 
+            // colPrice
+            // 
+            // 
+            // 
+            // 
+            this.colPrice.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.colPrice.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.colPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.colPrice.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colPrice.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colPrice.DisplayFormat = "0.00";
+            this.colPrice.HeaderText = "U-Price";
+            this.colPrice.Increment = 1D;
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            this.colPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // colAmount
+            // 
+            // 
+            // 
+            // 
+            this.colAmount.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.colAmount.BackgroundStyle.Class = "DataGridViewNumericBorder";
+            this.colAmount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.colAmount.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.colAmount.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colAmount.DisplayFormat = "0.00";
+            this.colAmount.HeaderText = "Amount";
+            this.colAmount.Increment = 1D;
+            this.colAmount.Name = "colAmount";
+            this.colAmount.ReadOnly = true;
+            this.colAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // panel14
             // 
@@ -630,7 +725,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox1.Size = new System.Drawing.Size(924, 175);
-            this.groupBox1.TabIndex = 72;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
@@ -643,7 +738,7 @@
             this.txtTerrCode.Multiline = true;
             this.txtTerrCode.Name = "txtTerrCode";
             this.txtTerrCode.Size = new System.Drawing.Size(163, 23);
-            this.txtTerrCode.TabIndex = 13;
+            this.txtTerrCode.TabIndex = 8;
             // 
             // txtTin
             // 
@@ -654,101 +749,6 @@
             this.txtTin.Size = new System.Drawing.Size(0, 15);
             this.txtTin.TabIndex = 12;
             this.txtTin.Click += new System.EventHandler(this.txtTin_Click);
-            // 
-            // colCode
-            // 
-            this.colCode.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.colCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.colCode.DisplayMember = "Text";
-            this.colCode.DropDownHeight = 106;
-            this.colCode.DropDownWidth = 121;
-            this.colCode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colCode.HeaderText = "Product Code";
-            this.colCode.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.colCode.IntegralHeight = false;
-            this.colCode.ItemHeight = 15;
-            this.colCode.Name = "colCode";
-            this.colCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.colCode.Width = 130;
-            // 
-            // colQuantity
-            // 
-            // 
-            // 
-            // 
-            this.colQuantity.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.colQuantity.BackgroundStyle.Class = "DataGridViewNumericBorder";
-            this.colQuantity.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.colQuantity.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colQuantity.HeaderText = "Quantity";
-            this.colQuantity.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Center;
-            this.colQuantity.Name = "colQuantity";
-            this.colQuantity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // colUnit
-            // 
-            this.colUnit.HeaderText = "UOM";
-            this.colUnit.Items.AddRange(new object[] {
-            "PC",
-            "CS",
-            "CARD",
-            "PK",
-            "BOT",
-            "SET",
-            "CAN"});
-            this.colUnit.Name = "colUnit";
-            this.colUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colDescription
-            // 
-            this.colDescription.HeaderText = "Description";
-            this.colDescription.Name = "colDescription";
-            this.colDescription.ReadOnly = true;
-            this.colDescription.Width = 330;
-            // 
-            // colPrice
-            // 
-            // 
-            // 
-            // 
-            this.colPrice.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.colPrice.BackgroundStyle.Class = "DataGridViewNumericBorder";
-            this.colPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.colPrice.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colPrice.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colPrice.DisplayFormat = "0.00";
-            this.colPrice.HeaderText = "U-Price";
-            this.colPrice.Increment = 1D;
-            this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            this.colPrice.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // colAmount
-            // 
-            // 
-            // 
-            // 
-            this.colAmount.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.colAmount.BackgroundStyle.Class = "DataGridViewNumericBorder";
-            this.colAmount.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.colAmount.BackgroundStyle.TextColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.colAmount.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colAmount.DisplayFormat = "0.00";
-            this.colAmount.HeaderText = "Amount";
-            this.colAmount.Increment = 1D;
-            this.colAmount.Name = "colAmount";
-            this.colAmount.ReadOnly = true;
-            this.colAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // SalerProcessing
             // 

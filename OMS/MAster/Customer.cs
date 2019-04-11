@@ -102,6 +102,7 @@ namespace OMS.MAster
             txtcontact.Clear();
             txtcustname.Clear();
             txtTransport.SelectedIndex = -1;
+            txtAddress.Clear();
             txtTerms.Clear();
             txtpostCode.Clear();
             txtTin.Clear();

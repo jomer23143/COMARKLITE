@@ -33,16 +33,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.colDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colZone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,6 +96,49 @@
             this.dataGridView1.Size = new System.Drawing.Size(867, 391);
             this.dataGridView1.TabIndex = 0;
             // 
+            // colDoc
+            // 
+            this.colDoc.DataPropertyName = "docNo";
+            this.colDoc.HeaderText = "Doc No";
+            this.colDoc.Name = "colDoc";
+            this.colDoc.ReadOnly = true;
+            // 
+            // colDate
+            // 
+            this.colDate.DataPropertyName = "document_reference_date";
+            this.colDate.HeaderText = "Date";
+            this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
+            this.colDate.Width = 200;
+            // 
+            // colCustomer
+            // 
+            this.colCustomer.DataPropertyName = "customer_name";
+            this.colCustomer.HeaderText = "Customer Name";
+            this.colCustomer.Name = "colCustomer";
+            this.colCustomer.ReadOnly = true;
+            this.colCustomer.Width = 300;
+            // 
+            // colAmount
+            // 
+            this.colAmount.DataPropertyName = "amountD";
+            this.colAmount.HeaderText = "Amount";
+            this.colAmount.Name = "colAmount";
+            this.colAmount.ReadOnly = true;
+            // 
+            // colZone
+            // 
+            this.colZone.DataPropertyName = "zone";
+            this.colZone.HeaderText = "Zone";
+            this.colZone.Name = "colZone";
+            this.colZone.ReadOnly = true;
+            // 
+            // colRemarks
+            // 
+            this.colRemarks.DataPropertyName = "shippingInstruction";
+            this.colRemarks.HeaderText = "Remarks";
+            this.colRemarks.Name = "colRemarks";
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
@@ -147,49 +190,6 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // colDoc
-            // 
-            this.colDoc.DataPropertyName = "docNo";
-            this.colDoc.HeaderText = "Doc No";
-            this.colDoc.Name = "colDoc";
-            this.colDoc.ReadOnly = true;
-            // 
-            // colDate
-            // 
-            this.colDate.DataPropertyName = "document_reference_date";
-            this.colDate.HeaderText = "Date";
-            this.colDate.Name = "colDate";
-            this.colDate.ReadOnly = true;
-            this.colDate.Width = 200;
-            // 
-            // colCustomer
-            // 
-            this.colCustomer.DataPropertyName = "customer_name";
-            this.colCustomer.HeaderText = "Customer Name";
-            this.colCustomer.Name = "colCustomer";
-            this.colCustomer.ReadOnly = true;
-            this.colCustomer.Width = 300;
-            // 
-            // colAmount
-            // 
-            this.colAmount.DataPropertyName = "amountD";
-            this.colAmount.HeaderText = "Amount";
-            this.colAmount.Name = "colAmount";
-            this.colAmount.ReadOnly = true;
-            // 
-            // colZone
-            // 
-            this.colZone.DataPropertyName = "zone";
-            this.colZone.HeaderText = "Zone";
-            this.colZone.Name = "colZone";
-            this.colZone.ReadOnly = true;
-            // 
-            // colRemarks
-            // 
-            this.colRemarks.DataPropertyName = "shippingInstruction";
-            this.colRemarks.HeaderText = "Remarks";
-            this.colRemarks.Name = "colRemarks";
-            // 
             // summary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,6 +201,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "summary";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "summary";

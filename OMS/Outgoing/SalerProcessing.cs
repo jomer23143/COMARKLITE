@@ -277,7 +277,7 @@ namespace OMS.Outgoing
                 viewer.ShowDialog();
                 if (viewer._status == "save")
                 {
-                    //saved();
+                    saved();
                     clear();
                 }
 

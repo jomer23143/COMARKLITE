@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
 using Framework;
 
 namespace OMS.Outgoing
@@ -91,11 +92,58 @@ namespace OMS.Outgoing
             }
             if (!status)
             {
-                dialog.ShowDialog();
-                if (Form1.status == true)
+                System.Data.DataTable result = new System.Data.DataTable();
+                result.Columns.Add(new DataColumn("drno", typeof(String)));
+                result.Columns.Add(new DataColumn("custname", typeof(String)));
+                result.Columns.Add(new DataColumn("custCode", typeof(String)));
+                result.Columns.Add(new DataColumn("address", typeof(String)));
+                result.Columns.Add(new DataColumn("refno", typeof(String)));
+                result.Columns.Add(new DataColumn("refdate", typeof(DateTime)));
+                result.Columns.Add(new DataColumn("warehouse", typeof(String)));
+                result.Columns.Add(new DataColumn("code", typeof(String)));
+                result.Columns.Add(new DataColumn("productcode", typeof(String)));
+                result.Columns.Add(new DataColumn("description", typeof(String)));
+                result.Columns.Add(new DataColumn("uom", typeof(String)));
+                result.Columns.Add(new DataColumn("qty", typeof(String)));
+                result.Columns.Add(new DataColumn("reason", typeof(String)));
+                result.Columns.Add(new DataColumn("typestock", typeof(String)));
+                DataRow resultRow = result.NewRow();
+                resultRow = result.NewRow();
+                resultRow["drno"] = txtDrno.Text;
+                resultRow["custname"] = cbxCustName.Text;
+                resultRow["custCode"] = txtCodeD.Text;
+                resultRow["address"] = txtAddressD.Text;
+                resultRow["refno"] = txtRefno.Text;
+                resultRow["refdate"] = txtRefDate.Text;
+                resultRow["warehouse"] = cbxWarehouse.Text;
+                resultRow["code"] = txtCodeS.Text;
+                resultRow["typestock"] = txtTypeStock.Text;
+                result.Rows.Add(resultRow);
+                foreach (DataGridViewRow dRow in dataGridView1.Rows)
                 {
-                    //saved();
-                    //clear(); 
+                    if (dataGridView1.Rows.IndexOf(dRow) == dataGridView1.Rows.Count - 1)
+                        break;
+                    resultRow = result.NewRow();
+                    resultRow["productcode"] = dRow.Cells[colCode.Name].Value;
+                    resultRow["description"] = dRow.Cells[colDescription.Name].Value;
+                    resultRow["uom"] = dRow.Cells[colUnit.Name].Value;
+                    resultRow["qty"] = dRow.Cells[colQuantity.Name].Value;
+                    result.Rows.Add(resultRow);
+                }
+                resultRow = result.NewRow();
+                resultRow["reason"] = txtReason.Text;
+                result.Rows.Add(resultRow);
+                var viewer = new CrystalReport.Report();
+                ReportDocument ReportDocs = new ReportDocument();
+                ReportDocs = new CrystalReport.Delivery();
+                ReportDocs.Database.Tables[0].SetDataSource(result);
+                viewer.Viewer.ReportSource = ReportDocs;
+                viewer.ShowDialog();
+                //dialog.ShowDialog();
+                if (viewer._status == "save")
+                {
+                    saved();
+                    clear();
                 }
                 else
                 { }
