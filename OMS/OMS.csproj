@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OMS</RootNamespace>
     <AssemblyName>OMS</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,20 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\VglOmsLite\VglOmsLite4\VglOmsLite\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2">
+      <HintPath>..\..\..\dotNet\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
-    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=12.6.0.4, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\DevComponents.DotNetBar.SuperGrid.dll</HintPath>
-    </Reference>
-    <Reference Include="DevComponents.DotNetBar2, Version=12.6.0.4, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\DevComponents.DotNetBar2.dll</HintPath>
-    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -64,6 +63,51 @@
     </Compile>
     <Compile Include="ConnectionSettings.designer.cs">
       <DependentUpon>ConnectionSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport\ConversionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConversionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport\Delivery.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Delivery.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport\invoiceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReport\invoiceReport.Designer.cs">
+      <DependentUpon>invoiceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport\Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrystalReport\Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport\returns.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>returns.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport\salesReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>salesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport\str.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>str.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dataset\DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Dataset\DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -125,11 +169,29 @@
     <Compile Include="MAster\ListCustomer.Designer.cs">
       <DependentUpon>ListCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="MAster\ListProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MAster\ListProducts.Designer.cs">
+      <DependentUpon>ListProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MAster\products.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MAster\products.Designer.cs">
+      <DependentUpon>products.cs</DependentUpon>
+    </Compile>
     <Compile Include="MAster\ProductsList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MAster\ProductsList.Designer.cs">
       <DependentUpon>ProductsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Outgoing\Conversion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outgoing\Conversion.Designer.cs">
+      <DependentUpon>Conversion.cs</DependentUpon>
     </Compile>
     <Compile Include="Outgoing\DeliveryProcessing.cs">
       <SubType>Form</SubType>
@@ -137,11 +199,23 @@
     <Compile Include="Outgoing\DeliveryProcessing.Designer.cs">
       <DependentUpon>DeliveryProcessing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Outgoing\Invoicing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outgoing\Invoicing.Designer.cs">
+      <DependentUpon>Invoicing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Outgoing\ManageOutgoingWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Outgoing\ManageOutgoingWindow.Designer.cs">
       <DependentUpon>ManageOutgoingWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Outgoing\message.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outgoing\message.Designer.cs">
+      <DependentUpon>message.cs</DependentUpon>
     </Compile>
     <Compile Include="Outgoing\NewOutgoingWindow.cs">
       <SubType>Form</SubType>
@@ -149,11 +223,23 @@
     <Compile Include="Outgoing\NewOutgoingWindow.Designer.cs">
       <DependentUpon>NewOutgoingWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Outgoing\Release.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outgoing\Release.Designer.cs">
+      <DependentUpon>Release.cs</DependentUpon>
+    </Compile>
     <Compile Include="Outgoing\SalerProcessing.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Outgoing\SalerProcessing.Designer.cs">
       <DependentUpon>SalerProcessing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Outgoing\StockRelease.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Outgoing\StockRelease.Designer.cs">
+      <DependentUpon>StockRelease.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,6 +250,12 @@
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
     <Compile Include="RegistrationSupport.cs" />
+    <Compile Include="Reports\summary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\summary.Designer.cs">
+      <DependentUpon>summary.cs</DependentUpon>
+    </Compile>
     <Compile Include="SecuritySupport.cs" />
     <Compile Include="Utilities\DataSupport.cs" />
     <Compile Include="Utilities\FAQ.cs" />
@@ -180,6 +272,32 @@
     <Compile Include="Utilities\Utils.cs" />
     <EmbeddedResource Include="ConnectionSettings.resx">
       <DependentUpon>ConnectionSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport\ConversionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ConversionReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport\Delivery.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Delivery.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport\invoiceReport.resx">
+      <DependentUpon>invoiceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport\Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport\returns.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>returns.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport\salesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>salesReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport\str.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>str.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -208,20 +326,41 @@
     <EmbeddedResource Include="MAster\ListCustomer.resx">
       <DependentUpon>ListCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MAster\ListProducts.resx">
+      <DependentUpon>ListProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MAster\products.resx">
+      <DependentUpon>products.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MAster\ProductsList.resx">
       <DependentUpon>ProductsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Outgoing\Conversion.resx">
+      <DependentUpon>Conversion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Outgoing\DeliveryProcessing.resx">
       <DependentUpon>DeliveryProcessing.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Outgoing\Invoicing.resx">
+      <DependentUpon>Invoicing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Outgoing\ManageOutgoingWindow.resx">
       <DependentUpon>ManageOutgoingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Outgoing\message.resx">
+      <DependentUpon>message.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Outgoing\NewOutgoingWindow.resx">
       <DependentUpon>NewOutgoingWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Outgoing\Release.resx">
+      <DependentUpon>Release.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Outgoing\SalerProcessing.resx">
       <DependentUpon>SalerProcessing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Outgoing\StockRelease.resx">
+      <DependentUpon>StockRelease.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -235,6 +374,9 @@
     </Compile>
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\summary.resx">
+      <DependentUpon>summary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilities\SelectGridWindow.resx">
       <DependentUpon>SelectGridWindow.cs</DependentUpon>
@@ -264,17 +406,33 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Reports\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Sales.Html" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\incoming.Html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\drReport.html" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\summary.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Returns.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Stocktranfer.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salesReport.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dr.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\incoming.Html" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

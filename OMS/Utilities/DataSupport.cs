@@ -38,6 +38,7 @@ namespace Framework
                     result = connectString;
                 return result;
              }
+            set { connectString = value; }
         }
         SqlConnection conn;
 

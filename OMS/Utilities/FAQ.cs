@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using Framework;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 public class FAQ
 {
+    static Dictionary<String, Dictionary<String, String>> dbconnection;
     public static Boolean IsPicklistForDisposal(String picklist_id)
     {
         var dt = DataSupport.RunDataSet("SELECT * FROM ForDisposals WHERE disposed_to IS NULL AND trans_id = '" + picklist_id + "'").Tables[0];
@@ -265,9 +267,9 @@ public class FAQ
         else
         { return DataSupport.RunDataSet(" Select ISNULL(max(transID),0) + 1 from StocktransferRequest").Tables[0].Rows[0][0].ToString(); }
     }
-    public static Boolean productPriceExist(String productCode, String uom,int type)
+    public static Boolean productPriceExist(int id, String uom,String type)
     {
-        var dt = DataSupport.RunDataSet("select * from itemPrice i join products p on i.productID = p.product_id join uom U on i.uom = u.uom join priceType t on i.priceTypeId = t.priceTypeId where i.productID = '" + productCode + "' and i.uom = '" + uom + "' and i.priceTypeID = '" + type + "'").Tables[0];
+        var dt = DataSupport.RunDataSet("select * from itemPrice i where i.productID = '" + id + "' and i.uom = '" + uom + "' and i.priceTypeID = '" + type + "'").Tables[0];
         if (dt.Rows.Count > 0)
             return true;
         return false;
@@ -288,6 +290,27 @@ public class FAQ
             return true;
         return false;
 
+    }
+    public static int getconversionNo()
+    {
+        int conversion = 0;
+        var dt = DataSupport.RunDataSet("Select max(conversionNo) from declarionofConversion").Tables[0];
+        foreach(DataRow row in dt.Rows)
+        {
+          conversion =  Convert.ToInt32(row[0].ToString());
+        }
+        return conversion + 1;
+    }
+
+    public static void getWms()
+    {
+        dbconnection = Utils.DBConnection;
+        DataSupport wms = new DataSupport("Initial Catalog=" + Utils.DBConnection["WMS"]["DBNAME"] + ";Data Source=" + Utils.DBConnection["WMS"]["SERVER"] + ";User Id = " + Utils.DBConnection["WMS"]["USERNAME"] + "; Password = " + Utils.DBConnection["WMS"]["PASSWORD"]);
+    }
+    public static void getTms()
+    {
+        dbconnection = Utils.DBConnection;
+        DataSupport tms = new DataSupport("Initial Catalog=" + Utils.DBConnection["TMS"]["DBNAME"] + ";Data Source=" + Utils.DBConnection["TMS"]["SERVER"] + ";User Id = " + Utils.DBConnection["TMS"]["USERNAME"] + "; Password = " + Utils.DBConnection["TMS"]["PASSWORD"]);
     }
 
 }

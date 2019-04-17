@@ -43,7 +43,7 @@ namespace OMS
                 var dialog = new MainMenu();
                 this.Visible = false;
                 dialog.ShowDialog();
-                this.Close();
+                this.Hide();
             }
             else
             {
@@ -61,6 +61,11 @@ namespace OMS
             {
                 button1.Focus();
             }
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

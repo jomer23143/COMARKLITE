@@ -17,8 +17,16 @@ namespace OMS.Incoming
         public NewIncomingWindow()
         {
             InitializeComponent();
+            design();
         }
-
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            headerGrid.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
+        }
         private void NewIncomingWindow_Load(object sender, EventArgs e)
         {
             {
@@ -40,10 +48,28 @@ namespace OMS.Incoming
             Form1 dialog = new Form1();
             dialog.INC = this;
             dialog.mode = 2;
-            if (dialog.ShowDialog() == DialogResult.OK)
+            bool status = false;
+            foreach (DataGridViewRow row in headerGrid.Rows)
             {
+                if (row.IsNewRow) continue;
+                if (String.IsNullOrWhiteSpace(row.Cells[uom.Name].Value as String))
+                {
+                    status = true;
+                }
+
+            }
+            if (!status)
+            {
+                dialog.ShowDialog();
                 if(Form1.status == true)
-                { saved(); clear(); }
+                {
+                    saved();
+                    clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Uom is empty");
             }
         }
         private void clear()
@@ -87,9 +113,10 @@ namespace OMS.Incoming
             header.Add("document_reference", txtReference.Text);
             header.Add("document_reference_date", txtDocDate.Text);
             header.Add("incoming_type", txtIncomingType.Text);
-            header.Add("client", txtClient.Text);
+            header.Add("client", "Comark");
             header.Add("received", txtReceived.Text);
             header.Add("shippedVia", txtShipped.Text);
+            header.Add("transCode", transcode.Text);
             header.Add("status", "FOR RECEIVING");
 
             sql.Append(DataSupport.GetInsert("IncomingShipmentRequests", header));
@@ -123,13 +150,6 @@ namespace OMS.Incoming
 
         private void headerGrid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-
-            //var dt = DataSupport.RunDataSet("SELECT product_id,description FROM Products where product_id  Like '%" + product + "%'").Tables[0];
-            //foreach (DataRow row in dt.Rows)
-            //{
-            //    product.Equals(row[0].ToString());
-
-            //}
             try
             {
 

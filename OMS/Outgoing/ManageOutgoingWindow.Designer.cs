@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.headerGrid = new System.Windows.Forms.DataGridView();
@@ -62,6 +64,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.headerGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -71,10 +74,10 @@
             this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
             this.btnNew.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.White;
-            this.btnNew.Location = new System.Drawing.Point(148, 26);
+            this.btnNew.Location = new System.Drawing.Point(141, 7);
             this.btnNew.Margin = new System.Windows.Forms.Padding(2);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(97, 46);
+            this.btnNew.Size = new System.Drawing.Size(113, 53);
             this.btnNew.TabIndex = 30;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = false;
@@ -85,10 +88,10 @@
             this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
             this.btnRefresh.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(23, 26);
+            this.btnRefresh.Location = new System.Drawing.Point(11, 7);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(2);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(97, 46);
+            this.btnRefresh.Size = new System.Drawing.Size(113, 53);
             this.btnRefresh.TabIndex = 29;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = false;
@@ -102,11 +105,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.headerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.headerGrid.BackgroundColor = System.Drawing.Color.LightGray;
+            this.headerGrid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(6);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -138,40 +142,44 @@
             this.colAmountd,
             this.colSr,
             this.colType});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.headerGrid.DefaultCellStyle = dataGridViewCellStyle2;
-            this.headerGrid.Location = new System.Drawing.Point(25, 75);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.headerGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.headerGrid.EnableHeadersVisualStyles = false;
+            this.headerGrid.Location = new System.Drawing.Point(13, 63);
             this.headerGrid.Margin = new System.Windows.Forms.Padding(2);
             this.headerGrid.Name = "headerGrid";
             this.headerGrid.ReadOnly = true;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.headerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.headerGrid.RowTemplate.Height = 28;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.headerGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
+            this.headerGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.headerGrid.RowTemplate.Height = 35;
             this.headerGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.headerGrid.Size = new System.Drawing.Size(815, 296);
+            this.headerGrid.Size = new System.Drawing.Size(989, 468);
             this.headerGrid.TabIndex = 28;
             this.headerGrid.VirtualMode = true;
             this.headerGrid.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.headerGrid_CellValidating);
             this.headerGrid.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.headerGrid_RowPrePaint);
+            this.headerGrid.DoubleClick += new System.EventHandler(this.headerGrid_DoubleClick);
             this.headerGrid.Validating += new System.ComponentModel.CancelEventHandler(this.headerGrid_Validating);
             // 
             // coloutshipid
             // 
             this.coloutshipid.DataPropertyName = "out_shipment_id";
-            this.coloutshipid.HeaderText = "Out Shipment ID";
+            this.coloutshipid.HeaderText = "Shipment ID";
             this.coloutshipid.Name = "coloutshipid";
             this.coloutshipid.ReadOnly = true;
-            this.coloutshipid.Width = 102;
+            this.coloutshipid.Width = 99;
             // 
             // colDocNo
             // 
@@ -179,7 +187,7 @@
             this.colDocNo.HeaderText = "Doc No";
             this.colDocNo.Name = "colDocNo";
             this.colDocNo.ReadOnly = true;
-            this.colDocNo.Width = 66;
+            this.colDocNo.Width = 77;
             // 
             // colwarehouse
             // 
@@ -187,7 +195,7 @@
             this.colwarehouse.HeaderText = "Warehouse";
             this.colwarehouse.Name = "colwarehouse";
             this.colwarehouse.ReadOnly = true;
-            this.colwarehouse.Width = 94;
+            this.colwarehouse.Width = 96;
             // 
             // colDateTime
             // 
@@ -195,7 +203,7 @@
             this.colDateTime.HeaderText = "Date and Time";
             this.colDateTime.Name = "colDateTime";
             this.colDateTime.ReadOnly = true;
-            this.colDateTime.Width = 101;
+            this.colDateTime.Width = 107;
             // 
             // colDocumentReference
             // 
@@ -211,7 +219,7 @@
             this.colClient.HeaderText = "Client";
             this.colClient.Name = "colClient";
             this.colClient.ReadOnly = true;
-            this.colClient.Width = 66;
+            this.colClient.Width = 73;
             // 
             // colAuthorizedtms
             // 
@@ -219,7 +227,7 @@
             this.colAuthorizedtms.HeaderText = "Authorized Tms";
             this.colAuthorizedtms.Name = "colAuthorizedtms";
             this.colAuthorizedtms.ReadOnly = true;
-            this.colAuthorizedtms.Width = 110;
+            this.colAuthorizedtms.Width = 115;
             // 
             // colRemarks
             // 
@@ -227,7 +235,7 @@
             this.colRemarks.HeaderText = "Remarks";
             this.colRemarks.Name = "colRemarks";
             this.colRemarks.ReadOnly = true;
-            this.colRemarks.Width = 83;
+            this.colRemarks.Width = 86;
             // 
             // coltripID
             // 
@@ -235,7 +243,7 @@
             this.coltripID.HeaderText = "Tms Trip ID";
             this.coltripID.Name = "coltripID";
             this.coltripID.ReadOnly = true;
-            this.coltripID.Width = 78;
+            this.coltripID.Width = 88;
             // 
             // colTripDate
             // 
@@ -243,7 +251,7 @@
             this.colTripDate.HeaderText = "Tms Trip Date";
             this.colTripDate.Name = "colTripDate";
             this.colTripDate.ReadOnly = true;
-            this.colTripDate.Width = 101;
+            this.colTripDate.Width = 108;
             // 
             // colWmsReleasedID
             // 
@@ -251,7 +259,7 @@
             this.colWmsReleasedID.HeaderText = "Wms Released ID";
             this.colWmsReleasedID.Name = "colWmsReleasedID";
             this.colWmsReleasedID.ReadOnly = true;
-            this.colWmsReleasedID.Width = 106;
+            this.colWmsReleasedID.Width = 108;
             // 
             // colWmsReleasedDate
             // 
@@ -267,7 +275,7 @@
             this.colCustID.HeaderText = "Customer ID";
             this.colCustID.Name = "colCustID";
             this.colCustID.ReadOnly = true;
-            this.colCustID.Width = 94;
+            this.colCustID.Width = 99;
             // 
             // colCustname
             // 
@@ -275,7 +283,7 @@
             this.colCustname.HeaderText = "Customer Name";
             this.colCustname.Name = "colCustname";
             this.colCustname.ReadOnly = true;
-            this.colCustname.Width = 110;
+            this.colCustname.Width = 113;
             // 
             // colCustInvoiceAddress
             // 
@@ -283,7 +291,7 @@
             this.colCustInvoiceAddress.HeaderText = "Customer Invoice Address";
             this.colCustInvoiceAddress.Name = "colCustInvoiceAddress";
             this.colCustInvoiceAddress.ReadOnly = true;
-            this.colCustInvoiceAddress.Width = 119;
+            this.colCustInvoiceAddress.Width = 122;
             // 
             // colCustDeliveryAddress
             // 
@@ -291,7 +299,7 @@
             this.colCustDeliveryAddress.HeaderText = "Customer Delivery Address";
             this.colCustDeliveryAddress.Name = "colCustDeliveryAddress";
             this.colCustDeliveryAddress.ReadOnly = true;
-            this.colCustDeliveryAddress.Width = 126;
+            this.colCustDeliveryAddress.Width = 128;
             // 
             // colStatus
             // 
@@ -299,7 +307,7 @@
             this.colStatus.HeaderText = "Status";
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
-            this.colStatus.Width = 67;
+            this.colStatus.Width = 74;
             // 
             // colDocumentReferenceDate
             // 
@@ -307,7 +315,7 @@
             this.colDocumentReferenceDate.HeaderText = "Document Reference Date";
             this.colDocumentReferenceDate.Name = "colDocumentReferenceDate";
             this.colDocumentReferenceDate.ReadOnly = true;
-            this.colDocumentReferenceDate.Width = 136;
+            this.colDocumentReferenceDate.Width = 135;
             // 
             // colOutgoingType
             // 
@@ -315,7 +323,7 @@
             this.colOutgoingType.HeaderText = "Outgoing Type";
             this.colOutgoingType.Name = "colOutgoingType";
             this.colOutgoingType.ReadOnly = true;
-            this.colOutgoingType.Width = 103;
+            this.colOutgoingType.Width = 108;
             // 
             // colPoNo
             // 
@@ -323,7 +331,7 @@
             this.colPoNo.HeaderText = "PO No";
             this.colPoNo.Name = "colPoNo";
             this.colPoNo.ReadOnly = true;
-            this.colPoNo.Width = 50;
+            this.colPoNo.Width = 60;
             // 
             // colTerms
             // 
@@ -331,7 +339,7 @@
             this.colTerms.HeaderText = "Terms";
             this.colTerms.Name = "colTerms";
             this.colTerms.ReadOnly = true;
-            this.colTerms.Width = 67;
+            this.colTerms.Width = 74;
             // 
             // colSIntruction
             // 
@@ -344,10 +352,12 @@
             // colAmountd
             // 
             this.colAmountd.DataPropertyName = "amountD";
+            dataGridViewCellStyle2.NullValue = "0.00";
+            this.colAmountd.DefaultCellStyle = dataGridViewCellStyle2;
             this.colAmountd.HeaderText = "Amount Due";
             this.colAmountd.Name = "colAmountd";
             this.colAmountd.ReadOnly = true;
-            this.colAmountd.Width = 92;
+            this.colAmountd.Width = 99;
             // 
             // colSr
             // 
@@ -355,7 +365,7 @@
             this.colSr.HeaderText = "Sales Representative";
             this.colSr.Name = "colSr";
             this.colSr.ReadOnly = true;
-            this.colSr.Width = 133;
+            this.colSr.Width = 132;
             // 
             // colType
             // 
@@ -363,7 +373,7 @@
             this.colType.HeaderText = "Type of Stocks";
             this.colType.Name = "colType";
             this.colType.ReadOnly = true;
-            this.colType.Width = 102;
+            this.colType.Width = 109;
             // 
             // panel1
             // 
@@ -372,18 +382,18 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtSearch);
-            this.panel1.Location = new System.Drawing.Point(573, 37);
+            this.panel1.Location = new System.Drawing.Point(688, 20);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(267, 31);
+            this.panel1.Size = new System.Drawing.Size(311, 35);
             this.panel1.TabIndex = 49;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 7);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(7, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 16);
+            this.label1.Size = new System.Drawing.Size(53, 15);
             this.label1.TabIndex = 29;
             this.label1.Text = "Search :";
             // 
@@ -392,21 +402,23 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(51, 8);
+            this.txtSearch.Location = new System.Drawing.Point(59, 9);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(205, 15);
+            this.txtSearch.Size = new System.Drawing.Size(239, 15);
             this.txtSearch.TabIndex = 28;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // ManageOutgoingWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 402);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(1015, 545);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.headerGrid);
+            this.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManageOutgoingWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -451,5 +463,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmountd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSr;
         private System.Windows.Forms.DataGridViewTextBoxColumn colType;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

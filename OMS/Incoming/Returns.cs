@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
 using Framework;
 
 namespace OMS.Incoming
@@ -16,8 +17,16 @@ namespace OMS.Incoming
         public Returns()
         {
             InitializeComponent();
+            design();
         }
-
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            dataGridView1.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
+        }
         private void Returns_Load(object sender, EventArgs e)
         {
             {
@@ -39,14 +48,14 @@ namespace OMS.Incoming
                 cbxSalesman.DisplayMember = "name";
             }
             {
-                cbxwarehouse.DataSource = DataSupport.RunDataSet("Select * from [TransportProviders]").Tables[0];
-                cbxwarehouse.ValueMember = "transport_id";
-                cbxwarehouse.DisplayMember = "description";
+                cbxwarehouse.DataSource = DataSupport.RunDataSet("Select * from [Warehouses]").Tables[0];
+                cbxwarehouse.ValueMember = "warehouse_id";
+                cbxwarehouse.DisplayMember = "warehouse_id";
                 
             }
 
-            priceType();
-            uom();
+            //priceType();
+            //uom();
         }
         private void uom()
         {
@@ -82,75 +91,36 @@ namespace OMS.Incoming
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            //try
-            //{
-
-            //    DataRow dRow = null;
-            //    String Code = dataGridView1.Rows[e.RowIndex].Cells["colCode"].Value.ToString();
-            //    GetProduct = Utils.BuildIndex("Select * from products", "product_id");
-            //    if (GetProduct.TryGetValue(Code, out dRow))
-            //    {
-
-            //        dataGridView1.Rows[e.RowIndex].Cells["colDescription"].Value = dRow["description"].ToString();
-            //        compute();
-            //    }
-
-
-            //}
-            //catch
-            //{ }
+           
             try
             {
-                String code = dataGridView1.Rows[e.RowIndex].Cells[colCode.Name].Value.ToString();
+                Object code = dataGridView1.Rows[e.RowIndex].Cells[colCode.Name].Value;
                 int rows1 = dataGridView1.Rows.Count;
                 if (rows1 <= 13)
                 {
-                    if (GetProducts(code))
+                        //if (e.ColumnIndex == dataGridView1.Columns["colUnit"].Index)
+                        //{
+                        //    String uom = dataGridView1.Rows[e.RowIndex].Cells[colUnit.Name].Value.ToString();
+                        //    var dt = DataSupport.RunDataSet("select * from itemPrice i join products p on i.productID = p.product_id join uom U on i.uom = u.uom join priceType t on i.priceTypeId = t.priceTypeId where productID = '" + Code + "'and i.uom = '" + uom + "'and i.priceTypeID  = '" + cbxpriceType.SelectedValue.ToString() + "'").Tables[0];
+                        //    dataGridView1.Rows[e.RowIndex].Cells[colPrice.Name].Value = "0";
+                        //    foreach (DataRow rows in dt.Rows)
+                        //    {
+
+                        //        dataGridView1.Rows[e.RowIndex].Cells[colPrice.Name].Value = rows["unitPrice"].ToString();
+
+                        //    }
+                        //}
+                        //else 
+                    if (e.ColumnIndex == dataGridView1.Columns[colCode.Name].Index)
                     {
-                        DataRow dRow = null;
-                        String Code = dataGridView1.Rows[e.RowIndex].Cells["colCode"].Value.ToString();
-                        if (e.ColumnIndex == dataGridView1.Columns["colUnit"].Index)
+                        var dt = DataSupport.RunDataSet("Select * from Products where product_id ='"+code+"'").Tables[0];
+                        foreach (DataRow rows in dt.Rows)
                         {
-                            String uom = dataGridView1.Rows[e.RowIndex].Cells[colUnit.Name].Value.ToString();
-                            var dt = DataSupport.RunDataSet("select * from itemPrice i join products p on i.productID = p.product_id join uom U on i.uom = u.uom join priceType t on i.priceTypeId = t.priceTypeId where productID = '" + Code + "'and i.uom = '" + uom + "'and i.priceTypeID  = '" + cbxpriceType.SelectedValue.ToString() + "'").Tables[0];
-                            dataGridView1.Rows[e.RowIndex].Cells[colPrice.Name].Value = "0";
-                            foreach (DataRow rows in dt.Rows)
-                            {
-
-                                dataGridView1.Rows[e.RowIndex].Cells[colPrice.Name].Value = rows["unitPrice"].ToString();
-
-                            }
+                            dataGridView1.Rows[e.RowIndex].Cells[colDescription.Name].Value = rows["description"].ToString();
                         }
-                        else if (e.ColumnIndex == dataGridView1.Columns["colCode"].Index)
-                        {
-                            dataGridView1.Rows[e.RowIndex].Cells[colUnit.Name].Value = "";
-                            GetProduct = Utils.BuildIndex("select * from itemPrice i join products p on i.productID = p.product_id join uom U on i.uom = u.uom join priceType t on i.priceTypeId = t.priceTypeId", "productID");
-                            if (GetProduct.TryGetValue(Code, out dRow))
-                            {
-
-                                dataGridView1.Rows[e.RowIndex].Cells[colDescription.Name].Value = dRow["description"].ToString();
-
-                            }
-                        }
-
-                    }
-                    else
-                    {
-                        if (e.ColumnIndex == dataGridView1.Columns["colCode"].Index)
-                        {
-                            DataRow Row = null;
-                            String Code = dataGridView1.Rows[e.RowIndex].Cells["colCode"].Value.ToString();
-                            GetProduct = Utils.BuildIndex("Select * from products", "product_id");
-                            if (GetProduct.TryGetValue(Code, out Row))
-                            {
-                                dataGridView1.Rows[e.RowIndex].Cells[colUnit.Name].Value = "";
-                                dataGridView1.Rows[e.RowIndex].Cells[colPrice.Name].Value = "";
-                                dataGridView1.Rows[e.RowIndex].Cells["colDescription"].Value = Row["description"].ToString();
-                            }
-                        }
+                           
                     }
                     compute();
-                    return;
                 }
                 else
                 {
@@ -191,8 +161,92 @@ namespace OMS.Incoming
 
         private void btnDeclare_Click(object sender, EventArgs e)
         {
-            saved();
-            clear();
+            Form1 dialog = new Form1();
+            dialog.Retrns = this;
+            dialog.mode = 6;
+            bool status = false;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.IsNewRow) continue;
+                if (String.IsNullOrWhiteSpace(row.Cells[colUnit.Name].Value as String))
+                {               
+                    status = true;
+                }
+
+            }
+            if (!status)
+            {
+                System.Data.DataTable result = new System.Data.DataTable();
+                result.Columns.Add(new DataColumn("rgsno", typeof(String)));
+                result.Columns.Add(new DataColumn("custname", typeof(String)));
+                result.Columns.Add(new DataColumn("custCode", typeof(String)));
+                result.Columns.Add(new DataColumn("address", typeof(String)));
+                result.Columns.Add(new DataColumn("salesman", typeof(String)));
+                result.Columns.Add(new DataColumn("invoiceref", typeof(string)));
+                result.Columns.Add(new DataColumn("invoicedate", typeof(DateTime)));
+                result.Columns.Add(new DataColumn("instruction", typeof(String)));
+                result.Columns.Add(new DataColumn("warehouse", typeof(String)));
+                result.Columns.Add(new DataColumn("code", typeof(String)));
+                result.Columns.Add(new DataColumn("productcode", typeof(String)));
+                result.Columns.Add(new DataColumn("description", typeof(String)));
+                result.Columns.Add(new DataColumn("uom", typeof(String)));
+                result.Columns.Add(new DataColumn("qty", typeof(String)));
+                result.Columns.Add(new DataColumn("price", typeof(String)));
+                result.Columns.Add(new DataColumn("amount", typeof(String)));
+                result.Columns.Add(new DataColumn("reason", typeof(String)));
+                result.Columns.Add(new DataColumn("typestock", typeof(String)));
+                result.Columns.Add(new DataColumn("received", typeof(String)));
+                result.Columns.Add(new DataColumn("receiveddate", typeof(String)));
+                result.Columns.Add(new DataColumn("transcode", typeof(String)));
+                DataRow resultRow = result.NewRow();
+                resultRow = result.NewRow();
+                resultRow["custname"] = lblCustname.Text;
+                resultRow["custCode"] = txtCustCode.Text;
+                resultRow["address"] = lblAddress.Text;
+                resultRow["salesman"] = cbxSalesman.Text;
+                resultRow["invoiceref"] = txtInvoiceRef.Text;
+                resultRow["invoicedate"] = txtInvoiceDate.Text;
+                resultRow["warehouse"] = cbxwarehouse.Text;
+                resultRow["code"] = lblWcode.Text;
+                resultRow["typestock"] = cbxTypeS.Text;
+                result.Rows.Add(resultRow);
+                foreach (DataGridViewRow dRow in dataGridView1.Rows)
+                {
+                    if (dataGridView1.Rows.IndexOf(dRow) == dataGridView1.Rows.Count - 1)
+                        break;
+                    resultRow = result.NewRow();
+                    resultRow["productcode"] = dRow.Cells[colCode.Name].Value;
+                    resultRow["description"] = dRow.Cells[colDescription.Name].Value;
+                    resultRow["uom"] = dRow.Cells[colUnit.Name].Value;
+                    resultRow["qty"] = dRow.Cells[colQuantity.Name].Value;
+                    resultRow["price"] = dRow.Cells[colPrice.Name].Value;
+                    resultRow["amount"] = dRow.Cells[colTotal.Name].Value;
+                    result.Rows.Add(resultRow);
+                }
+                resultRow = result.NewRow();
+                resultRow["rgsno"] = txtRgsNo.Text;
+                resultRow["reason"] = txtRemarks.Text;
+                resultRow["transcode"] = txtTransCode.Text;
+                resultRow["received"] = txtReceived.Text;
+                resultRow["receiveddate"] = txtDateR.Text;
+                result.Rows.Add(resultRow);
+                var viewer = new CrystalReport.Report();
+                ReportDocument ReportDocs = new ReportDocument();
+                ReportDocs = new CrystalReport.returns();
+                ReportDocs.Database.Tables[0].SetDataSource(result);
+                viewer.Viewer.ReportSource = ReportDocs;
+                viewer.ShowDialog();
+                //dialog.ShowDialog();
+                if (viewer._status == "save")
+                {
+                    saved();
+                    clear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("uom is empty");
+            }
         }
         private void saved()
         {
@@ -274,10 +328,10 @@ namespace OMS.Incoming
         {
             try
             {
-                var dt = DataSupport.RunDataSet("SELECT  transport_id FROM [TransportProviders] where description = '" + cbxwarehouse.Text + "' ").Tables[0];
+                var dt = DataSupport.RunDataSet("SELECT  warehouseCode FROM [Warehouses] where warehouse_id = '" + cbxwarehouse.Text + "' ").Tables[0];
                 foreach (DataRow row in dt.Rows)
                 {
-                    lblWcode.Text = row["transport_id"].ToString();
+                    lblWcode.Text = row["warehouseCode"].ToString();
                 }
             }
             catch
@@ -286,7 +340,7 @@ namespace OMS.Incoming
 
         private void cbxpriceType_SelectedValueChanged(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
+            //dataGridView1.Rows.Clear();
         }
     }
 }

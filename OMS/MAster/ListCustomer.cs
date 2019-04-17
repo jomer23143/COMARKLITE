@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Framework;
@@ -16,15 +17,31 @@ namespace OMS.MAster
         public ListCustomer()
         {
             InitializeComponent();
+            DoubleBuffered(dataGridView1,true);
         }
 
         private void ListCustomer_Load(object sender, EventArgs e)
         {
             display();
+            design();
+        }
+        public new void DoubleBuffered(object obj, bool setting)
+        {
+            Type objType = obj.GetType();
+            PropertyInfo pi = objType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(obj, setting, null);
+        }
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            dataGridView1.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
         }
         public void display()
         {
-            _bs.DataSource = DataSupport.RunDataSet("Select [custCode],[customer],[address] from TransportCustomers").Tables[0];
+            _bs.DataSource = DataSupport.RunDataSet("Select [custCode],[customer],[address],[id] from TransportCustomers").Tables[0];
             dataGridView1.DataSource = _bs;
         }
 
@@ -52,8 +69,8 @@ namespace OMS.MAster
 
             var dialog = new MAster.Customer();
             dialog.Mode = "updated";
-            String code = dataGridView1.Rows[e.RowIndex].Cells[custCode.Name].Value.ToString();
-            var drow = DataSupport.RunDataSet("Select * from TransportCustomers where custCode = '" + code + "'").Tables[0];
+            Object id = dataGridView1.Rows[e.RowIndex].Cells[colID.Name].Value;
+            var drow = DataSupport.RunDataSet("Select * from TransportCustomers where id = '" + id + "'").Tables[0];
             foreach(DataRow row in drow.Rows)
             {
                 dialog.txtTransport.Text = row["transport"].ToString();
@@ -69,14 +86,12 @@ namespace OMS.MAster
                 dialog.txtDis4.Text = row["discount4"].ToString();
                 dialog.txtDis5.Text = row["discount5"].ToString();
                 dialog.txtZone.Text = row["zone"].ToString();
+                Customer.id = row["id"].ToString();
             }
-            dialog.txtAddress.ReadOnly = true;
-            dialog.txtcustname.ReadOnly = true;
-            dialog.txtCode.ReadOnly = true;
             dialog.ShowDialog();        
             display();
         }
-
+       
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 

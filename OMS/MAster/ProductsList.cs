@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Framework;
@@ -18,17 +19,34 @@ namespace OMS.MAster
         public ProductsList()
         {
             InitializeComponent();
+          
         }
 
         private void ProductsList_Load(object sender, EventArgs e)
         {
             display();
             uomPriceType();
+            design();
+        }
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            product.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
         }
         private void display()
         {
-            _bs.DataSource = DataSupport.RunDataSet("  Select p.product_id,p.description,p.category from products p").Tables[0];
+            _bs.DataSource = DataSupport.RunDataSet("  Select p.product_id,p.description,p.category from products p ").Tables[0];
             product.DataSource = _bs;
+            DoubleBuffered(dataGridView1, true);
+        }
+        public new void DoubleBuffered(object obj, bool setting)
+        {
+            Type objType = obj.GetType();
+            PropertyInfo pi = objType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(obj, setting, null);
         }
         private void uomPriceType()
         {
@@ -96,7 +114,7 @@ namespace OMS.MAster
                 header.Add("dateStamp", DateTime.Now);
                 header.Add("qty", row.Cells[colQty.Name].Value.ToString());
                 primary.Add("productID"); primary.Add("uom"); primary.Add("priceTypeID");
-                if (FAQ.productPriceExist(txtCode.Text,row.Cells[colUom.Name].Value.ToString(),Convert.ToInt32(row.Cells[colPriceType.Name].Value.ToString())))
+                if (FAQ.productPriceExist(Convert.ToInt32(txtCode.Text),row.Cells[colUom.Name].Value.ToString(),row.Cells[colPriceType.Name].Value.ToString()))
                 { sql.Append(DataSupport.GetUpdate("itemPrice", header,primary)); }
                 else
                 { sql.Append(DataSupport.GetInsert("itemPrice", header)); }
@@ -217,6 +235,11 @@ namespace OMS.MAster
                 e.Cancel = false;
                 errorProvider1.SetError(txtProductCode, null);
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

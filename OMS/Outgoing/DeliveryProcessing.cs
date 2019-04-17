@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
 using Framework;
 
 namespace OMS.Outgoing
@@ -14,12 +15,20 @@ namespace OMS.Outgoing
     {
         Dictionary<String, DataRow> GetProduct = new Dictionary<String, DataRow>();
         Dictionary<String, DataRow> getWarehouse = new Dictionary<String, DataRow>();
+        public static String form;
         public DeliveryProcessing()
         {
             InitializeComponent();
-          
+            design();
         }
-
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            dataGridView1.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
+        }
         private void DeliveryProcessing_Load(object sender, EventArgs e)
         {
             {
@@ -43,6 +52,7 @@ namespace OMS.Outgoing
                     txtTransportProvider.Items.Add(row[0].ToString());
             }
             txtDrno.KeyPress += new KeyPressEventHandler(KeyBoardSupport.ForNumericOnly_KeyPress);
+          
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -70,12 +80,77 @@ namespace OMS.Outgoing
             Form1 dialog = new Form1();
             dialog.DR = this;
             dialog.mode = 3;
-            if (dialog.ShowDialog() == DialogResult.OK)
+            bool status = false;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if(Form1.status == true)
-                { saved(); clear(); }
+                if (row.IsNewRow) continue;
+                if (String.IsNullOrWhiteSpace(row.Cells[colUnit.Name].Value as String))
+                {
+                    status = true;
+                }
+
+            }
+            if (!status)
+            {
+                System.Data.DataTable result = new System.Data.DataTable();
+                result.Columns.Add(new DataColumn("drno", typeof(String)));
+                result.Columns.Add(new DataColumn("custname", typeof(String)));
+                result.Columns.Add(new DataColumn("custCode", typeof(String)));
+                result.Columns.Add(new DataColumn("address", typeof(String)));
+                result.Columns.Add(new DataColumn("refno", typeof(String)));
+                result.Columns.Add(new DataColumn("refdate", typeof(DateTime)));
+                result.Columns.Add(new DataColumn("warehouse", typeof(String)));
+                result.Columns.Add(new DataColumn("code", typeof(String)));
+                result.Columns.Add(new DataColumn("productcode", typeof(String)));
+                result.Columns.Add(new DataColumn("description", typeof(String)));
+                result.Columns.Add(new DataColumn("uom", typeof(String)));
+                result.Columns.Add(new DataColumn("qty", typeof(String)));
+                result.Columns.Add(new DataColumn("reason", typeof(String)));
+                result.Columns.Add(new DataColumn("typestock", typeof(String)));
+                DataRow resultRow = result.NewRow();
+                resultRow = result.NewRow();
+                resultRow["drno"] = txtDrno.Text;
+                resultRow["custname"] = cbxCustName.Text;
+                resultRow["custCode"] = txtCodeD.Text;
+                resultRow["address"] = txtAddressD.Text;
+                resultRow["refno"] = txtRefno.Text;
+                resultRow["refdate"] = txtRefDate.Text;
+                resultRow["warehouse"] = cbxWarehouse.Text;
+                resultRow["code"] = txtCodeS.Text;
+                resultRow["typestock"] = txtTypeStock.Text;
+                result.Rows.Add(resultRow);
+                foreach (DataGridViewRow dRow in dataGridView1.Rows)
+                {
+                    if (dataGridView1.Rows.IndexOf(dRow) == dataGridView1.Rows.Count - 1)
+                        break;
+                    resultRow = result.NewRow();
+                    resultRow["productcode"] = dRow.Cells[colCode.Name].Value;
+                    resultRow["description"] = dRow.Cells[colDescription.Name].Value;
+                    resultRow["uom"] = dRow.Cells[colUnit.Name].Value;
+                    resultRow["qty"] = dRow.Cells[colQuantity.Name].Value;
+                    result.Rows.Add(resultRow);
+                }
+                resultRow = result.NewRow();
+                resultRow["reason"] = txtReason.Text;
+                result.Rows.Add(resultRow);
+                var viewer = new CrystalReport.Report();
+                ReportDocument ReportDocs = new ReportDocument();
+                ReportDocs = new CrystalReport.Delivery();
+                ReportDocs.Database.Tables[0].SetDataSource(result);
+                viewer.Viewer.ReportSource = ReportDocs;
+                viewer.ShowDialog();
+                //dialog.ShowDialog();
+                if (viewer._status == "save")
+                {
+                    saved();
+                    clear();
+                }
                 else
                 { }
+            }
+            else
+            {
+                MessageBox.Show("uom is empty");
             }
 
 
@@ -95,14 +170,23 @@ namespace OMS.Outgoing
         }
         private void saved()
         {
-            String DrId = DataSupport.GetNextMenuCodeInt("DR");
             StringBuilder sql = new StringBuilder();
             Dictionary<String, Object> header = new Dictionary<string, object>();
+            String DrId;
+            if (form == "STR")
+            {
+                DrId = DataSupport.GetNextMenuCodeInt("STR-DR");
+                header.Add("outgoing_type", "Stock Transfer");
+            }
+            else
+            {
+                DrId = DataSupport.GetNextMenuCodeInt("DR");
+                header.Add("outgoing_type", "Delivery");
+            }
             header.Add("out_shipment_id", DrId);
             header.Add("warehouse", cbxWarehouse.Text);
             header.Add("typeStocks", txtTypeStock.Text);
             header.Add("datetime", DateTime.Now);
-            header.Add("outgoing_type", "Delivery");
             header.Add("docNo", txtDrno.Text);
             header.Add("document_reference", txtRefno.Text);
             header.Add("document_reference_date", txtDateS.Text);
@@ -126,7 +210,6 @@ namespace OMS.Outgoing
             header.Add("status", "FOR STOCK CHECKING");
 
             sql.Append(DataSupport.GetInsert("OutgoingShipmentRequests", header));
-            //String TransId = FAQ.GetNextReturnID(0);
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (dataGridView1.Rows.IndexOf(row) == dataGridView1.Rows.Count - 1)
@@ -140,7 +223,6 @@ namespace OMS.Outgoing
                 { detail.Add("expected_qty", "0"); }
                 else
                 { detail.Add("expected_qty", row.Cells[colQuantity.Name].Value.ToString()); }
-                //detail.Add("remarks", row.Cells[colRemarks.Name].Value.ToString());
                 sql.Append(DataSupport.GetInsert("OutgoingShipmentRequestDetails", detail));
             }
             if (FAQ.InvoiceExist(txtDrno.Text))

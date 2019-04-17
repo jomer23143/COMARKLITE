@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -12,10 +13,23 @@ namespace OMS.Outgoing
 {
     public partial class ManageOutgoingWindow : Form
     {
+        public static String form;
         private readonly BindingSource _bs = new BindingSource();
         public ManageOutgoingWindow()
         {
             InitializeComponent();
+            design();
+          
+        }
+        
+        private void design()
+        {
+            DataGridViewCellStyle style =
+            headerGrid.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
+            
         }
         private void display()
         {
@@ -32,12 +46,23 @@ namespace OMS.Outgoing
         private void ManageOutgoingWindow_Load(object sender, EventArgs e)
         {
             //headerGrid.DataSource = DataSupport.RunDataSet("SELECT * FROM OutgoingShipmentRequests").Tables[0];
-            display();
-            btnNew.Visible = false;
-
+            if (form == "MOP")
+            {
+                display();
+                btnNew.Visible = false;
+                DoubleBuffered(headerGrid, true);
+            }
+            else
+            {
+            }
 
         }
-
+        public new void DoubleBuffered(object obj, bool setting)
+        {
+            Type objType = obj.GetType();
+            PropertyInfo pi = objType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(obj, setting, null);
+        }
         private void btnSearch_Click(object sender, EventArgs e)
         {
             ///* headerGrid.DataSource = DataSupport.RunDataSet("SELECT * FROM OutgoingShipmentRequests").Tables[0]*/;
@@ -80,6 +105,21 @@ namespace OMS.Outgoing
         private void headerGrid_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             
+        }
+
+        private void summary1_Load(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void headerGrid_DoubleClick(object sender, EventArgs e)
+        {
+
         }
     }
 }

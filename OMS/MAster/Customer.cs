@@ -12,6 +12,7 @@ namespace OMS.MAster
 {
     public partial class Customer : Form
     {
+        public static Object id;
         public String Mode = "";
         public Customer()
         {
@@ -58,13 +59,14 @@ namespace OMS.MAster
 
             DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
             MessageBox.Show("Success");
-            DialogResult = DialogResult.OK;
+            clear();
         }
         private void updated()
         {
             StringBuilder sql = new StringBuilder();
             var primary = new List<string>();
             Dictionary<String, Object> header = new Dictionary<string, object>();
+            header.Add("id", id);
             header.Add("transport", txtTransport.Text);
             header.Add("customer", txtcustname.Text);
             header.Add("custCode", txtCode.Text);
@@ -79,12 +81,30 @@ namespace OMS.MAster
             header.Add("discount4", txtDis4.Text);
             header.Add("discount5", txtDis5.Text);
             header.Add("dateStamp", DateTime.Now);
-            primary.Add("custCode");
+            primary.Add("id");
             sql.Append(DataSupport.GetUpdate("TransportCustomers", header, primary));
 
             DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
+            
             MessageBox.Show("Success");
-            DialogResult = DialogResult.OK;
+            clear();
+        }
+
+        private void updatedtms()
+        {
+            StringBuilder sql = new StringBuilder();
+            var primary = new List<string>();
+            Dictionary<String, Object> header = new Dictionary<string, object>();
+            header.Add("customer_id", txtCode.Text);
+            header.Add("name", txtcustname.Text);
+            header.Add("address", txtAddress.Text);
+            primary.Add("id");
+            sql.Append(DataSupport.GetUpdate("TransportCustomers", header, primary));
+
+            DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
+
+            MessageBox.Show("Success");
+            clear();
         }
         private void Customer_Load(object sender, EventArgs e)
         {
@@ -93,6 +113,29 @@ namespace OMS.MAster
                 foreach (DataRow row in dt.Rows)
                     txtTransport.Items.Add(row[0].ToString());
             }
+        }
+        private void clear()
+        {
+            txtCode.Clear();
+            txtcontact.Clear();
+            txtcustname.Clear();
+            txtTransport.SelectedIndex = -1;
+            txtAddress.Clear();
+            txtTerms.Clear();
+            txtpostCode.Clear();
+            txtTin.Clear();
+            txtZone.Clear();
+            txtcontact.Clear();
+            txtDis1.Text = "0";
+            txtDis2.Text = "0";
+            txtDis3.Text = "0";
+            txtDis4.Text = "0";
+            txtDis5.Text = "0";
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }

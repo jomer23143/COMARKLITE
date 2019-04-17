@@ -63,6 +63,7 @@
             this.txtTransport = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnDeclare = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel9.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -81,9 +82,9 @@
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.txtcustname);
             this.panel9.Controls.Add(this.label9);
-            this.panel9.Location = new System.Drawing.Point(26, 76);
+            this.panel9.Location = new System.Drawing.Point(11, 63);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(422, 38);
+            this.panel9.Size = new System.Drawing.Size(469, 39);
             this.panel9.TabIndex = 1;
             // 
             // txtcustname
@@ -91,17 +92,17 @@
             this.txtcustname.BackColor = System.Drawing.Color.White;
             this.txtcustname.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtcustname.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcustname.Location = new System.Drawing.Point(110, 13);
+            this.txtcustname.Location = new System.Drawing.Point(108, 14);
             this.txtcustname.Margin = new System.Windows.Forms.Padding(2);
             this.txtcustname.Name = "txtcustname";
-            this.txtcustname.Size = new System.Drawing.Size(302, 13);
+            this.txtcustname.Size = new System.Drawing.Size(341, 13);
             this.txtcustname.TabIndex = 0;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(4, 10);
+            this.label9.Location = new System.Drawing.Point(5, 12);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(102, 15);
@@ -114,9 +115,9 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtCode);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(27, 179);
+            this.panel1.Location = new System.Drawing.Point(12, 164);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(199, 38);
+            this.panel1.Size = new System.Drawing.Size(226, 39);
             this.panel1.TabIndex = 3;
             // 
             // txtCode
@@ -124,17 +125,17 @@
             this.txtCode.BackColor = System.Drawing.Color.White;
             this.txtCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCode.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCode.Location = new System.Drawing.Point(48, 13);
+            this.txtCode.Location = new System.Drawing.Point(56, 15);
             this.txtCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(141, 13);
+            this.txtCode.Size = new System.Drawing.Size(164, 13);
             this.txtCode.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 10);
+            this.label1.Location = new System.Drawing.Point(5, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 15);
@@ -147,9 +148,9 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.txtAddress);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(26, 127);
+            this.panel2.Location = new System.Drawing.Point(11, 113);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(422, 38);
+            this.panel2.Size = new System.Drawing.Size(469, 39);
             this.panel2.TabIndex = 2;
             // 
             // txtAddress
@@ -157,17 +158,17 @@
             this.txtAddress.BackColor = System.Drawing.Color.White;
             this.txtAddress.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAddress.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(61, 13);
+            this.txtAddress.Location = new System.Drawing.Point(71, 15);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(351, 13);
+            this.txtAddress.Size = new System.Drawing.Size(378, 13);
             this.txtAddress.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 10);
+            this.label2.Location = new System.Drawing.Point(5, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 15);
@@ -180,26 +181,26 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.txtcontact);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(26, 233);
+            this.panel3.Location = new System.Drawing.Point(11, 219);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(199, 38);
+            this.panel3.Size = new System.Drawing.Size(226, 39);
             this.panel3.TabIndex = 4;
             // 
             // txtcontact
             // 
             this.txtcontact.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtcontact.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtcontact.Location = new System.Drawing.Point(61, 13);
+            this.txtcontact.Location = new System.Drawing.Point(71, 15);
             this.txtcontact.Margin = new System.Windows.Forms.Padding(2);
             this.txtcontact.Name = "txtcontact";
-            this.txtcontact.Size = new System.Drawing.Size(128, 13);
+            this.txtcontact.Size = new System.Drawing.Size(149, 13);
             this.txtcontact.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 10);
+            this.label3.Location = new System.Drawing.Point(5, 12);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 15);
@@ -212,26 +213,26 @@
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.txtTin);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(26, 287);
+            this.panel4.Location = new System.Drawing.Point(11, 274);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(199, 38);
+            this.panel4.Size = new System.Drawing.Size(226, 39);
             this.panel4.TabIndex = 5;
             // 
             // txtTin
             // 
             this.txtTin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTin.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTin.Location = new System.Drawing.Point(48, 13);
+            this.txtTin.Location = new System.Drawing.Point(56, 15);
             this.txtTin.Margin = new System.Windows.Forms.Padding(2);
             this.txtTin.Name = "txtTin";
-            this.txtTin.Size = new System.Drawing.Size(141, 13);
+            this.txtTin.Size = new System.Drawing.Size(164, 13);
             this.txtTin.TabIndex = 0;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(4, 10);
+            this.label4.Location = new System.Drawing.Point(5, 12);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 15);
@@ -244,26 +245,26 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.txtpostCode);
             this.panel5.Controls.Add(this.label5);
-            this.panel5.Location = new System.Drawing.Point(249, 179);
+            this.panel5.Location = new System.Drawing.Point(254, 164);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(199, 38);
+            this.panel5.Size = new System.Drawing.Size(226, 39);
             this.panel5.TabIndex = 6;
             // 
             // txtpostCode
             // 
             this.txtpostCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtpostCode.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpostCode.Location = new System.Drawing.Point(89, 13);
+            this.txtpostCode.Location = new System.Drawing.Point(104, 15);
             this.txtpostCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtpostCode.Name = "txtpostCode";
-            this.txtpostCode.Size = new System.Drawing.Size(100, 13);
+            this.txtpostCode.Size = new System.Drawing.Size(117, 13);
             this.txtpostCode.TabIndex = 0;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(4, 10);
+            this.label5.Location = new System.Drawing.Point(5, 12);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 15);
@@ -276,26 +277,26 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.txtZone);
             this.panel6.Controls.Add(this.label6);
-            this.panel6.Location = new System.Drawing.Point(249, 233);
+            this.panel6.Location = new System.Drawing.Point(254, 219);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(199, 38);
+            this.panel6.Size = new System.Drawing.Size(226, 39);
             this.panel6.TabIndex = 7;
             // 
             // txtZone
             // 
             this.txtZone.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtZone.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtZone.Location = new System.Drawing.Point(56, 13);
+            this.txtZone.Location = new System.Drawing.Point(65, 15);
             this.txtZone.Margin = new System.Windows.Forms.Padding(2);
             this.txtZone.Name = "txtZone";
-            this.txtZone.Size = new System.Drawing.Size(133, 13);
+            this.txtZone.Size = new System.Drawing.Size(155, 13);
             this.txtZone.TabIndex = 0;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(4, 10);
+            this.label6.Location = new System.Drawing.Point(5, 12);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 15);
@@ -308,26 +309,26 @@
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.txtTerms);
             this.panel7.Controls.Add(this.label7);
-            this.panel7.Location = new System.Drawing.Point(249, 287);
+            this.panel7.Location = new System.Drawing.Point(254, 274);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(199, 38);
+            this.panel7.Size = new System.Drawing.Size(226, 39);
             this.panel7.TabIndex = 8;
             // 
             // txtTerms
             // 
             this.txtTerms.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTerms.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTerms.Location = new System.Drawing.Point(56, 13);
+            this.txtTerms.Location = new System.Drawing.Point(65, 15);
             this.txtTerms.Margin = new System.Windows.Forms.Padding(2);
             this.txtTerms.Name = "txtTerms";
-            this.txtTerms.Size = new System.Drawing.Size(133, 13);
+            this.txtTerms.Size = new System.Drawing.Size(155, 13);
             this.txtTerms.TabIndex = 0;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(4, 10);
+            this.label7.Location = new System.Drawing.Point(5, 12);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 15);
@@ -339,16 +340,16 @@
             this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel8.Controls.Add(this.label8);
-            this.panel8.Location = new System.Drawing.Point(26, 341);
+            this.panel8.Location = new System.Drawing.Point(11, 323);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(73, 38);
+            this.panel8.Size = new System.Drawing.Size(79, 39);
             this.panel8.TabIndex = 9;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(2, 10);
+            this.label8.Location = new System.Drawing.Point(2, 12);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 15);
@@ -359,10 +360,10 @@
             // 
             this.txtDis1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDis1.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDis1.Location = new System.Drawing.Point(115, 351);
+            this.txtDis1.Location = new System.Drawing.Point(103, 333);
             this.txtDis1.Multiline = true;
             this.txtDis1.Name = "txtDis1";
-            this.txtDis1.Size = new System.Drawing.Size(53, 20);
+            this.txtDis1.Size = new System.Drawing.Size(55, 23);
             this.txtDis1.TabIndex = 10;
             this.txtDis1.Text = "0";
             this.txtDis1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -371,10 +372,10 @@
             // 
             this.txtDis2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDis2.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDis2.Location = new System.Drawing.Point(189, 351);
+            this.txtDis2.Location = new System.Drawing.Point(173, 332);
             this.txtDis2.Multiline = true;
             this.txtDis2.Name = "txtDis2";
-            this.txtDis2.Size = new System.Drawing.Size(53, 20);
+            this.txtDis2.Size = new System.Drawing.Size(55, 23);
             this.txtDis2.TabIndex = 11;
             this.txtDis2.Text = "0";
             this.txtDis2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -383,10 +384,10 @@
             // 
             this.txtDis3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDis3.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDis3.Location = new System.Drawing.Point(256, 350);
+            this.txtDis3.Location = new System.Drawing.Point(249, 332);
             this.txtDis3.Multiline = true;
             this.txtDis3.Name = "txtDis3";
-            this.txtDis3.Size = new System.Drawing.Size(53, 20);
+            this.txtDis3.Size = new System.Drawing.Size(55, 23);
             this.txtDis3.TabIndex = 12;
             this.txtDis3.Text = "0";
             this.txtDis3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -395,10 +396,10 @@
             // 
             this.txtDis4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDis4.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDis4.Location = new System.Drawing.Point(328, 351);
+            this.txtDis4.Location = new System.Drawing.Point(329, 332);
             this.txtDis4.Multiline = true;
             this.txtDis4.Name = "txtDis4";
-            this.txtDis4.Size = new System.Drawing.Size(53, 20);
+            this.txtDis4.Size = new System.Drawing.Size(55, 23);
             this.txtDis4.TabIndex = 13;
             this.txtDis4.Text = "0";
             this.txtDis4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -407,10 +408,10 @@
             // 
             this.txtDis5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDis5.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDis5.Location = new System.Drawing.Point(395, 351);
+            this.txtDis5.Location = new System.Drawing.Point(407, 332);
             this.txtDis5.Multiline = true;
             this.txtDis5.Name = "txtDis5";
-            this.txtDis5.Size = new System.Drawing.Size(53, 20);
+            this.txtDis5.Size = new System.Drawing.Size(55, 23);
             this.txtDis5.TabIndex = 14;
             this.txtDis5.Text = "0";
             this.txtDis5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -421,29 +422,28 @@
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel10.Controls.Add(this.txtTransport);
             this.panel10.Controls.Add(this.label10);
-            this.panel10.Location = new System.Drawing.Point(26, 26);
+            this.panel10.Location = new System.Drawing.Point(11, 15);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(232, 38);
+            this.panel10.Size = new System.Drawing.Size(264, 39);
             this.panel10.TabIndex = 0;
             // 
             // txtTransport
             // 
             this.txtTransport.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txtTransport.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.txtTransport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtTransport.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTransport.FormattingEnabled = true;
-            this.txtTransport.Location = new System.Drawing.Point(75, 10);
+            this.txtTransport.Location = new System.Drawing.Point(82, 10);
             this.txtTransport.Margin = new System.Windows.Forms.Padding(2);
             this.txtTransport.Name = "txtTransport";
-            this.txtTransport.Size = new System.Drawing.Size(146, 22);
+            this.txtTransport.Size = new System.Drawing.Size(170, 22);
             this.txtTransport.TabIndex = 47;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 11);
+            this.label10.Location = new System.Drawing.Point(3, 13);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(68, 15);
@@ -456,21 +456,37 @@
             this.btnDeclare.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
             this.btnDeclare.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeclare.ForeColor = System.Drawing.Color.White;
-            this.btnDeclare.Location = new System.Drawing.Point(339, 392);
+            this.btnDeclare.Location = new System.Drawing.Point(364, 373);
             this.btnDeclare.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeclare.Name = "btnDeclare";
-            this.btnDeclare.Size = new System.Drawing.Size(115, 49);
+            this.btnDeclare.Size = new System.Drawing.Size(116, 43);
             this.btnDeclare.TabIndex = 15;
             this.btnDeclare.Text = "Declare";
             this.btnDeclare.UseVisualStyleBackColor = false;
             this.btnDeclare.Click += new System.EventHandler(this.btnDeclare_Click);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(118)))), ((int)(((byte)(163)))));
+            this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(244, 373);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 43);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Close";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Customer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(465, 452);
+            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.ClientSize = new System.Drawing.Size(494, 427);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDeclare);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.txtDis5);
@@ -487,6 +503,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel9);
+            this.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Customer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Customer";
@@ -553,5 +571,6 @@
         public System.Windows.Forms.TextBox txtDis4;
         public System.Windows.Forms.TextBox txtDis5;
         public System.Windows.Forms.ComboBox txtTransport;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Framework;
 using System.Drawing.Printing;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace OMS.Outgoing
 {
@@ -16,10 +17,14 @@ namespace OMS.Outgoing
         Dictionary<String, DataRow> GetProduct = new Dictionary<String, DataRow>();
         Dictionary<String, DataRow> GetProducts1 = new Dictionary<String, DataRow>();
         Dictionary<String, DataRow> UOMs = new Dictionary<String, DataRow>();
+        String custCode;
+
         private readonly BindingSource bs = new BindingSource();
+        public String mode = "back";
         public SalerProcessing()
         {
             InitializeComponent();
+            design();
         }
 
         private void SalerProcessing_Load(object sender, EventArgs e)
@@ -48,79 +53,44 @@ namespace OMS.Outgoing
                 txtWarehouse.DisplayMember = "warehouse_id";
                 txtWarehouse.ValueMember = "warehouse_id";
             }
-            priceType();
-            uom();
             txtSalesInvoice.KeyPress += new KeyPressEventHandler(KeyBoardSupport.ForNumericOnly_KeyPress);
-
-          
+            cbxpriceType.SelectedIndex = 0;
+            txtTypeStock.SelectedIndex = 0;
         }
-        private void uom()
+        private void design()
         {
-            {
-                colUnit.DataSource = DataSupport.RunDataSet("SELECT * FROM UOm").Tables[0];
-                colUnit.DisplayMember = "uom";
-                colUnit.ValueMember = "uom";
-                dataGridView1.Rows.Clear();
-            }
-        }
-        private void priceType()
-        {
-            {
-                cbxpriceType.DataSource = DataSupport.RunDataSet("SELECT * FROM Pricetype").Tables[0];
-                cbxpriceType.DisplayMember = "priceType";
-                cbxpriceType.ValueMember = "priceTypeID";
-            }
+            DataGridViewCellStyle style =
+            dataGridView1.ColumnHeadersDefaultCellStyle;
+            style.BackColor = Color.SteelBlue;
+            style.ForeColor = Color.White;
+            style.Font = new Font("Times New Roman", 11F, FontStyle.Bold);
         }
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                String code = dataGridView1.Rows[e.RowIndex].Cells[colCode.Name].Value.ToString();
+                Object code = dataGridView1.Rows[e.RowIndex].Cells[colCode.Name].Value;
                 int rows1 = dataGridView1.Rows.Count;
                 if (rows1 <= 13)
                 {
-                    if (GetProducts(code))
+                    if (e.ColumnIndex == dataGridView1.Columns[colUnit.Name].Index)
                     {
-                        DataRow dRow = null;
-                        String Code = dataGridView1.Rows[e.RowIndex].Cells["colCode"].Value.ToString();
-                        if (e.ColumnIndex == dataGridView1.Columns["colUnit"].Index)
+                        Object uom = dataGridView1.Rows[e.RowIndex].Cells[colUnit.Name].Value;
+                        Object pricetype = cbxpriceType.Text;
+                        var dt = DataSupport.RunDataSet("select * from itemPrice i join products p on i.productID = p.id where i.prodCode = '" + code + "'and i.uom = '" + uom + "'and i.priceTypeID  = '" + pricetype + "'").Tables[0];
+                        dataGridView1.Rows[e.RowIndex].Cells[colPrice.Name].Value = "0";
+                        foreach (DataRow rows in dt.Rows)
                         {
-                            String uom = dataGridView1.Rows[e.RowIndex].Cells[colUnit.Name].Value.ToString();
-                            var dt = DataSupport.RunDataSet("select * from itemPrice i join products p on i.productID = p.product_id join uom U on i.uom = u.uom join priceType t on i.priceTypeId = t.priceTypeId where productID = '" + Code + "'and i.uom = '" + uom + "'and i.priceTypeID  = '" + cbxpriceType.SelectedValue.ToString() + "'").Tables[0];
-                            dataGridView1.Rows[e.RowIndex].Cells[colPrice.Name].Value = "0";
-                            foreach (DataRow rows in dt.Rows)
-                            {
-
-                                dataGridView1.Rows[e.RowIndex].Cells[colPrice.Name].Value = rows["unitPrice"].ToString();
-
-                            }
+                            dataGridView1.Rows[e.RowIndex].Cells[colPrice.Name].Value = rows["unitPrice"].ToString();
                         }
-                        else if (e.ColumnIndex == dataGridView1.Columns["colCode"].Index)
-                        {
-                            dataGridView1.Rows[e.RowIndex].Cells[colUnit.Name].Value = "";
-                            GetProduct = Utils.BuildIndex("select * from itemPrice i join products p on i.productID = p.product_id join uom U on i.uom = u.uom join priceType t on i.priceTypeId = t.priceTypeId", "productID");
-                            if (GetProduct.TryGetValue(Code, out dRow))
-                            {
-
-                                dataGridView1.Rows[e.RowIndex].Cells[colDescription.Name].Value = dRow["description"].ToString();
-
-                            }
-                        }
-
                     }
-                    else
+                    else if (e.ColumnIndex == dataGridView1.Columns[colCode.Name].Index)
                     {
-                        if (e.ColumnIndex == dataGridView1.Columns["colCode"].Index)
+                        var dts = DataSupport.RunDataSet("Select * from Products where product_id ='"+code+"'").Tables[0];
+                        foreach (DataRow row in dts.Rows)
                         {
-                            DataRow Row = null;
-                            String Code = dataGridView1.Rows[e.RowIndex].Cells["colCode"].Value.ToString();
-                            GetProduct = Utils.BuildIndex("Select * from products", "product_id");
-                            if (GetProduct.TryGetValue(Code, out Row))
-                            {
-                                dataGridView1.Rows[e.RowIndex].Cells[colUnit.Name].Value = "";
-                                dataGridView1.Rows[e.RowIndex].Cells[colPrice.Name].Value = "";
-                                dataGridView1.Rows[e.RowIndex].Cells["colDescription"].Value = Row["description"].ToString();
-                            }
+                            dataGridView1.Rows[e.RowIndex].Cells[colDescription.Name].Value = row["description"].ToString();
+                            dataGridView1.Rows[e.RowIndex].Cells[colID.Name].Value = row["id"].ToString();
                         }
                     }
                     compute();
@@ -154,6 +124,8 @@ namespace OMS.Outgoing
         }
 
         Double amountD =  0;
+        Double sum1 = 0;
+        Double vat = 0;
         public Double[] totaldisc = new Double[6] { 0, 0, 0, 0, 0, 0 };
         private Double compute()
         {
@@ -166,6 +138,7 @@ namespace OMS.Outgoing
                 total = Convert.ToDouble(row.Cells[colQuantity.Name].Value) * Convert.ToDouble(row.Cells[colPrice.Name].Value);
                 row.Cells[colAmount.Name].Value = total;
                 sum += Convert.ToDouble(row.Cells[colAmount.Name].Value.ToString());
+                sum1 = sum;
             }
 
             Double[] totalD = new Double[6] {0,0,0,0,0,0};
@@ -187,7 +160,7 @@ namespace OMS.Outgoing
             //add to total discount
             totaldisc[5] = totaldisc[0] + totaldisc[1] + totaldisc[2] + totaldisc[3] + totaldisc[4];
             //vat
-            Double vat = 0;
+            
             vat = totalD[4] * .12;
             totalD[5] = (totalD[4] * .12) + totalD[4];
             //total amount
@@ -207,73 +180,428 @@ namespace OMS.Outgoing
         {
             Form1 dialog = new Form1();
             dialog.parent = this;
-            dialog.mode = 1;
-            if (dialog.ShowDialog() == DialogResult.OK)
+            dialog.mode = 4;
+           
+            //String uom = "";
+            bool status = false;
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                if(Form1.status == true)
-                { saved(); clear(); }
+                if (row.IsNewRow) continue;
+                //uom = row.Cells[colUnit.Name].Value.ToString();
+                if (String.IsNullOrWhiteSpace(row.Cells[colUnit.Name].Value as String))
+                {
+                    status = true;
+                }
+              
             }
-          
-        }
-        private void saved()
-        {
-            String siId = DataSupport.GetNextMenuCodeInt("INVOICE");
-            StringBuilder sql = new StringBuilder();
-            Dictionary<String, Object> header = new Dictionary<string, object>();
-            header.Add("out_shipment_id", siId);
-            header.Add("warehouse", "CEB1");
-            header.Add("datetime", DateTime.Now);
-            header.Add("outgoing_type", "SALES INVOICE");
-            header.Add("docNo", txtSalesInvoice.Text);
-            header.Add("document_reference", txtSoNo.Text);
-            header.Add("document_reference_date", txtDateS.Text);
-            header.Add("authorized_tms", cbxWarehouse.Text);
-            header.Add("client", "COMARK");
-            header.Add("terms", txtTerms.Text);
-            header.Add("poNo", txtPoNo.Text);
-            header.Add("sr", txtSR.Text);
-            header.Add("terrCode", txtTerrCode.Text);
-            header.Add("customer_id", custCode);
-            header.Add("customer_name", txtSoldTo.Text);
-            header.Add("contactNo", txtCustNo.Text);
-            header.Add("customer_invoice_address", txtCustAddress.Text);
-            header.Add("disc1", "");
-            header.Add("disc2", "");
-            header.Add("disc3", "");
-            header.Add("disc4", "");
-            header.Add("disc5", "");
-            header.Add("shippingInstruction", txtInstruction.Text);
-            header.Add("amountD", amountD);
-            header.Add("typeStocks", txtTypeStock.Text);
-            header.Add("status", "FOR STOCK CHECKING");
+            
+            if (!status)
+            {
+                //System.Data.DataTable result = new System.Data.DataTable();
+                //result.Columns.Add(new DataColumn("SI", typeof(String)));
+                //result.Columns.Add(new DataColumn("Po", typeof(String)));
+                //result.Columns.Add(new DataColumn("SO", typeof(String)));
+                //result.Columns.Add(new DataColumn("Wcode", typeof(String)));
+                //result.Columns.Add(new DataColumn("PType", typeof(String)));
+                //result.Columns.Add(new DataColumn("date", typeof(DateTime)));
+                //result.Columns.Add(new DataColumn("terms", typeof(String)));
+                //result.Columns.Add(new DataColumn("sr", typeof(String)));
+                //result.Columns.Add(new DataColumn("terr", typeof(String)));
+                //result.Columns.Add(new DataColumn("TStock", typeof(String)));
+                //result.Columns.Add(new DataColumn("sold", typeof(String)));
+                //result.Columns.Add(new DataColumn("contact", typeof(String)));
+                //result.Columns.Add(new DataColumn("address", typeof(String)));
+                //result.Columns.Add(new DataColumn("tin", typeof(String)));
+                //result.Columns.Add(new DataColumn("instruction", typeof(String)));
+                //result.Columns.Add(new DataColumn("product", typeof(String)));
+                //result.Columns.Add(new DataColumn("description", typeof(String)));
+                //result.Columns.Add(new DataColumn("uom", typeof(String)));
+                //result.Columns.Add(new DataColumn("qty", typeof(int)));
+                //result.Columns.Add(new DataColumn("price", typeof(Decimal)));
+                //result.Columns.Add(new DataColumn("amount", typeof(Decimal)));
+                //result.Columns.Add(new DataColumn("disc1", typeof(String)));
+                //result.Columns.Add(new DataColumn("disc2", typeof(String)));
+                //result.Columns.Add(new DataColumn("disc3", typeof(String)));
+                //result.Columns.Add(new DataColumn("disc4", typeof(String)));
+                //result.Columns.Add(new DataColumn("disc5", typeof(String)));
+                //result.Columns.Add(new DataColumn("tolD1", typeof(String)));
+                //result.Columns.Add(new DataColumn("tolD2", typeof(String)));
+                //result.Columns.Add(new DataColumn("tolD3", typeof(String)));
+                //result.Columns.Add(new DataColumn("tolD4", typeof(String)));
+                //result.Columns.Add(new DataColumn("tolD5", typeof(String)));
+                //result.Columns.Add(new DataColumn("totalA", typeof(String)));
+                //result.Columns.Add(new DataColumn("vat", typeof(String)));
+                //result.Columns.Add(new DataColumn("totalDiscount", typeof(String)));
+                //result.Columns.Add(new DataColumn("totalD", typeof(String)));
+                //DataRow resultRow = result.NewRow();
+                //resultRow = result.NewRow();
+                //resultRow["SI"] = txtSalesInvoice.Text;
+                //resultRow["sold"] = txtSoldTo.Text;
+                //resultRow["contact"] = txtCustNo.Text;
+                //resultRow["tin"] = txtTin.Text;
+                //resultRow["address"] = txtCustAddress.Text;
+                //resultRow["instruction"] = txtInstruction.Text;
+                //resultRow["SO"] = txtSoNo.Text;
+                //resultRow["Po"] = txtPoNo.Text;
+                //resultRow["Wcode"] = cbxWarehouse.Text;
+                //resultRow["terms"] = cbxterms.Text;
+                //resultRow["sr"] = txtSR.Text;
+                //result.Rows.Add(resultRow);
+                //foreach (DataGridViewRow dRow in dataGridView1.Rows)
+                //{
+                //    if (dataGridView1.Rows.IndexOf(dRow) == dataGridView1.Rows.Count - 1)
+                //        break;
+                //    resultRow = result.NewRow();
+                //    resultRow["product"] = dRow.Cells[colCode.Name].Value;
+                //    resultRow["description"] = dRow.Cells[colDescription.Name].Value;
+                //    resultRow["uom"] = dRow.Cells[colUnit.Name].Value;
+                //    resultRow["qty"] = dRow.Cells[colQuantity.Name].Value;
+                //    resultRow["price"] = dRow.Cells[colPrice.Name].Value;
+                //    resultRow["amount"] = dRow.Cells[colAmount.Name].Value;
+                //    result.Rows.Add(resultRow);
+                //}
+                //resultRow = result.NewRow();
+                //resultRow["disc1"] = discount[0].ToString();
+                //resultRow["disc2"] = discount[1].ToString();
+                //resultRow["disc3"] = discount[2].ToString();
+                //resultRow["disc4"] = discount[3].ToString();
+                //resultRow["disc5"] = discount[4].ToString();
+                //resultRow["tolD1"] = totaldisc[0].ToString();
+                //resultRow["tolD2"] = totaldisc[1].ToString();
+                //resultRow["tolD3"] = totaldisc[2].ToString();
+                //resultRow["tolD4"] = totaldisc[3].ToString();
+                //resultRow["tolD5"] = totaldisc[4].ToString();
+                //resultRow["totalA"] = txtTotalA.Text;
+                //resultRow["totalDiscount"] = txtDiscount.Text;
+                //resultRow["vat"] = txtVat.Text;
+                //resultRow["totalD"] = txtAmountD.Text;
+                //result.Rows.Add(resultRow);
+                //var viewer = new CrystalReport.Report();
+                //ReportDocument ReportDocs = new ReportDocument();
+                //ReportDocs = new CrystalReport.salesReport();
+                //ReportDocs.Database.Tables[0].SetDataSource(result);
+                //viewer.Viewer.ReportSource = ReportDocs;
+                
+                conversion();
+                //viewer.ShowDialog();
+                //if (viewer._status == "save")
+                //{
+                //    //saved();
+                //    clear();
+                //}
 
-            sql.Append(DataSupport.GetInsert("OutgoingShipmentRequests", header));
-            //String TransId = FAQ.GetNextReturnID(0);
+            }
+            else
+            {
+                MessageBox.Show("uom is empty");
+            }
+        }
+        public void invoiceReport()
+        {
+            System.Data.DataTable result = new System.Data.DataTable();
+            result.Columns.Add(new DataColumn("SI", typeof(String)));
+            result.Columns.Add(new DataColumn("Po", typeof(String)));
+            result.Columns.Add(new DataColumn("SO", typeof(String)));
+            result.Columns.Add(new DataColumn("Wcode", typeof(String)));
+            result.Columns.Add(new DataColumn("PType", typeof(String)));
+            result.Columns.Add(new DataColumn("date", typeof(DateTime)));
+            result.Columns.Add(new DataColumn("terms", typeof(String)));
+            result.Columns.Add(new DataColumn("sr", typeof(String)));
+            result.Columns.Add(new DataColumn("terr", typeof(String)));
+            result.Columns.Add(new DataColumn("TStock", typeof(String)));
+            result.Columns.Add(new DataColumn("sold", typeof(String)));
+            result.Columns.Add(new DataColumn("contact", typeof(String)));
+            result.Columns.Add(new DataColumn("address", typeof(String)));
+            result.Columns.Add(new DataColumn("tin", typeof(String)));
+            result.Columns.Add(new DataColumn("instruction", typeof(String)));
+            result.Columns.Add(new DataColumn("product", typeof(String)));
+            result.Columns.Add(new DataColumn("description", typeof(String)));
+            result.Columns.Add(new DataColumn("uom", typeof(String)));
+            result.Columns.Add(new DataColumn("qty", typeof(int)));
+            result.Columns.Add(new DataColumn("price", typeof(Decimal)));
+            result.Columns.Add(new DataColumn("amount", typeof(Decimal)));
+            result.Columns.Add(new DataColumn("disc1", typeof(String)));
+            result.Columns.Add(new DataColumn("disc2", typeof(String)));
+            result.Columns.Add(new DataColumn("disc3", typeof(String)));
+            result.Columns.Add(new DataColumn("disc4", typeof(String)));
+            result.Columns.Add(new DataColumn("disc5", typeof(String)));
+            result.Columns.Add(new DataColumn("tolD1", typeof(String)));
+            result.Columns.Add(new DataColumn("tolD2", typeof(String)));
+            result.Columns.Add(new DataColumn("tolD3", typeof(String)));
+            result.Columns.Add(new DataColumn("tolD4", typeof(String)));
+            result.Columns.Add(new DataColumn("tolD5", typeof(String)));
+            result.Columns.Add(new DataColumn("totalA", typeof(String)));
+            result.Columns.Add(new DataColumn("vat", typeof(String)));
+            result.Columns.Add(new DataColumn("totalDiscount", typeof(String)));
+            result.Columns.Add(new DataColumn("totalD", typeof(String)));
+            DataRow resultRow = result.NewRow();
+            resultRow = result.NewRow();
+            resultRow["SI"] = txtSalesInvoice.Text;
+            resultRow["sold"] = txtSoldTo.Text;
+            resultRow["contact"] = txtCustNo.Text;
+            resultRow["tin"] = txtTin.Text;
+            resultRow["address"] = txtCustAddress.Text;
+            resultRow["instruction"] = txtInstruction.Text;
+            resultRow["SO"] = txtSoNo.Text;
+            resultRow["Po"] = txtPoNo.Text;
+            resultRow["Wcode"] = cbxWarehouse.Text;
+            resultRow["terms"] = cbxterms.Text;
+            resultRow["sr"] = txtSR.Text;
+            result.Rows.Add(resultRow);
+            foreach (DataGridViewRow dRow in dataGridView1.Rows)
+            {
+                if (dataGridView1.Rows.IndexOf(dRow) == dataGridView1.Rows.Count - 1)
+                    break;
+                resultRow = result.NewRow();
+                resultRow["product"] = dRow.Cells[colCode.Name].Value;
+                resultRow["description"] = dRow.Cells[colDescription.Name].Value;
+                resultRow["uom"] = dRow.Cells[colUnit.Name].Value;
+                resultRow["qty"] = dRow.Cells[colQuantity.Name].Value;
+                resultRow["price"] = dRow.Cells[colPrice.Name].Value;
+                resultRow["amount"] = dRow.Cells[colAmount.Name].Value;
+                result.Rows.Add(resultRow);
+            }
+            resultRow = result.NewRow();
+            resultRow["disc1"] = discount[0].ToString();
+            resultRow["disc2"] = discount[1].ToString();
+            resultRow["disc3"] = discount[2].ToString();
+            resultRow["disc4"] = discount[3].ToString();
+            resultRow["disc5"] = discount[4].ToString();
+            resultRow["tolD1"] = totaldisc[0].ToString();
+            resultRow["tolD2"] = totaldisc[1].ToString();
+            resultRow["tolD3"] = totaldisc[2].ToString();
+            resultRow["tolD4"] = totaldisc[3].ToString();
+            resultRow["tolD5"] = totaldisc[4].ToString();
+            resultRow["totalA"] = txtTotalA.Text;
+            resultRow["totalDiscount"] = txtDiscount.Text;
+            resultRow["vat"] = txtVat.Text;
+            resultRow["totalD"] = txtAmountD.Text;
+            result.Rows.Add(resultRow);
+            var viewer = new CrystalReport.Report();
+            ReportDocument ReportDocs = new ReportDocument();
+            ReportDocs = new CrystalReport.salesReport();
+            ReportDocs.Database.Tables[0].SetDataSource(result);
+            viewer.Viewer.ReportSource = ReportDocs;
+            viewer.ShowDialog();
+        }
+        Outgoing.Conversion dialog = new Outgoing.Conversion();
+        Outgoing.StockRelease dialog1 = new Outgoing.StockRelease();
+        public void unconverted()
+        {
+            dialog.dataGridView2.Rows.Clear();
+            foreach (DataGridViewRow rows in dataGridView1.Rows)
+            {
+                if (dataGridView1.Rows.IndexOf(rows) == dataGridView1.Rows.Count - 1)
+                    break;
+
+                String[] datas = new String[dialog.dataGridView1.ColumnCount];
+                datas[0] = rows.Cells["colCode"].Value.ToString();
+                datas[1] = rows.Cells["colDescription"].Value.ToString();
+                datas[2] = rows.Cells["colUnit"].Value.ToString();
+                datas[3] = rows.Cells["colQuantity"].Value.ToString();
+                dialog.dataGridView2.Rows.Add(datas);
+            }
+        }
+        private void conversion()
+        {
+            dialog.dataGridView1.Rows.Clear();
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (dataGridView1.Rows.IndexOf(row) == dataGridView1.Rows.Count - 1)
                     break;
+                Conversion(row.Cells[colID.Name].Value.ToString(), "CS");
+                int quantity = Convert.ToInt32(row.Cells[colQuantity.Name].Value) / newqty;
+                int reminder = Convert.ToInt32(row.Cells[colQuantity.Name].Value) % newqty;
 
-                Dictionary<String, Object> detail = new Dictionary<String, Object>();
-                detail.Add("out_shipment", siId);
-                detail.Add("product", row.Cells[colCode.Name].Value.ToString());
-                detail.Add("uom", row.Cells[colUnit.Name].Value.ToString());
-                if (string.IsNullOrEmpty(row.Cells[colQuantity.Name].Value as string))
-                { detail.Add("expected_qty", "0"); }
+                dialog.textBox1.Text = txtSalesInvoice.Text;
+                    String[] data = new String[dialog.dataGridView1.ColumnCount];
+                    data[0] = row.Cells[colCode.Name].Value.ToString();
+                    data[1] = row.Cells[colDescription.Name].Value.ToString();
+                    data[2] = row.Cells[colUnit.Name].Value.ToString();
+                if (Convert.ToInt32(row.Cells[colQuantity.Name].Value) >= newqty)
+                {
+                    data[3] = Convert.ToInt32(newqty).ToString();
+                }
                 else
-                { detail.Add("expected_qty", row.Cells[colQuantity.Name].Value.ToString()); } 
-                detail.Add("price", row.Cells[colPrice.Name].Value.ToString());
-                sql.Append(DataSupport.GetInsert("OutgoingShipmentRequestDetails", detail));
+                {
+                    data[3] = row.Cells[colQuantity.Name].Value.ToString();
+                }
+                if (Convert.ToInt32(row.Cells[colQuantity.Name].Value) >= newqty)
+                {
+                    data[4] = "CS";
+                    data[5] = Convert.ToInt32(quantity).ToString();
+                }
+                else
+                {
+                    data[4] = row.Cells[colUnit.Name].Value.ToString();
+                    data[5] = row.Cells[colQuantity.Name].Value.ToString();
+                }
+                    dialog.dataGridView1.Rows.Add(data);
+                if (Convert.ToInt32(row.Cells[colQuantity.Name].Value) > newqty)
+                {
+                    if (reminder > 0)
+                    {
+                        String[] data1 = new String[dialog.dataGridView1.ColumnCount];
+                        data1[0] = row.Cells[colCode.Name].Value.ToString();
+                        data1[1] = row.Cells[colDescription.Name].Value.ToString();
+                        data1[2] = row.Cells[colUnit.Name].Value.ToString();
+                        data1[3] = Convert.ToInt32(reminder).ToString();
+                        data1[4] = "PC";
+                        data1[5] = Convert.ToInt32(reminder).ToString();
+                        dialog.dataGridView1.Rows.Add(data1);
+                    }
+                }
             }
-            if (FAQ.InvoiceExist(txtSalesInvoice.Text))
-            { MessageBox.Show("Invoice No is Exist"); }
-            else
+            //dialog.Unconverted = dataGridView1.DataSource as DataTable;
+            unconverted();
+            dialog.sales = this;
+            dialog.ShowDialog();
+            if (dialog.status == "save")
             {
-                DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
-                MessageBox.Show("Success");
-                DialogResult = DialogResult.OK;
+                saved();
+                clear();
             }
         }
+        public String siId;
+        private void saved()
+        {
+            try
+            {
+                siId = DataSupport.GetNextMenuCodeInt("INVOICE");
+                StringBuilder sql = new StringBuilder();
+                Dictionary<String, Object> header = new Dictionary<string, object>();
+                header.Add("out_shipment_id", siId);
+                header.Add("warehouse", "CEB1");
+                header.Add("datetime", DateTime.Now);
+                header.Add("outgoing_type", "SALES INVOICE");
+                header.Add("docNo", txtSalesInvoice.Text);
+                header.Add("document_reference", txtSoNo.Text);
+                header.Add("document_reference_date", txtDateS.Text);
+                header.Add("authorized_tms", cbxWarehouse.Text);
+                header.Add("client", "COMARK");
+                header.Add("terms", cbxterms.Text);
+                header.Add("poNo", txtPoNo.Text);
+                header.Add("sr", txtSR.Text);
+                header.Add("terrCode", txtTerrCode.Text);
+                header.Add("customer_id", custCode);
+                header.Add("customer_name", txtSoldTo.Text);
+                header.Add("customer_invoice_address", txtCustAddress.Text);
+                header.Add("totalA", sum1);
+                header.Add("disc1", totaldisc[0]);
+                header.Add("disc2", totaldisc[1]);
+                header.Add("disc3", totaldisc[2]);
+                header.Add("disc4", totaldisc[3]);
+                header.Add("disc5", totaldisc[4]);
+                header.Add("totalDis", totaldisc[5]);
+                header.Add("shippingInstruction", txtInstruction.Text);
+                header.Add("vat", vat);
+                header.Add("amountD", amountD);
+                header.Add("typeStocks", txtTypeStock.Text);
+                header.Add("status", "FOR STOCK CHECKING");
+                header.Add("copies", 0);
+                header.Add("printedDate", "");
+
+
+                sql.Append(DataSupport.GetInsert("OutgoingShipmentRequests", header));
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (dataGridView1.Rows.IndexOf(row) == dataGridView1.Rows.Count - 1)
+                        break;
+                    //conversion
+                    Conversion(row.Cells[colID.Name].Value.ToString(), "CS");
+                    int quantity = Convert.ToInt32(row.Cells[colQuantity.Name].Value) / newqty;
+                    int reminder = Convert.ToInt32(row.Cells[colQuantity.Name].Value) % newqty;
+                    //decimal totalRemiderprice = reminder * Convert.ToDecimal(row.Cells[colPrice.Name].Value);
+
+                    //normal adding
+                    Dictionary <String, Object> detail = new Dictionary<String, Object>();
+                    detail.Add("out_shipment", siId);
+                    detail.Add("product", row.Cells[colCode.Name].Value.ToString());
+                    //detail.Add("newuom", row.Cells[colUnit.Name].Value.ToString());
+                    //if (Convert.ToInt32(row.Cells[colQuantity.Name].Value) >= newqty)
+                    //{
+                    //    detail.Add("newqty", newqty);
+                    //}
+                    //else
+                    //{
+                    //    detail.Add("newqty", Convert.ToInt32(row.Cells[colQuantity.Name].Value));
+                    //}
+                    if (string.IsNullOrEmpty(row.Cells[colPrice.Name].Value.ToString()))
+                    {
+                        detail.Add("price", "0");
+                    }
+                    else
+                    {
+                        detail.Add("price", row.Cells[colPrice.Name].Value.ToString());
+                    }
+                    if (Convert.ToInt32(row.Cells[colQuantity.Name].Value) >= newqty)
+                    {
+                        detail.Add("expected_qty", quantity);
+                        detail.Add("uom", "CS");
+                    }
+                    else
+                    {
+                        detail.Add("expected_qty", Convert.ToInt32(row.Cells[colQuantity.Name].Value));
+                        detail.Add("uom", row.Cells[colUnit.Name].Value.ToString());
+                    }
+                    sql.Append(DataSupport.GetInsert("OutgoingShipmentRequestDetails", detail));
+
+                    //Reminder
+                    if (Convert.ToInt32(row.Cells[colQuantity.Name].Value) > newqty)
+                    {
+                        if (reminder > 0)
+                        {
+                            Dictionary<String, Object> details = new Dictionary<String, Object>();
+                            details.Add("out_shipment", siId);
+                            details.Add("product", row.Cells[colCode.Name].Value.ToString());
+                            //details.Add("newuom", "PC");
+                            //details.Add("newqty", reminder);
+                            details.Add("price", row.Cells[colPrice.Name].Value.ToString());
+                            details.Add("expected_qty", reminder);
+                            details.Add("uom", "PC");
+                            sql.Append(DataSupport.GetInsert("OutgoingShipmentRequestDetails", details));
+                        }
+                    }
+                    //SOTABLE
+                    Dictionary<String, Object> soSAve = new Dictionary<String, Object>();
+                    soSAve.Add("out_shipment", siId);
+                    soSAve.Add("product", row.Cells[colCode.Name].Value.ToString());
+                    soSAve.Add("uom", row.Cells[colUnit.Name].Value);
+                    soSAve.Add("soqty", row.Cells[colQuantity.Name].Value);
+                    soSAve.Add("price", row.Cells[colPrice.Name].Value.ToString()); ;
+                    sql.Append(DataSupport.GetInsert("SOtable", soSAve));
+                   
+                   
+                }
+                //Conversion
+                foreach (DataGridViewRow conversion in dialog.dataGridView1.Rows)
+                {
+                    
+                    if (dialog.dataGridView1.Rows.IndexOf(conversion) == dialog.dataGridView1.Rows.Count - 1)
+                        break;
+                    Dictionary<String, Object> Coversion = new Dictionary<String, Object>();
+                    Coversion.Add("so", siId);
+                    Coversion.Add("product", conversion.Cells["colCode"].Value.ToString());
+                    Coversion.Add("souom", conversion.Cells["colsouom"].Value);
+                    Coversion.Add("soqty", conversion.Cells["colsoqty"].Value);
+                    Coversion.Add("newqty", conversion.Cells["colnewqty"].Value.ToString());
+                    Coversion.Add("newuom", conversion.Cells["colnewuom"].Value.ToString());
+                    Coversion.Add("conversionNo", dialog.textBox2.Text);
+                    sql.Append(DataSupport.GetInsert("declarationofConversion", Coversion));
+                }
+                if (FAQ.InvoiceExist(txtSalesInvoice.Text))
+                { MessageBox.Show("Invoice No is Exist"); }
+                else
+                {
+                    DataSupport.RunNonQuery(sql.ToString(), IsolationLevel.ReadCommitted);
+                    MessageBox.Show("Success");
+                    DialogResult = DialogResult.OK;
+                }   
+            }
+            catch(Exception ex)
+            { MessageBox.Show(ex.Message); }
+        }
+
         private void clear()
         {
             txtSalesInvoice.Clear();
@@ -296,19 +624,6 @@ namespace OMS.Outgoing
             txtCustAddress.Text = null;
             txtTin.Text = null;
         }
-        String custCode;
-        private bool GetProducts(String Pcode)
-        {
-       
-                var dt = DataSupport.RunDataSet("select * from itemPrice i join products p on i.productID = p.product_id join uom U on i.uom = u.uom join priceType t on i.priceTypeId = t.priceTypeId where i.productID = '" + Pcode + "'").Tables[0];
-                if (dt.Rows.Count > 0)
-               
-   
-            return true;
-            return false;
-
-        }
-
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
         }
@@ -387,7 +702,184 @@ namespace OMS.Outgoing
 
         private void cbxpriceType_SelectedValueChanged(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
+            foreach(DataGridViewRow row in dataGridView1.Rows)
+            {
+                row.Cells[colUnit.Name].Value = "";
+                row.Cells[colPrice.Name].Value = 0.00;
+ 
+            }
+        }
+
+        private void txtTin_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void txtInstruction_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTypeStock_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCustAddress_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCustNo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSoldTo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTerrCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSR_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTerms_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDateS_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxpriceType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxWarehouse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPoNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSoNo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSalesInvoice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtAmountD_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        public int newqty = 0;
+        public int Conversion(String product_id, String uom)
+        {
+            var dt = DataSupport.RunDataSet("SELECT qty FROM itemPrice WHERE productID = '" + product_id + "' and uom ='" + uom + "'").Tables[0];
+           foreach(DataRow row in dt.Rows)
+            {
+                newqty = Convert.ToInt32(row["qty"].ToString());
+            }
+            return newqty;
         }
     }
 }

@@ -125,6 +125,21 @@
     <value>..\Resources\Sales.Html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="drReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\drReport.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+    <value>..\Resources\drReport.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="salesReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\salesReport.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="Dr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dr.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summary.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Returns" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Returns.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
+  </data>
+  <data name="Stocktranfer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stocktranfer.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

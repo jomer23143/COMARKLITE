@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        body {
+            font-family: "carrier";
+            line-height: 15px;
+            font-size: 12px;
+            width: 100%;
+            /*PAGE-BREAK-BEFORE: always;
+            height:100%;
+            filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=3);*/
+        }
+
+        .table, .table tr td, .table tr th {
+            /*border-collapse: collapse;
+            border: 1px solid black;*/
+            text-align: left;
+            padding: 0;
+        }
+
+      
+
+        .table {
+            width: 100%;
+        }
+
+        .container {
+            width: 95%;
+            margin: auto;
+        }
+
+        #date {
+            width: 25%;
+            float: right;
+            text-align: right;
+        }
+
+        #invoices {
+            width: 25%;
+            float: right;
+            text-align: right;
+        }
+
+        #Customer {
+            width: 100%;
+        }
+
+        #Sold {
+            text-align: right;
+            width: 25%;
+            float: right;
+        }
+
+        #cust_no {
+            text-align: right;
+            width: 25%;
+            float: right;
+        }
+
+        .address {
+            float: right;
+            text-align: left;
+            width: 28%;
+        }
+
+        #address {
+            margin-top: 0;
+        }
+
+        #number {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #Shipping {
+            float: right;
+            width: 28%;
+            height: 55px;
+        }
+
+        #so {
+            width: 30%;
+            float: left;
+            padding-left: 40px;
+        }
+
+        #Terms {
+            width: 30%;
+            float: left;
+        }
+
+        #number-po {
+            margin-top: 10px;
+        }
+
+        #po {
+            width: 30%;
+            float: left;
+            padding-left: 40px;
+        }
+
+        #SR {
+            width: 30%;
+            float: left;
+        }
+
+        #whse {
+            width: 30%;
+            float: left;
+            padding-left: 40px;
+        }
+
+        #TERR {
+            width: 30%;
+            float: left;
+        }
+
+        .order {
+            width: 100%;
+            float: left;
+            margin-top: 35px;
+        }
+
+        #Discount {
+            float: right;
+        }
+
+        #disc {
+            width: 100%;
+        }
+
+        #amount {
+            text-align: right;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body class="landscape">
+    <div class="container">
+        <p id ="date">[run_datetime]</p>
+        <p id="invoices">[Invoice]</p>
+        <br />
+        <br/>
+        <br/>
+        <div class="Customer">
+                <p id="cust_no">[cust_no]</p>
+                <p id="Sold">[Sold_To]</p>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="address">
+             <p id="address">[Address]</p>
+             <p id="Tin">[Tin]</p>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="number-details">
+            <p id="Shipping">[Shipping]</p>
+            <p id="so">[SoNo]</p>
+            <p id="Terms">[Terms]</p>
+            <p id="po">[PoNo]</p>
+            <p id="SR">[SR]</p>
+            <p id="whse">[WHSE]</p>
+            <p id="TERR">[TERR]</p>
+        </div>
+         <div class="order">
+            <p id="orders">[Sales_table]</p>
+        </div>
+          <div id="Discount">
+            <p id="disc">Less  [discount1]%:   [dicsValue1]</p>
+            <p id="disc">Less  [discount2]%:   [dicsValue2]</p>
+            <p id="disc">Less  [discount3]%:   [dicsValue3]</p>
+            <p id="disc">Less  [discount4]%:   [dicsValue4]</p>
+            <p id="disc">Less  [discount5]%:   [dicsValue5]</p>
+            <p id="disc">[totalAmount]</p>
+            <p id="disc">[Discount]</p>
+            <p id="disc">[VAT]</p>
+            <p id="disc">[Amount]</p>
+        </div>
+    </div>
+</body>
+</html>

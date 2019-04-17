@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMS", "OMS\OMS.csproj", "{5FA88D52-EC47-4080-A890-7777931BCB5A}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "comark", "comark\comark.vdproj", "{0F31C588-168F-48B5-8A88-F8FA7AFB8E05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,13 @@ Global
 		{5FA88D52-EC47-4080-A890-7777931BCB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FA88D52-EC47-4080-A890-7777931BCB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FA88D52-EC47-4080-A890-7777931BCB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F31C588-168F-48B5-8A88-F8FA7AFB8E05}.Debug|Any CPU.ActiveCfg = Debug
+		{0F31C588-168F-48B5-8A88-F8FA7AFB8E05}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC4D96ED-1835-441C-8E0E-26FB6816418E}
 	EndGlobalSection
 EndGlobal
